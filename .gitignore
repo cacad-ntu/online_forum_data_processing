@@ -1,2 +1,5 @@
 /ENV
-
+.idea/
+data/
+.DS_STORE
+*.pyc
