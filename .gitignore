@@ -1,5 +1,5 @@
 /ENV
 .idea/
-data/
+data/*.xml
 .DS_STORE
 *.pyc

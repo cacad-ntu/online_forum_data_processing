@@ -34,5 +34,5 @@ class DataCollector:
         for answer in self.list_answer:
             dict_save["list_string"].append(BeautifulSoup(answer.attrib.get("Body")).text)
 
-        with open('data.json', 'w') as outfile:
+        with open('data/data.json', 'w') as outfile:
             json.dump(dict_save, outfile)
