@@ -31,7 +31,7 @@ def stem_data(data_dir):
     word_count = sorted(word_count.items(), key=operator.itemgetter(1), reverse=True)
 
     with open(data_dir + 'result_stemmed.json', 'w') as result:
-        json.dump(stemmed_word_count, result)
+        json.dump(stemmed_word_count, result, indent=4)
 
     with open(data_dir + 'result_word_count.json', 'w') as result:
-        json.dump(word_count, result)
+        json.dump(word_count, result, indent=4)
