@@ -7,13 +7,16 @@ ipython==5.5.0
 ipython-genutils==0.2.0
 lxml==4.0.0
 nltk==3.2.5
+numpy==1.13.3
 pathlib2==2.3.0
 pexpect==4.2.1
 pickleshare==0.7.4
 prompt-toolkit==1.0.15
 ptyprocess==0.5.2
+python-crfsuite==0.9.5
 Pygments==2.2.0
 scandir==1.5
+scipy==1.0.0
 simplegeneric==0.8.1
 six==1.11.0
 traitlets==4.3.2
