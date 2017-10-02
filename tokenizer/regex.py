@@ -9,7 +9,11 @@ class Tokenizer:
 
     def start_tokenize(self, string):
 
-        list_regex_exception_token = ["(\Exception(.||\\n)*([^:,\s]+:\s+))", "(\java\.\lang\.[a-zA-Z]*\Exception{1})"]
+        list_regex_exception_token = ["(\Exception(.||\\n)*([^:,\s]+:\s+))", "(\java\.\lang\.[a-zA-Z]*\Exception{1})",
+                                      "([Tt]hrows?[a-zA-Z||\s]*\Exception{1})",
+                                      "(\catch\s*\([a-zA-Z]*\Exception{1}\s+[a-zA-Z]*\))",
+                                      "([a-zA-Z]*\Exception{1})", "([a-zA-Z]*\exception{1})"]
+        # [a-zA-Z||\s]*\Exception{1}
 
         set_string_match = set()
         list_string_token = []

@@ -12,4 +12,4 @@ if __name__ == "__main__":
     stem_data("data/")
 
     tokenizer = Tokenizer()
-    tokenizer.start_tokenize("ERROR java.lang.NullPointerException: Sample Java Logback Exception this is test from edward")
+    tokenizer.start_tokenize("throw new UploadException")
