@@ -13,16 +13,33 @@ from bs4 import BeautifulSoup
 
 class DataCollector:
 
-    def __init__(self, file_path="data/Posts.xml"):
-        root = lxml.etree.parse(file_path)
+    def __init__(self, file_path="/Users/edwardsujono/Python_Projectaa", limit=500):
+
+        print ("start parsing \n")
+
+        parser = lxml.etree.XMLParser(recover=True)
+        root = lxml.etree.parse(file_path, parser)
 
         self.list_question = root.xpath("row[contains(@Tags, '<java>') and @AcceptedAnswerId]")
         self.list_answer = []
 
+        print ("get java related xml started \n")
+
+        cnt = 0
+
         for question in self.list_question:
+
+            if cnt == limit:
+                return
+
+            print ("start: cnt: %s " % cnt)
+
             list_answer_from_parent = root.xpath("row[@ParentId=\"" + question.attrib.get("Id") + "\"]")
             for answer in list_answer_from_parent:
                 self.list_answer.append(answer)
+            cnt += 1
+
+            print ("end: cnt: %s" % cnt)
 
     def start_data_collection(self):
 
