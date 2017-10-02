@@ -52,4 +52,4 @@ class DataCollector:
             dict_save["list_string"].append(BeautifulSoup(answer.attrib.get("Body")).text)
 
         with open('data/data.json', 'w') as outfile:
-            json.dump(dict_save, outfile)
+            json.dump(dict_save, outfile, indent=4)

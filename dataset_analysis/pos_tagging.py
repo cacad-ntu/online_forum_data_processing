@@ -17,4 +17,4 @@ def pos_tag(data_dir):
         my_arr.append(my_dict)
 
     with open(data_dir + "pos_tag.json", "w") as out_file:
-        json.dump(my_arr, out_file)
+        json.dump(my_arr, out_file, indent=4)
