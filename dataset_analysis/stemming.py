@@ -26,6 +26,9 @@ def stem_data(data_dir):
             else:
                 stemmed_word_count[parsed] = [1, [element]]
 
+    stemmed_word_count = sorted(stemmed_word_count.items(), key=lambda count: count[1][0])
+    word_count = sorted(word_count.items(), key=lambda count: count[1][0])
+
     with open(data_dir + 'result_stemmed.json', 'w') as result:
         json.dump(stemmed_word_count, result)
 
