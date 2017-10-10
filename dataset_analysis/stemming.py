@@ -12,7 +12,8 @@ def stem_data(data_dir):
     word_count = {}
 
     for item in data["list_string"]:
-        for element in item.split():
+        item_tokens = nltk.word_tokenize(item)
+        for element in item_tokens:
             if element in word_count:
                 word_count[element] += 1
             else:
