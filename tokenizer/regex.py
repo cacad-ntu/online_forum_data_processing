@@ -9,14 +9,12 @@ class Tokenizer:
 
     def start_tokenize(self, string):
 
-        list_regex_exception_token = ["(\Exception(.||\\n)*([^:,\s]+:\s+))", "(\java\.\lang\.[a-zA-Z]*\Exception{1})",
-                                      "([Tt]hrows?[a-zA-Z||\s]*\Exception{1})",
-                                      "(\catch\s*\([a-zA-Z]*\Exception{1}\s+[a-zA-Z]*\))",
-                                      "([a-zA-Z]*\Exception{1})", "([a-zA-Z]*\exception{1})"]
+        list_regex_exception_token = []
         # [a-zA-Z||\s]*\Exception{1}
 
         set_string_match = set()
-        list_string_token = []
+        list_java_token = []
+        list_unk_token = []
 
         for regex_pattern in list_regex_exception_token:
 
@@ -28,7 +26,7 @@ class Tokenizer:
             string_match = m.group(0)
             set_string_match.add(string_match)
             string = string.replace(string_match, "").strip()
-            list_string_token.append({string_match: "EXCEPTION"})
+            list_string_token.append({string_match: "JAVA"})
 
         sentence_token = nltk.word_tokenize(string)
 
