@@ -41,7 +41,7 @@ Apa aja yang ada di repo ini
         - Data
             - Count of original word
             - Count of stemmed word and their respective original word(s)
-        - Identify the top-20 most frequent words (excluding the [stop words](https://www.ranks.nl/stopwords))
+        - Identify the top-20 most frequent words (excluding the [stop words](http://xpo6.com/list-of-english-stop-words/))
         - Discuss the results
             - specific based on top 20
     - POS Tagging

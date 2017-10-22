@@ -603,12 +603,12 @@
                 "NN"
             ], 
             [
-                "NN"
                 "at", 
                 "IN"
             ], 
             [
                 "bexhuff.com", 
+                "NN"
             ]
         ]
     }, 
@@ -4611,7 +4611,7 @@
             ], 
             [
                 "getMaximumSize()", 
-                "VB"
+                "JAVA"
             ],  
             [
                 "return", 
@@ -7043,7 +7043,7 @@
             ], 
             [
                 "StringTokenizer", 
-                "NN"
+                "JAVA"
             ], 
             [
                 "but", 
