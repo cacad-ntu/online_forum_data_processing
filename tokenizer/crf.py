@@ -5,6 +5,7 @@ from sklearn.preprocessing import LabelBinarizer
 import sklearn
 import pycrfsuite
 import json
+import sys
 
 def word_features(sentence_list, index):
     word = sentence_list[index][0]
@@ -47,7 +48,7 @@ def sentence_to_words(sentence_list):
 def sentence_labels(sentence_list):
     return [postag for token, postag in sentence_list]
 
-with open('') as json_data:
+with open(sys.argv[0]) as json_data:
     data = json.load(json_data)
     sentence = [data[i]['pos_tag'] for i in range(len(data))]
     train_data = [sentence_to_words(sentence[i]) for i in range(len(sentence))]
