@@ -2764,12 +2764,8 @@
                 "JJ"
             ],
             [
-                "open",
-                "JJ"
-            ],
-            [
-                "source",
-                "NN"
+                "open source",
+                "NNP"
             ],
             [
                 "library",
