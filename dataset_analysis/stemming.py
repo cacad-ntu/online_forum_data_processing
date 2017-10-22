@@ -18,7 +18,7 @@ def stem_data(data_dir):
         item_tokens = nltk.word_tokenize(item)
         for element in item_tokens:
             
-            if element in stop_words:
+            if element.lower() in stop_words:
                 continue
 
             if element in word_count:
