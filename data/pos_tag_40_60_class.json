@@ -4884,7 +4884,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "I'm probably going a million miles in the wrong direct (but i'm only young :P ). but couldn't you add the graphic to a panel and then a mouselistener to the graphic object so that when the user on the graphic your action is preformed.", 
@@ -5097,7 +5098,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "For parsing player commands, I've most often used the split method to split a string by delimiters and then to then just figure out the rest by a series of ifs or switches. What are some different ways of parsing strings in Java?", 
@@ -5290,7 +5292,8 @@
                 "?", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "I really like regular expressions. As long as the command strings are fairly simple, you can write a few regexes that could take a few pages of code to manually parse.\nI would suggest you check out http://www.regular-expressions.info for a good intro to regexes, as well as specific examples for Java.", 
@@ -5527,7 +5530,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "A simple string tokenizer on spaces should work, but there are really many ways you could do this.\nHere is an example using a tokenizer:\n\nThen tokens can be further used for the arguments.  This all assumes no spaces are used in the arguments... so you might want to roll your own simple parsing mechanism (like getting the first whitespace and using text before as the action, or using a regular expression if you don't mind the speed hit), just abstract it out so it can be used anywhere.", 
@@ -5932,7 +5936,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "I would look at Java migrations of Zork, and lean towards a simple Natural Language Processor (driven either by tokenizing or regex) such as the following (from this link):\n\n...\nAnything which gives a programmer a reason to look at Zork again is good in my book, just watch out for Grues.\n...", 
@@ -6181,7 +6186,8 @@
                 "...", 
                 ":"
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "I assume you're trying to make the command interface as forgiving as possible. If this is the case, I suggest you use an algorithm similar to this:\n\nRead in the string\n\n\nSplit the string into tokens\nUse a dictionary to convert synonyms to a common form \nFor example, convert \"hit\", \"punch\", \"strike\", and \"kick\" all to \"hit\"\nPerform actions on an unordered, inclusive base\nUnordered - \"punch the monkey in the face\" is the same thing as \"the face in the monkey punch\"\nInclusive - If the command is supposed to be \"punch the monkey in the face\" and they supply \"punch monkey\", you should check how many commands this matches. If only one command, do this action. It might even be a good idea to have command priorities, and even if there were even matches, it would perform the top action.", 
@@ -6890,7 +6896,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "@CodingTheWheel Heres your code, a bit clean up and through eclipse (ctrl+shift+f) and the inserted back here :)\nIncluding the four spaces in front each line.", 
@@ -7023,7 +7030,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "When the separator String for the command is allways the same String or char (like the \";\") y recomend you use the StrinkTokenizer class:\nStringTokenizer\nbut when the separator varies or is complex y recomend you to use the regular expresions, wich can be used by the String class itself, method split, since 1.4. It uses the Pattern class from the java.util.regex package\nPattern", 
@@ -7320,7 +7328,8 @@
                 "Pattern", 
                 "NNP"
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "Sun itself recommends staying away from StringTokenizer and using the String.spilt method instead. \nYou'll also want to look at the Pattern class.", 
@@ -7425,7 +7434,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "Parsing manually is a lot of fun... at the beginning:) \nIn practice if commands aren't very sophisticated you can treat them the same way as those used in command line interpreters. There's a list of libraries that you can use: http://java-source.net/open-source/command-line. I think you can start with apache commons CLI or args4j (uses annotations). They are well documented and really simple in use. They handle parsing automatically and the only thing you need to do is to read particular fields in an object.\nIf you have more sophisticated commands, then maybe creating a formal grammar would be a better idea. There is a very good library with graphical editor, debugger and interpreter for grammars. It's called ANTLR (and the editor ANTLRWorks) and it's free:) There are also some example grammars and tutorials.", 
@@ -8062,7 +8072,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "If this is to parse command lines I would suggest using Commons Cli.\n\nThe Apache Commons CLI library provides an API for processing command line interfaces.", 
@@ -8179,7 +8190,8 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }, 
     {
         "origin": "Another vote for ANTLR/ANTLRWorks.  If you create two versions of the file, one with the Java code for actually executing the commands, and one without (with just the grammar), then you have an executable specification of the language, which is great for testing, a boon for documentation, and a big timesaver if you ever decide to port it.", 
@@ -8456,6 +8468,7 @@
                 ".", 
                 "."
             ]
-        ]
+        ],
+        "label" : 0
     }
 ]
