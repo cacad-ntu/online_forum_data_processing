@@ -1,6 +1,7 @@
 import re
 import nltk
 import copy
+import json
 
 
 class Tokenizer:
@@ -8,11 +9,26 @@ class Tokenizer:
     def __init__(self):
         return
 
+    def start_tokenize_from_folder(self, data_dir):
+
+        result_after_token = []
+
+        with open(data_dir + "data.json") as test:
+            data = json.load(test)
+
+        for sentence in data['list_string']:
+            list_of_token = self.start_tokenize(sentence)
+            list_of_token = filter(lambda data: data["token"] == "JAVA" or data["token"] == "UNK", list_of_token)
+            result_after_token.append(list_of_token)
+
+        with open(data_dir + "list_string_regex_token.json", "w") as out_file:
+            json.dump(result_after_token, out_file, indent=4)
+
     def start_tokenize(self, string):
 
         list_java_token = [
                             # test._this_method()
-                            r"[a-zA-Z0-9_\.]+\([a-zA-Z0-9_]*\)",
+                            r"[a-zA-Z0-9\_]{2,}\.[a-zA-Z0-9\_]{2,}[\.a-zA-Z0-9\_]*",
                             # @supresswarning
                             r"[a-zA-Z0-9_]*@[a-zA-Z0-9_]+",
                             # List<Integer> | ArrayList<Test>
@@ -69,22 +85,22 @@ class Tokenizer:
                 sentence_check += sentence_token[j]
 
                 if sentence_check in check_set_token_java:
-                    list_pure_token.append({sentence_check: 'JAVA'})
+                    list_pure_token.append({'origin': sentence_check, 'token': 'JAVA'})
                     has_irregular_token = True
                     skip = j+1
                     break
 
                 if sentence_check in check_set_token_unk:
-                    list_pure_token.append({sentence_check: 'UNK'})
+                    list_pure_token.append({'origin': sentence_check, 'token': 'UNK'})
                     has_irregular_token = True
                     skip = j+1
                     break
 
             if not has_irregular_token:
-                list_pure_token.append({sentence_token[cnt]: sentence_token[cnt]})
+                list_pure_token.append({'origin': sentence_token[cnt], 'token': sentence_token[cnt]})
             else:
                 cnt = skip
 
             cnt += 1
 
-        print list_pure_token
+        return list_pure_token
