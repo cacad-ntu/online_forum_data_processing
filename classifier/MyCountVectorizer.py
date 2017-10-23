@@ -13,15 +13,15 @@ class MyCountVectorizer:
         tokenizer = Tokenizer()
         cnt = 0
 
-        dictionary = {}
+        save = {}
 
         for string in list_string:
 
             list_token = tokenizer.start_tokenize(string)
 
             for token in list_token:
-                if dictionary.get(token) is None:
-                    dictionary[token] = cnt
+                if save.get(token["token"]) is None:
+                    save[token["token"]] = cnt
                     cnt += 1
 
         data_transform = np.zeros(shape=(len(list_string), cnt))
@@ -31,6 +31,6 @@ class MyCountVectorizer:
             list_token = tokenizer.start_tokenize(string)
             for token in list_token:
 
-                data_transform[i][dictionary.get(token)] += 1
+                data_transform[i][save.get(token["token"])] += 1
 
         return data_transform
