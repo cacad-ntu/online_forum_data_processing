@@ -4,7 +4,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import precision_score
-from MyCountVectorizer import MyCountVectorizer
+from my_count_vectorizer import MyCountVectorizer
 
 
 class Classifier:

@@ -1,0 +1,302 @@
+[
+    {
+        "pos": "I really like regular expressions. As long as the command strings are fairly simple, you can write a few regexes that could take a few pages of code to manually parse.\nI would suggest you check out http://www.regular-expressions.info for a good intro to regexes, as well as specific examples for Java.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "A simple string tokenizer on spaces should work, but there are really many ways you could do this.\nHere is an example using a tokenizer:\n\nThen tokens can be further used for the arguments.  This all assumes no spaces are used in the arguments... so you might want to roll your own simple parsing mechanism (like getting the first whitespace and using text before as the action, or using a regular expression if you don't mind the speed hit), just abstract it out so it can be used anywhere.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I would look at Java migrations of Zork, and lean towards a simple Natural Language Processor (driven either by tokenizing or regex) such as the following (from this link):\n\n...\nAnything which gives a programmer a reason to look at Zork again is good in my book, just watch out for Grues.\n...\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I assume you're trying to make the command interface as forgiving as possible. If this is the case, I suggest you use an algorithm similar to this:\n\nRead in the string\n\n\nSplit the string into tokens\nUse a dictionary to convert synonyms to a common form \nFor example, convert \"hit\", \"punch\", \"strike\", and \"kick\" all to \"hit\"\nPerform actions on an unordered, inclusive base\nUnordered - \"punch the monkey in the face\" is the same thing as \"the face in the monkey punch\"\nInclusive - If the command is supposed to be \"punch the monkey in the face\" and they supply \"punch monkey\", you should check how many commands this matches. If only one command, do this action. It might even be a good idea to have command priorities, and even if there were even matches, it would perform the top action.\n\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "@CodingTheWheel Heres your code, a bit clean up and through eclipse (ctrl+shift+f) and the inserted back here :)\nIncluding the four spaces in front each line.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "When the separator String for the command is allways the same String or char (like the \";\") y recomend you use the StrinkTokenizer class:\nStringTokenizer\nbut when the separator varies or is complex y recomend you to use the regular expresions, wich can be used by the String class itself, method split, since 1.4. It uses the Pattern class from the java.util.regex package\nPattern\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Sun itself recommends staying away from StringTokenizer and using the String.spilt method instead. \nYou'll also want to look at the Pattern class.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Parsing manually is a lot of fun... at the beginning:) \nIn practice if commands aren't very sophisticated you can treat them the same way as those used in command line interpreters. There's a list of libraries that you can use: http://java-source.net/open-source/command-line. I think you can start with apache commons CLI or args4j (uses annotations). They are well documented and really simple in use. They handle parsing automatically and the only thing you need to do is to read particular fields in an object.\nIf you have more sophisticated commands, then maybe creating a formal grammar would be a better idea. There is a very good library with graphical editor, debugger and interpreter for grammars. It's called ANTLR (and the editor ANTLRWorks) and it's free:) There are also some example grammars and tutorials.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If this is to parse command lines I would suggest using Commons Cli.\n\nThe Apache Commons CLI library provides an API for processing command line interfaces. \n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Another vote for ANTLR/ANTLRWorks.  If you create two versions of the file, one with the Java code for actually executing the commands, and one without (with just the grammar), then you have an executable specification of the language, which is great for testing, a boon for documentation, and a big timesaver if you ever decide to port it.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Try JavaCC a parser generator for Java.\nIt has a lot of features for interpreting languages, and it's well supported on Eclipse.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If the language is dead simple like just \nVERB NOUN\nthen splitting by hand works well.\nIf it's more complex, you should really look into a tool like ANTLR or JavaCC.\nI've got a tutorial on ANTLR (v2) at http://javadude.com/articles/antlrtut which will give you an idea of how it works.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I need to send and receive data over serial connections (RS-232 and RS-422).\nHow do I set up and communicate with such a connection?  How do I figure out what the configuration settings (e.g. baud rate) should be and how do I set them?\nIn particular I am looking to do this in Java, C/C++, or one of the major Unix shells but I also have some interest in serial programming using Windows/Hyperterminal.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Build a time machine and go back to 1987? Ho ho.\nOk, no more snarky comments.\n\nHow do I figure out what the configuration settings (e.g. baud rate) should be...\n\nRead the datasheet? Ok, ok. Seriously, last one. If you don't know the baud rate of the device you are trying to communicate with, you have two choices. Start guessing, or possibly bust out an o-scope. If you need a good starting point, let me suggest 9600-8-N-1. My suspicion is you can get there with brute force relatively quickly. There's a third option of having an old-school ninja who can tell just by the LOOK of the garbled characters at some standard baud rate what actual baud rate is. An impressive party trick to be sure.\nHopefully though you have access to this information. In unix/linux, you can get ahold of minicom to play with the serial port directly. This should make it fairly quick to get the configuration figured out.\n\none of the major Unix shells\n\nIn Unix the serial port(s) is/are file-mapped into the /dev/ subdir. ttyS0, for example. If you setup the correct baud rate and whatnot using minicom, you can even cat stuff to that file to send stuff out there.\nOn to the meat of the question, you can access it programmatically through the POSIX headers. termios.h is the big one. \nSee: http://www.easysw.com/~mike/serial/serial.html#3_1\n(NOT AVAILABLE ANYMORE)\n\nbut I also have some interest in serial programming using Windows/Hyperterminal.\n\nHyperterminal and minicom are basically the same program. As for how Windows let's you get access to the serial port, I'll leave that question for someone else. I haven't done that in Windows since the Win95 days.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "From the other side, if you want to do it using C#, which will run on both Windows and Linux--with some limitations (EDIT: which may be out of date. I have no way to test it.). Just create a SerialPort object, set its baudrate, port and any other odd settings, call open on it, and write out your byte[]s. After all the setup, the SerialPort object acts very similar to any networked stream, so it should be easy enough to figure out.\nAnd as ibrandy states, you need to know all these settings, like baud rate, before you even start attempting to communicate to any serial device. \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "At work we use teraterm and realterm for checking serial data is correctly formatted. Also we have a hardware splitter with a switch so we can monitor traffic to our application via a cable back to another port.\nWindows allows you access to the serial port via CreateFile. That gives you a handle and from there you can configure access.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "From Java the rxtx (NOT AVAILABLE ANYMORE)library is quite good. It picks up where Sun's serial IO framework left off. \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For C/C++ on Windows you have (at least) two choices:\n\nUse the SerialPort class provided by .NET.\nUse the Win32 API. There is an extensive MSDN article dating back to 1995, and many free libraries and examples on the web to get you started.\n\nThe .NET option will be much easier.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If you want to code in Java I really recommend SerialIOs SerialPort. It is very easy to use and saves you days of work. I've never found an open source library as good as SerialIO, REALLY!\nMy advice: do not use Sun's serial IO framework! It is from 1998 and full of bugs. You can use rxtx but serialio is better!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If it needs to be cross platfrom, I would suggest looking at Boost Asio.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Awhile back I wrote a decent sized application to route connections from a farm of modems through to a TCP/IP network address.\nInitially I looked for an unencumbered (free) Serial IO library.  I tried Sun's, IBM's and RxTx.  They were fine for developing the application, and in initial testing, but in production they each proved unstable.\nFinally I paid for SerialIO's SerialPort.  Converting over was literally an exercise in changing imports, and the library has been absolutely rock solid - I cannot recommend it enough.  My application has been running in the field 24/7 for a couple of years now, with not a single problem encountered by multiple customers.\nIf you start development using SerialPort, they have a better API and I would use it.\nIf you need cross platform support, Java with SerialPort was the best choice I could find.\nLastly, their licensing is pretty darn reasonable as long as you are not preinstalling software on the equipment for your customer(s).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Depending on the device You are trying to communicate with, there may be more parameters than the baud rate, number of data bits, type of parity checking and number of stop bits to consider. If I recall correctly, modems use nine lines of the RS-232C interface. Some devices like, for example cash registers, may use hardware handshaking on RTS/CTS lines or on DTR/STR lines.  \nIn general it's good to know how the interface works. You can't communicate if the baud rate doesn't match, but wrong setting of other parameters might kind of work. For example You can easily send data to the device expecting 1 stop bit with 2 stop bits set. Problems start when You try to receive data in such case. You can also use appropriately set parity bit as one of stop bits, etc.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have a simple setter method for a property and null is not appropriate for this particular property. I have always been torn in this situation: should I throw an IllegalArgumentException, or a NullPointerException? From the javadocs, both seem appropriate. Is there some kind of an understood standard?  Or is this just one of those things that you should do whatever you prefer and both are really correct?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It seems like an IllegalArgumentException is called for if you don't want null to be an allowed value, and the NullPointerException would be thrown if you were trying to use a variable that turns out to be null.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If it's a setter method and null is being passed to it, I think it would make more sense to throw an IllegalArgumentException. A NullPointerException seems to make more sense in the case where you're attempting to actually use the null.\nSo, if you're using it and it's null, NullPointer. If it's being passed in and it's null, IllegalArgument.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I tend to follow the design of JDK libraries, especially Collections and Concurrency (Joshua Bloch, Doug Lea, those guys know how to design solid APIs). Anyway, many APIs in the JDK pro-actively throws NullPointerException. \nFor example, the Javadoc for Map.containsKey states:\n\n@throws NullPointerException if the key is null and this map\n    does not permit null keys (optional).\n\nIt's perfectly valid to throw your own NPE. The convention is to include the parameter name which was null in the message of the exception. \nThe pattern goes:\n\nWhatever you do, don't allow a bad value to get set and throw an exception later when other code attempts to use it. That makes debugging a nightmare. You should always the follow the \"fail-fast\" principle.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If you choose to throw a NPE and you are using the argument in your method, it might be redundant and expensive to explicitly check for a null. I think the VM already does that for you.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The accepted practice if to use the IllegalArgumentException( String message ) to declare a parameter to be invalid and give as much detail as possible... So to say that a parameters was found to be null while exception non-null, you would do something like this:\n\nYou have virtually no reason to implicitly use the \"NullPointerException\". The NullPointerException is an exception thrown by the Java Virtual Machine when you try to execute code on null reference (Like toString()).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The standard is to throw the NullPointerException. The generally infallible \"Effective Java\" discusses this briefly in Item 42 (in the first edition) or Item 60 (in the second edition) \"Favor the use of standard exceptions\":\n\n\"Arguably, all erroneous method\n  invocations boil down to an illegal\n  argument or illegal state, but other\n  exceptions are standardly used for\n  certain kinds of illegal arguments and\n  states. If a caller passes null in\n  some parameter for which null values\n  are prohibited, convention dictates\n  that NullPointerException be thrown\n  rather than IllegalArgumentException.\"\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The definitions from the links to the two exceptions above are\nIllegalArgumentException: Thrown to indicate that a method has been passed an illegal or inappropriate argument. \nNullPointerException: Thrown when an application attempts to use null in a case where an object is required.\nThe big difference here is the IllegalArgumentException is supposed to be used when checking that an argument to a method is valid. NullPointerException is supposed to be used whenever an object being \"used\" when it is null.\nI hope that helps put the two in perspective.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Couldn't agree more with what's being said.  Fail early, fail fast.  Pretty good Exception mantra. \nThe question about which Exception to throw is mostly a matter of personal taste.  In my mind IllegalArgumentException seems more specific than using a NPE since it's telling me that the problem was with an argument I passed to the method and not with a value that may have been generated while performing the method.\nMy 2 Cents\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If it's a \"setter\", or somewhere I'm getting a member to use later, I tend to use IllegalArgumentException.\nIf it's something I'm going to use (dereference) right now in the method, I throw a NullPointerException proactively. I like this better than letting the runtime do it, because I can provide a helpful message (seems like the runtime could do this too, but that's a rant for another day).\nIf I'm overriding a method, I use whatever the overridden method uses.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In general, a developer should never throw a NullPointerException. This exception is thrown by the runtime when code attempts to dereference a variable who's value is null. Therefore, if your method wants to explicitly disallow null, as opposed to just happening to have a null value raise a NullPointerException, you should throw an IllegalArgumentException.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You should be using IllegalArgumentException (IAE), not NullPointerException (NPE) for the following reasons:\nFirst, the NPE JavaDoc explicitly lists the cases where NPE is appropriate.  Notice that all of them are thrown by the runtime when null is used inappropriately.  In contrast, the IAE JavaDoc couldn't be more clear: \"Thrown to indicate that a method has been passed an illegal or inappropriate argument.\"  Yup, that's you!\nSecond, when you see an NPE in a stack trace, what do you assume?  Probably that someone dereferenced a null.  When you see IAE, you assume the caller of the method at the top of the stack passed in an illegal value.  Again, the latter assumption is true, the former is misleading.\nThird, since IAE is clearly designed for validating parameters, you have to assume it as the default choice of exception, so why would you choose NPE instead?  Certainly not for different behavior -- do you really expect calling code to catch NPE's separately from IAE and do something different as a result?  Are you trying to communicate a more specific error message?  But you can do that in the exception message text anyway, as you should for all other incorrect parameters.\nFourth, all other incorrect parameter data will be IAE, so why not be consistent?  Why is it that an illegal null is so special that it deserves a separate exception from all other types of illegal arguments?\nFinally, I accept the argument given by other answers that parts of the Java API use NPE in this manner.  However, the Java API is inconsistent with everything from exception types to naming conventions, so I think just blindly copying (your favorite part of) the Java API isn't a good enough argument to trump these other considerations.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You should throw an IllegalArgumentException, as it will make it obvious to the programmer that he has done something invalid.  Developers are so used to seeing NPE thrown by the VM, that any programmer would not immediately realize his error, and would start looking around randomly, or worse, blame your code for being 'buggy'.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It's a \"Holy War\" style question. In others words, both alternatives are good, but people will have their preferences which they will defend to the death.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In this case, IllegalArgumentException conveys clear information to the user using your API that the \" should not be null\". As other forum users pointed out you could use NPE if you want to as long as you convey the right information to the user using your API. \nGaryF and tweakt dropped \"Effective Java\" (which I swear by) references which recommends using NPE. And looking at how other good APIs are constructed is the best way to see how to construct your API.\nAnother good example is to look at the Spring APIs. For example, org.springframework.beans.BeanUtils.instantiateClass(Constructor ctor, Object[] args) has a Assert.notNull(ctor, \"Constructor must not be null\") line. org.springframework.util.Assert.notNull(Object object, String message) method checks to see if the argument (object) passed in is null and if it is it throws a new IllegalArgumentException(message) which is then caught in the org.springframework.beans.BeanUtils.instantiateClass(...) method.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What code analysis tools do you use on your Java projects?\nI am interested in all kinds\n\nstatic code analysis tools (FindBugs, PMD, and any others)\ncode coverage tools (Cobertura, Emma, and any others)\nany other instrumentation-based tools \nanything else, if I'm missing something\n\nIf applicable, also state what build tools you use and how well these tools integrate with both your IDEs and build tools. \nIf a tool is only available a specific way (as an IDE plugin, or, say, a build tool plugin) that information is also worth noting.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "We use FindBugs and JDepend integrated with Ant. We use JUnit but we're not using any coverage tool. \nI'm not using it integrated to Rational Application Developer (the IDE I'm using to develop J2EE applications) because I like how neat it looks when you run javac in the Windows console. :P\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Checkstyle is another one I've used at a previous company... it's mainly for style checking, but it can do some static analysis too.  Also, Clover for code coverage, though be aware it is not a free tool.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "We are using FindBugs and Checkstyle as well as Clover for Code Coverage. \nI think it's important to have some kind of static analysis, supporting your development. Unfortunately it's still not widely spread that these tools are important.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I am looking for many answers to learn about new tools and consolidate this knowledge in a one question/thread, so I doubt there will be 1 true answer to this question.\nMy answer to my own question is that we use:\n\nFindbugs to look for common errors bad/coding - run from maven, and also integrates easily into Eclipse\nCobertura for our coverage reports - run from maven\n\nHudson also has a task-scanner plugin that will display a count of your TODO and FIXMEs, as well as show where they are in the source files.\nAll are integrated with Maven 1.x in our case and tied into Hudson, which runs our builds on check-in as well as extra things nightly and weekly. Hudson trend graphs our JUnit tests, coverage, findbugs, as well as open tasks. There is also a Hudson plugin that reports and graphs our compile warnings. We also have several performance tests with their own graphs of performance and memory use over time using the Hudson plots plugin as well.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "All of the following we use and integrate easiy in both our Maven 2.x builds and Eclipse/RAD 7:\n\nTesting - JUnit/TestNG\nCode analysis - FindBugs, PMD\nCode coverage - Clover\n\nIn addition, in our Maven builds we have:\n\nJDepend\nTag checker (TODO, FIXME, etc)\n\nFurthermore, if you're using Maven 2.x, CodeHaus has a collection of handy Maven plugins in their Mojo project.\nNote: Clover has out-of-the-box integration with the Bamboo CI server (since they're both Atlassian products). There are also Bamboo plugins for FindBugs, PMD, and CheckStyle but, as noted, the free Hudson CI server has those too.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For static analysis tools I often use CPD, PMD, FindBugs, and Checkstyle.\nCPD is the PMD \"Copy/Paste Detector\" tool. I was using PMD for a little while before I noticed the \"Finding Duplicated Code\" link on the PMD web page.\nI'd like to point out that these tools can sometimes be extended beyond their \"out-of-the-box\" set of rules. And not just because they're open source so that you can rewrite them. Some of these tools come with applications or \"hooks\" that allow them to be extended. For example, PMD comes with the \"designer\" tool that allows you to create new rules. Also, Checkstyle has the DescendantToken check that has properties that allow for substantial customization.\nI integrate these tools with an Ant-based build. You can follow the link to see my commented configuration.\nIn addition to the simple integration into the build, I find it helpful to configure the tools to be somewhat \"integrated\" in a couple of other ways. Namely, report generation and warning suppression uniformity. I'd like to add these aspects to this discussion (which should probably have the \"static-analysis\" tag also): how are folks configuring these tools to create a \"unified\" solution? (I've asked this question separately here)\nFirst, for warning reports, I transform the output so that each warning has the simple format:\n\nThis is often called the \"Emacs format,\" but even if you aren't using Emacs, it's a reasonable format for homogenizing reports. For example:\n\nMy warning format transformations are done by my Ant script with Ant filterchains.\nThe second \"integration\" that I do is for warning suppression. By default, each tool supports comments or an annotation (or both) that you can place in your code to silence a warning that you want to ignore. But these various warning suppression requests do not have a consistent look which seems somewhat silly. When you're suppressing a warning, you're suppressing a warning, so why not always write \"SuppressWarning?\"\nFor example, PMD's default configuration suppresses warning generation on lines of code with the string \"NOPMD\" in a comment. Also, PMD supports Java's @SuppressWarnings annotation. I configure PMD to use comments containing \"SuppressWarning(PMD.\" instead of NOPMD so that PMD suppressions look alike. I fill in the particular rule that is violated when using the comment style suppression:\n\nOnly the \"SuppressWarnings(PMD.\" part is significant for a comment, but it is consistent with PMD's support for the @SuppressWarning annotation which does recognize individual rule violations by name:\n\nSimilarly, Checkstyle suppresses warning generation between pairs of comments (no annotation support is provided). By default, comments to turn Checkstyle off and on contain the strings CHECKSTYLE:OFF and CHECKSTYLE:ON, respectively. Changing this configuration (with Checkstyle's \"SuppressionCommentFilter\") to use the strings \"BEGIN\u00a0SuppressWarnings(CheckStyle.\" and \"END\u00a0SuppressWarnings(CheckStyle.\" makes the controls look more like PMD:\n\nWith Checkstyle comments, the particular check violation (HiddenField) is significant because each check has its own \"BEGIN/END\" comment pair.\nFindBugs also supports warning generation suppression with a @SuppressWarnings annotation, so no further configuration is required to achieve some level of uniformity with other tools. Unfortunately, Findbugs has to support a custom @SuppressWarnings annotation because the built-in Java @SuppressWarnings annotation has a SOURCE retention policy which is not strong enough to retain the annotation in the class file where FindBugs needs it. I fully qualify FindBugs warnings suppressions to avoid clashing with Java's @SuppressWarnings annotation:\n\nThese techniques makes things look reasonably consistent across tools. Note that having each warning suppression contain the string \"SuppressWarnings\" makes it easy to run a simple search to find all instances for all tools over an entire code base.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I've had good luck with Cobertura.  It's a code coverage tool which can be executed via your ant script as part of your normal build and can be integrated into Hudson.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I use the static analysis built into IntelliJ IDEA. Perfect integration.\nI use the code coverage built into Intellij IDEA (based on EMMA). Again, perfect integration.\nThis integrated solution is reliable, powerful, and easy-to-use compared to piecing together tools from various vendors.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Our team use PMD and Cobertura, actually our projects are maven projects and there is very simple to include plug ins for code analysis. The real question would be for specific project which analysis you need to use, my opinion is that it's you couldn't use the same plugins for each project.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I use a combination of Cobertura, Checkstyle, (Ecl)Emma and Findbugs.\nEclEmma is an awesome Eclipse plugin that shows the code coverage by coloring the java source in the editor (screenshot) - the coverage is generated by running a JUnit test. This is really useful when you are trying to figure out which lines are covered in a particular class, or if you want to see just which lines are covered by a single test. This is much more user friendly and useful than generating a report and then looking through the report to see which classes have low coverage.\nThe Checkstyle and Findbugs Eclipse plugins are also useful, they generate warnings in the editor as you type.\nMaven2 has report plugins that work with the above tools to generate reports at build time. We use this to get overall project reports, which are more useful when you want aggregate numbers. These are generated by our CI builds, which run using Continuum.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have an application that writes information to file. This information is used post-execution to determine pass/failure/correctness of the application. I'd like to be able to read the file as it is being written so that I can do these pass/failure/correctness checks in realtime.\nI assume it is possible to do this, but what are the gotchas involved when using Java? If the reading catches up to the writing, will it just wait for more writes up until the file is closed, or will the read throw an exception at this point? If the latter, what do I do then? \nMy intuition is currently pushing me towards BufferedStreams. Is this the way to go?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Not Java per-se, but you may run into issues where you have written something to a file, but it hasn't been actually written yet - it might be in a cache somewhere, and reading from the same file may not actually give you the new information.\nShort version - use flush() or whatever the relevant system call is to ensure that your data is actually written to the file.\nNote I am not talking about the OS level disk cache - if your data gets into here, it should appear in a read() after this point.  It may be that the language itself caches writes, waiting until a buffer fills up or file is flushed/closed.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    }
+]

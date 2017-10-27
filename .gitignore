@@ -3,3 +3,4 @@
 data/*.xml
 .DS_STORE
 *.pyc
+*.crfsuite
