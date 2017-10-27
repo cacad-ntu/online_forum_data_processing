@@ -1,0 +1,602 @@
+[
+    {
+        "pos": "@Sadie:\n\nThey all look less readable than the original, in that they involve spending more code on the mechanism of the code rather than on the algorithm itself\n\nExternalizing the second loop outside the algorithm is not necessarily less readable. If the method name is well chosen, it can improve readability.\n\nSome of them are broken, or were before they were edited. Most damning is the fact that people are having to think quite hard about how to write the code without labels and not break anything.\n\nI have a different point of view: some of them are broken because it is hard to figure out the behavior of the original algorithm.\n\nSome come with a performance penalty of running the same test twice, which may not always be trivial. The alternative to that is storing and passing round booleans, which gets ugly.\n\nThe performance penalty is minor. However I agree that running a test twice is not a nice solution.\n\nRefactoring the relevant part of the code into a method is effectively a no-op: it rearranges how the code is laid out in the file, but has no effect on how it's executed.\n\nI don't see the point. Yep, it doesn't change the behavior, like... refactoring?\n\nCertainly there are cases where labels are used incorrectly and should be refactored away. I just don't think it should be treated as some unbreakable rule.\n\nI totally agree. But as you have pointed out, some of us have difficulties while refactoring this example. Even if the initial example is readable, it is hard to maintain.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "@Nicolas\n\n\nSome of them are broken, or were before they were edited. Most damning is the fact that \n    people are having to think quite hard about how to write the code without labels and not \n    break anything.\n\nI have a different point of view: some of them are broken because it is hard to figure out \n  the behavior of the original algorithm.\n\nI realise that it's subjective, but I don't have any trouble reading the original algorithm. It's shorter and clearer than the proposed replacements.\nWhat all the refactorings in this thread do is emulate the behaviour of a label using other language features - as if you were porting the code to a language that didn't have labels.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Some come with a performance penalty of running the same test twice, which may not always be trivial. The alternative to that is storing and passing round booleans, which gets ugly.\n\nThe performance penalty is minor. However I agree that running a test twice is not a nice solution.\nI believe the question was how to remove the labels, not how to optimize the algorithm. It appeared to me that the original poster was unaware of how to use 'continue' and 'break' keywords without labels, but of course, my assumptions may be wrong. \nWhen it comes to performance, the post does not give any information about the implementation of the other functions, so for all I know they might as well be downloading the results via FTP as consisting of simple calculations inlined by the compiler.\nThat being said, doing the same test twice is not optimal\u2014in theory.\nEDIT: On a second thought, the example is actually not a horrible use of labels. I agree that \"goto is a no-no\", but not because of code like this. The use of labels here does not actually affect the readability of the code in a significant way. Of course, they are not required and can easily be omitted, but not using them simply because \"using labels is bad\" is not a good argument in this case. After all, removing the labels does not make the code much easier to read, as others have already commented.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This question was not about optimizing the algorithm - but thanks anyway ;-) \nAt the time I wrote it, I considered the labeled continue as a readable solution.\nI asked SO a question about the convention (having the label in all caps or not) for labels in Java.\nBasically every answer told me \"do not use them - there is always a better way! refactor!\". So I posted this question to ask for a more readable (and therefore better?) solution.\nUntil now, I am not completely convinced by the alternatives presented so far.\nPlease don't get me wrong. Labels are evil most of the time. \nBut in my case, the conditional tests are pretty simple and the algorithm is taken from a mathematical paper and therefore very likely to not change in the near future. So I prefer having all the relevant parts visible at once instead of having to scroll to another method named something like checkMatrixAtRow(x).\nEspecially at more complex mathematical algorithms, I find it pretty hard to find \"good\" function-names - but I guess that is yet another question\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I think that labelled loops are so uncommon that you can pick whatever method of labelling works for you - what you have there makes your intentions with the continues perfectly clear.\n\nAfter leading the charge to suggest refactoring the loops in the original question and now seeing the code in question, I think you've got a very readable loop there.\nWhat I had imagined was a very different chunk of code - putting the actual example up, I can see it is much cleaner than I had thought.\nMy apologies for the misunderstanding.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have a XmlDocument in java, created with the Weblogic XmlDocument parser.\nI want to replace the content of a tag in this XMLDocument with my own data, or insert the tag if it isn't there.\n\nI for example want to insert some URL in the location tag:\n\nbut otherwise leave the XML as is.\nCurrently I use a XMLCursor:\n\nI tried to find a \"quick\" xquery way to do this since the XmlDocument has an execQuery method, but didn't find it very easy. \nDo anyone have a better way than this? It seems a bit elaborate.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You should be able to do this with query\ntry \n\nI am new to xquery myself and I have found it to be a painful query language to work with, but it does work quiet well once you get over the initial learning curve. \nI do still wish there was an easier way which was as efficient? \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "How about an object oriented approach?  You could deserialise the XML to an object, set the location value on the object, then serialise back to XML.\nXStream makes this really easy.\nFor example, you would define the main object, which in your case is CustomData (I'm using public fields to keep the example simple):\n\nThen you initialize XStream:\n\nNow you can construct an object from XML, set the location field on the object and regenerate the XML:\n\nHow does that sound?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "How about an XPath based approach? I like this approach as the logic is super-easy to understand. The code is pretty much self-documenting.\nIf your xml document is available to you as an org.w3c.dom.Document object (as most parsers return), then you could do something like the following:\n\nAnd here's the helper method findNodes that does the XPath search.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If you don't know the schema the XStream solution probably isn't the way to go. At least XStream is on your radar now, might come in handy in the future!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have a tomcat instance setup but the database connection I have configured in context.xml keeps dying after periods of inactivity.\nWhen I check the logs I get the following error:\ncom.mysql.jdbc.exceptions.jdbc4.CommunicationsException: \nThe last packet successfully received from the server was68051 seconds \nago. The last packet sent successfully to the server was 68051 seconds \nago, which is longer than the server configured value of \n'wait_timeout'. You should consider either expiring and/or testing \nconnection validity before use in your application, increasing the \nserver configured values for client timeouts, or using the Connector/J \nconnection property 'autoReconnect=true' to avoid this problem.\nHere is the configuration in context.xml:\n\nI am using autoReconnect=ture like the error says to do, but the connection keeps dying. I have never seen this happen before.\nI have also verified that all database connections are being closed properly.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Tomcat Documentation\nDBCP uses the Jakarta-Commons Database Connection Pool. It relies on number of Jakarta-Commons components:\n\nThis attribute may help you out.\n\nI'm using the same connection pooling stuff and I'm setting these properties to prevent the same thing it's just not configured through tomcat.\nBut if the first thing doesn't work try these.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I do not know whether the above answer does basically the same thing, but some of our systems use the DB connection about once a week and I've seen that we provide a -Otimeout flag or something of that sort to mysql to set the connection timeout.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Just to clarify what is actually causing this. MySQL by default terminates open connections after 8 hours of inactivity.  However the database connection pool will retain connections for longer than that.\nSo by setting timeBetweenEvictionRunsMillis=300000 you are instructing the connection pool to run through connections and evict and close idle ones every 5 minutes.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What makes a module/service/bit of application functionality a particularly good candidate for an OSGi module? \nI'm interested in using OSGi in my applications. We're a Java shop and we use Spring pretty extensively, so I'm leaning toward using Spring Dynamic Modules for OSGi(tm) Service Platforms. I'm looking for a good way to incorporate a little bit of OSGi into an application as a trial. Has anyone here used this or a similar OSGi technology? Are there any pitfalls? \n@Nicolas - Thanks, I've seen that one. It's a good tutorial, but I'm looking more for ideas on how to do my first \"real\" OSGi bundle, as opposed to a Hello World example.\n@david - Thanks for the link! Ideally, with a greenfield app, I'd design the whole thing to be dynamic. What I'm looking for right now, though, is to introduce it in a small piece of an existing application. Assuming I can pick any piece of the app, what are some factors to consider that would make that piece better or worse as an OSGi guinea pig?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I really like the Apache Felix tutorials. However, I think in general leveraging OSGi in your application isn't one of those \"let's use this framework, because it's hype\" decision. It's more of a design question, but then everything that OSGi gives you in terms of design, you can have with vanilla Java as well.\nAs for the runtime, you cannot just add an existing application and make it OSGi enabled. It needs to be design to be dynamic. Spring DM makes it easy to hide that from you, but it's still there and you need to be aware of it.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Well, since you can not have one part OSGi and one part non-OSGi you'll need to make your entire app OSGi. In its simplest form you make a single OSGi bundle out of your entire application. Clearly this is not a best practice but it can be useful to get a feel for deploying a bundle in an OSGi container (Equinox, Felix, Knoplerfish, etc).\nTo take it to the next level you'll want to start splitting your app into components, components should typically have a set of responsibilities that can be isolated from the rest of your application through a set of interfaces and class dependencies. Identifying these purely by hand can range from rather straightforward for a well designed highly cohesive but loosely coupled application to a nightmare for interlocked source code that you are not familiar with.\nSome help can come from tools like JDepend which can show you the coupling of Java packages against other packages/classes in your system. A package with low efferent coupling should be easier to extract into an OSGi bundle than one with high efferent coupling. Even more architectural insight can be had with pro tools like Structure 101.\nPurely on a technical level, working daily with an application that consists of 160 OSGi bundles and using Spring DM I can confirm that the transition from \"normal\" Spring to Spring DM is largely pain free. The extra namespace and the fact that you can (and should) isolate your OSGi specific Spring configuration in separate files makes it even easier to have both with and without OSGi deployment scenarios.\nOSGi is a deep and wide component model, documentation I recommend:\n\nOSGi R4 Specification: Get the PDFs of the Core and Compendium specification, they are canonical, authoritative and very readable. Have a shortcut to them handy at all times, you will consult them.\nRead up on OSGi best practices, there is a large set of things you can do but a somewhat smaller set of things you should do and there are some things you should never do (DynamicImport: * for example). \n\nSome links: \n\nOSGi best practices and using Apache Felix\nPeter Kriens and BJ Hargrave in a Sun presentation on OSGi best practices \none key OSGi concept are Services, learn why and how they supplant the Listener pattern with the Whiteboard pattern\nThe Spring DM Google Group is very responsive and friendly in my experience\nThe Spring DM Google Group is no longer active and has moved to Eclipse.org as the Gemini Blueprint project which has a forum here.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Is your existing application monolithic or tiered in seperate processes/layers?\nIf tiered, you can convert the middle/app-tier to run in an OSGi container.\nIn my team's experience, we've found trying to do web-stuff in OSGi painful.  Other pain points are Hibernate and Jakarta Commons Logging.\nI find the OSGi specs pretty readable and I recommend you print out the flowchart that shows the algorithm for class loading.  I'll guarantee you'll have moments of, \"why am I getting a NoClassDefFoundError?\": the flowchart will tell you why.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "There are a couple of thinks to keep in mind if you are starting with OSGi.\nAs mentioned elsewhere in this thread, knowing about classloading is really important. In my experience everybody sooner or later runs into problems with it.\nAnother important thing to remember is: never hold references! Have a look at the whiteboard pattern on which the services concept of OSGi is build (see the link in one of the other answers).\nIn my experience you should not try to convert a monolitic application into an OSGi-based one. This usually leads to a badly and unmanageable mess. Start anew.\nDownload one of the freely available stand-alone oSGi implementations. I found Knopflerfish rather good and stable (I use it in many projects). It also comes with lots of source code. You can find it here: http://www.knopflerfish.org\nAnother good tutorial can be found here. https://pro40.abac.com/deanhiller/cgi-bin/moin.cgi/OsgiTutorial\nPeter Kriens of the OSGi Alliance gave a nice interview: http://www.infoq.com/interviews/osgi-peter-kriens. His homepage and blog (which is always a good read can be found here: http://www.aqute.biz\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Try http://neilbartlett.name/blog/osgibook/. The book has hands on examples with OSGi best practices.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "When learning a new technology rich tooling gets you into things without big headaches.\nAt this point the community at ops4j.org provides a rich toolset called \"PAX\" which includes:\n\nPax Runner: Run and switch between Felix, Equinox, Knopflerfish and Concierge easily\nPax Construct: Construct, Organize & Build OSGi projects with maven easily\nPax Drone: Test your OSGi bundles with Junit while being framework independent (uses PaxRunner)\n\nThen there are many implementations of OSGi compendium services: \n\nPax Logging (logging), \nPax Web (http service), \nPax Web Extender (war support), \nPax Coin (configuration), \nPax Shell (shell implementation, part of the next osgi release) \nand much more.\n\n.. and there is a helpful, framework independend community, - but thats now advertisement ;-) \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I need to call a web service written in .NET from Java.  The web service implements the WS-Security stack (either WSE 2 or WSE 3, it's not clear from the information I have).  \nThe information that I received from the service provider included WSDL, a policyCache.config file, some sample C# code, and a sample application that can successfully call the service.\nThis isn't as useful as it sounds because it's not clear how I'm supposed to use this information to write a Java client.  If the web service request isn't signed according to the policy then it is rejected by the service.  I'm trying to use Apache Axis2 and I can't find any instructions on how I'm supposed to use the policyCahce.config file and the WSDL to generate a client.\nThere are several examples that I have found on the Web but in all cases the authors of the examples had control of both the service and the client and so were able to make tweaks on both sides in order to get it to work.  I'm not in that position.\nHas anyone done this successfully?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "CXF - I'd look into CXF. I've used it to create a web service and client in java using ws-secuirty. I also connected a .net web service to it.\nThey have pretty good documentation too. I had more luck with it than axis.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "\nApache Axis can generate proxy code from WSDL http://ws.apache.org/axis/java/user-guide.html#UsingWSDLWithAxis\nNetBeans with the RESTful Web Services plug-in can generate code for you.  Instructions for an example client for the eBay shopping web service are at http://ebay.custhelp.com/cgi-bin/ebay.cfg/php/enduser/std_adp.php?p_faqid=1230.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I guess I should be more clear - I have used the wsdl2java code generators to generate client code for the service.  However the generated code does not include the necessary WS-Security SOAP headers so that the service will accept the requests.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "@Mike\nI recently did a test and this is the code I used.\nI'm not using policy stuff, but I used WS-Security with plain text authentication.\nCXF has really good documentation on how to accomplish this stuff.\nI used wsdl2java and then added this code to use the web service with ws-security.\nI hope this helps you out.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "WS-Security specifications are not typically contained in a WSDL (never in a WSE WSDL). So wsdl2java does not know that WS-Security is even required for this service. The fact that security constraints are not present in a WSE WSDL is a big disappointment to me (WCF will include WS-Trust information in a WSDL).\nOn the client end, you'll need to use Rampart to add the necessary WS-Security headers to your outgoing client message. Since the WSDL does not report what WS-Security settings are necessary, you're best off by asking the service provider what is required. WS-Security requirements may be simple plaintext password, or might be X509 certificates, or might be encrypted message..... Rampart should be able to handle most of these scenarios.\nApache Rampart is \"turned on\" by engaging the module in your axis2.xml file. You'll need to download the Rampart module and put it in a specific place in your axis2 directory, then modify the xml file. You can also engage Rampart programatically (please edit your original question if this is a requirement and I'll edit this response).\nDepending on how you configure rampart (through other XML files or programatically), it will intercept any outgoing messages and add the necessary WS-Security information to it. I've personally used axis2 with rampart to call a WSE3 service that is secured with UsernameToken in plaintext and it worked great. Similar, but more advanced scenarios should also work.  There are more details on how to set up and get started with Rampart on the site linked above. If you have problems about the specifics of Rampart or how to use Rampart with your particular WSE setup, then edit your question and I'll try my best to answer.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I am using SourceForge for some Open Source projects and I want to automate the deployment of releases to the SourceForge File Release System. I use Maven for my builds and the standard SFTP deployment mechanism doesn't seem to work unless you do some manual preparation work. I have come across some old postings on other forums suggesting that the only approach is to write a Wagon specifically for SourceForge.\nHas anybody had any recent experience with this?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The Maven SourceForge plug-in does not work with Maven 2. Also I believe this plug-in uses FTP which is no longer supported.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It looks like I am going to have to write this myself.\nhttps://sourceforge.net/projects/wagon-sf/\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I found that CruiseControl can upload releases to SFEE and also works with Maven and Maven2\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have always thought that the .equals() method in java should be overridden to be made specific to the class you have created. In other words to look for equivalence of two different instances rather than two references to the same instance. However I have encountered other programmers who seem to think that the default object behavior should be left alone and a new method created for testing equivalence of two objects of the same class. \nWhat are the argument for and against overriding the equals method?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The Equals method is intended to compare references. So it should not be overriden to change its behaviour.\nYou should create a new method to test for equivalence in different instances if you need to (or use the CompareTo method in some .NET classes)\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Overriding the equals method is necessary if you want to test equivalence in standard library classes (for example, ensuring a java.util.Set contains unique elements or using objects as keys in java.util.Map objects).\nNote, if you override equals, ensure you honour the API contract as described in the documentation. For example, ensure you also override Object.hashCode:\n\nIf two objects are equal according to\n  the equals(Object)  method, then\n  calling the hashCode method on each of\n  the two objects must produce the same\n  integer result.\n\nEDIT: I didn't post this as a complete answer on the subject, so I'll echo Fredrik Kalseth's statement that overriding equals works best for immutable objects. To quote the API for Map:\n\nNote: great care must be exercised if\n  mutable objects are used as map keys.\n  The behavior of a map is not specified\n  if the value of an object is changed\n  in a manner that affects equals\n  comparisons while the object is a key\n  in the map.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You should only need to override the equals() method if you want specific behaviour when adding objects to sorted data structures (SortedSet etc.)\nWhen you do that you should also override hashCode().\nSee here for a complete explanation.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I would highly recommend picking up a copy of Effective Java and reading through item 7 obeying the equals contract. You need to be careful if you are overriding equals for mutable objects, as many of the collections such as Maps and Sets use equals to determine equivalence, and mutating an object contained in a collection could lead to unexpected results. Brian Goetz also has a pretty good overview of implementing equals and hashCode.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You should \"never\" override equals & getHashCode for mutable objects - this goes for .net and Java both. If you do, and use such an object as the key in f.ex a dictionary and then change that object, you'll be in trouble because the dictionary relies on the hashcode to find the object.\nHere's a good article on the topic: http://weblogs.asp.net/bleroy/archive/2004/12/15/316601.aspx\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "To be honest, in Java there is not really an argument against overriding equals.  If you need to compare instances for equality, then that is what you do.  \nAs mentioned above, you need to be aware of the contract with hashCode, and similarly, watch out for the gotchas around the Comparable interface - in almost all situations you want the natural ordering as defined by Comparable to be consistent with equals (see the BigDecimal api doc for the canonical counter example)\nCreating a new method for deciding equality, quite apart from not working with the existing library classes, flies in the face of Java convention somewhat.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "@David Schlosnagle mentions mentions Josh Bloch's Effective Java -- this is a must-read for any Java developer.\nThere is a related issue: for immutable value objects, you should also consider overriding compare_to.  The standard wording for if they differ is in the Comparable API:\n\nIt is generally the case, but not strictly required that (compare(x, y)==0) == (x.equals(y)). Generally speaking, any comparator that violates this condition should clearly indicate this fact. The recommended language is \"Note: this comparator imposes orderings that are inconsistent with equals.\"\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm trying to compile over 100 java classes from different packages from a clean\ndirectory (no incremental compiles) using the following ant tasks:\n\nHowever, the first time I run the compile task I always get a StackOverflowException. If I run the task again the compiler does an incremental build and everything works fine. This is undesirable since we are using CruiseControl to do an automatic daily build and this is causing false build failures.\nAs a quick-and-dirty solution I have created 2 separate tasks, compiling portions of the project in each. I really don't think this solution will hold as more classes are added in the future, and I don't want to be adding new compile tasks every time we hit the \"compile limit\".\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Does this happen when you run the javac command from the command line? You might want to try the fork attribute.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Try adding some variation of these attributes to the Ant javac task line:\n\nYou can also try fork=\"true\", not sure if this allows you to set values for stack and heap (aka -Xm1024), but it may help (if it would work from the command line, but not in Ant).\n[Edit]:\nAdded link -- the javac task page would seem to suggest that the parameters above require that you do also set fork=\"true\".\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "That's quite odd, 100 classes really isn't that many. What is the compiler doing when the stack overflows? Is there a useful stack trace generated? What happens if you run javac directly on the command line instead of thorugh ant?\nOne possible workaround is to simply increase the size of the stack using the -Xss argument to the JVM; either to the JVM running ant or by setting fork=\"true\" and a <compilerarg> on the <javac> task. Actually now that I think of it, does the problem go away just putting in the fork=\"true\"?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Here is what I found.\nAfter posting my question I went on and modified the compile task with the attributes fork=\"true\", memoryinitialsize=\"256m\" and memorymaximumsize=\"1024m\" (a found today that this was suggested by Kieron and jmanning2k, thanks for your time). This didn't solve the problem nonetheless.\nI decided to start removing classes from the source tree to see if a could pinpoint the problem. Turns out we had a Web Service client class for Axis 1.4 that was auto-generated from a WSDL file. Now, this class is a monster (as in Frankenstein), it has 167 field members (all of them of type String), 167 getter/setter pairs (1 for each field), a constructor that receives all 167 fields as parameters, an equals method that compares all 167 fields in a strange way. For each field the comparison goes like this:\n\nThe result of this comparison is \"anded\" (&&) with the result of the comparison of the next field, and so on. The class goes on with a hashCode method that also uses all fields, some custom XML serialization methods and a method that returns a Axis-specific metadata object that describes the class and that also uses all field members.\nThis class is never modified, so I just put a compiled version in the application classpath and the project compiled without issues. \nNow, I know that removing this single source file solved the problem. However, I have absolutely no idea as to why this particular class caused the problem. It will be nice to know; what can cause or causes a StackOverflowError during compilation of Java code? I think I'll post that question.\nFor those interested:\n\nWindows XP SP2\nSUN's JDK 1.4.2_17\nAnt 1.7.0\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "\nIt will be nice to know; what can\n  cause or causes a StackOverflowError\n  during compilation of Java code?\n\nIt is probable that evaluating the long expression in your java file consumes lots of memory and because this is being done in conjunction with the compilation of other classes, the VM just runs out of stack space. Your generated class is perhaps pushing the legal limits for its contents. See chapter 4.10 Limitations of the Java Virtual Machine in The Java Virtual Machine Specification, Second Edition.\nFix 1: refactor the class\nSince your class is being generated, this might not be an option. Still, it is worth looking at the options your class generation tool offers to see if it can produce something less troublesome.\nFix 2: increase the stack size\nI think Kieron has one solution when he mentions the -Xss argument. javac takes a number of non-standard arguments that will vary between versions and compiler vendors.\nMy compiler:\n\nTo list all the options for it, I'd use these commands:\n\nI think the stack limit for javac is 512Kb by default. You can increase the stack size for this compiler to 10Mb with this command:\n\nYou might be able to pass this in an Ant file with a compilerarg element nested in your javac task.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "How do I open the default mail program with a Subject and Body in a cross-platform way?\nUnfortunately, this is for a a client app written in Java, not a website.\nI would like this to work in a cross-platform way (which means Windows and Mac, sorry Linux). I am happy to execute a VBScript in Windows, or AppleScript in OS X. But I have no idea what those scripts should contain. I would love to execute the user's default program vs. just searching for Outlook or whatever.\nIn OS X, I have tried executing the command:\n\nURL escaping is needed to replace spaces with %20.\nUpdated On Windows, you have to play all sorts of games to get start to run correctly. Here is the proper Java incantation:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Mailto isn't a bad route to go. But as you mentioned, you'll need to make sure it is encoded correctly. \nThe main problem with using mailto is with breaking lines. Use %0A for carriage returns, %20 for spaces.\nAlso, keep in mind that the mailto is considered the same as a URL of sorts and therefore will have the same limitations for length. See \nhttp://support.microsoft.com/kb/208427, note the maximum URL length of 2083 characters. This is confirmed for mailto as well \nin this article: http://support.microsoft.com/kb/279460/en-us. Also, some mail clients can also have a limit (I believe older versions of Outlook Express had a limit of something much smaller like 483 characters or something. If you expect to have a longer string than that then you'll need to look at alternatives.\nBTW, you shouldn't have to resort to kicking out a script to do that as long as you can shell out a command from Java (I don't know if you can since I don't do Java).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "1. Add a Subject Line \nYou can prefill the subject line in the email by adding the subject preceded by '?subject=' after the email address. \nSo the link now becomes: \n\n2. Send to Multiple Recipients \nMail can be sent to additional recipients either as carbon copies (cc) or blind carbon copies (bcc). \nThis is done in a similar way, by placing '?cc=someoneelse@theirsite.com' after the initial address. \nSo the link looks like this:\n\ncc can simply be replaced by bcc if you wish to send blind carbon copies. \nThis can be very useful if you have links on pages with different subjects. You might have the email on each page go to the appropriate person in a company but with a copy of all mails sent to a central address also. \nYou can of course specify more than one additional recipient, just separate your list of recipients with a comma. \n\nSourced from Getting More From 'mailto' which now 404s.  I retrieved the content from waybackmachine.    \n3. Combining Code \nYou can combine the various bits of code above by the addition of an '&' between each.\nThus adding \n\nwould send an email with the subject 'Hello' to me, you and her. \n4. Write the Email \nYou can also prefill the body of the email with the start of a message, or write the whole message if you like! To add some thing to the body of the email it is again as simple as above - '?body=' after the email address. However formatting that email can be a little tricky. To create spaces between words you will have to use hex code - for example '%20' between each word, and to create new lines will mean adding '%0D'. Similarly symbols such as $ signs will need to be written in hex code.\nIf you also wish to add a subject line and send copies to multiple recipients, this can make for a very long and difficult to write bit of code. \nIt will send a message to three people, with the subject and the message filled in, all you need to do is add your name. \nJust look at the code! \n\nNote: Original source URL where I found this is now 404ing so I grabbed to content from waybackmachine and posted it here so it doesn't get lost.  Also, the OP stated it was not for a website, which is what these examples are, but some of these techniques may still be useful.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have implemented this, and it works well on OS X. (Ryan's mention of the max URL length has not been codified.)\n\nI had to re-implement URLencode because Java's would use + for space and Mail took those literally. Haven't tested on Windows yet.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "\nI had to re-implement URLencode\n  because Java's would use + for space\n  and Mail took those literally.\n\nI don't know if Java has some built-in method for urlencoding the string, but this link http://www.permadi.com/tutorial/urlEncoding/ shows some of the most common chars to encode:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "start works fine in Windows (see below). I would use Java's built in UrlEscape then just run a second replacement for '+' characters.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "\nI don't know if Java has some built-in method for urlencoding the string, but this link http://www.permadi.com/tutorial/urlEncoding/ shows some of the most common chars to encode:\n\nFor percent-encoding mailto URI hnames and hvalues, I use the rules at http://shadow2531.com/opera/testcases/mailto/modern_mailto_uri_scheme.html#encoding. Under http://shadow2531.com/opera/testcases/mailto/modern_mailto_uri_scheme.html#implementations, there's a Java example that may help.\nBasically, I use:\n\nThe string that's passed in should be a string with \\r\\n, and stray \\r already normalized to \\n.\nAlso note that just returning the original string on an exception like above is only safe if the mailto URI argument you're passing on the command-line is properly escaped and quoted.\nOn windows that means:\n\nQuote the argument.\nEscape any \" inside the quotes with \\.\nEscape any \\ that precede a \" or the end of the string with \\.\n\nAlso, on windows, if you're dealing with UTF-16 strings like in Java, you might want to use ShellExecuteW to \"open\" the mailto URI. If you don't and return s on an exception (where some hvalue isn't completely percent-encoded, you could end up narrowing some wide characters and losing information. But, not all mail clients accept unicode arguments, so ideally, you want to pass a properly percent-encoded-utf8 ascii argument with ShellExecute.\nLike 'start', ShellExecute with \"open\" should open the mailto URI in the default client.\nNot sure about other OS's.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Never use Runtime.exec(String) on Mac OS X or any other operating system.  If you do that, you'll have to figure out how to properly quote all argument strings and so on; it's a pain and very error-prone.\nInstead, use Runtime.exec(String[]) which takes an array of already-separated arguments.  This is much more appropriate for virtually all uses.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In Java 1.6 you have a stardard way to open the default mailer of the platform:\nthe Desktop.mail(URI) method.The URI can be used to set all the fields of the mail (sender, recipients, body, subject).\nYou can check a full example of desktop integration in Java 1.6 on Using the Desktop API in Java SE 6\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Am I correct in assuming that the only difference between \"windows files\" and \"unix files\" is the linebreak? \nWe have a system that has been moved from a windows machine to a unix machine and are having troubles with the format.\nI need to automate the translation between unix/windows before the files get delivered to the system in our \"transportsystem\". I'll probably need something to determine the current format and something to transform it into the other format.\nIf it's just the newline thats the big difference then I'm considering just reading the files with the java.io. As far as I know, they are able to handle both with readLine. And then just write each line back with \n\n\nSummary:\n\nsamjudson:\n\nThis is only a difference in text files, where UNIX uses a single Line Feed (LF) to signify a new line, Windows uses a Carriage Return/Line Feed (CRLF) and Mac uses just a CR.\n\nto which Cebjyre elaborates: \n\nOS X uses LF, the same as UNIX - MacOS 9 and below did use CR though\n\nMo\n\nThere could also be a difference in character encoding for national characters. There is no \"unix-encoding\" but many linux-variants use UTF-8 as the default encoding. Mac OS (which is also a unix) uses its own encoding (macroman). I am not sure, what windows default encoding is.\n\nMcDowell\n\nIn addition to the new-line differences, the byte-order mark can cause problems if files are treated as Unicode on Windows.\n\nCheekysoft\n\nHowever, another set of problems that you may come across can be related to single/multi-byte character encodings. If you see strange unexpected chars (not at end-of-line) then this could be the reason. Especially if you see square boxes, question marks, upside-down question marks, extra characters or unexpected accented characters.\n\nSadie\n\nOn unix, files that start with a . are hidden. On windows, it's a filesystem flag that you probably don't have easy access to. This may result in files that are supposed to be hidden now becoming visible on the client machines.\nFile permissions vary between the two. You will probably find, when you copy files onto a unix system, that the files now belong to the user that did the copying and have limited rights. You'll need to use chown/chmod to make sure the correct users have access to them.\n\n\nThere exists tools to help with the problem:\n\npauldoo\n\nIf you are just interested in the content of text files, then yes the line endings are different. Take a look at something like dos2unix, it may be of help here.\n\nCheekysoft\n\nAs pauldoo suggests, tools like dos2unix can be very useful. Note that these may be on your linux/unix system as fromdos or tofrodos, or perhaps even as the general purpose toolbox recode.\n\n\nHelp for java coding\n\nCheekysoft\n\nWhen writing to files or reading from files (that you are in control of), it is often worth specifying the encoding to use, as most Java methods allow this. However, also ensuring that the system locale matches can save a lot of pain\n\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This is only a difference in text files, where UNIX uses a single Line Feed (LF) to signify a new line, Windows uses a Carriage Return/Line Feed (CRLF) and Mac uses just a CR.\nBinary files there should be no difference (i.e. a JPEG on a windows machine will be byte for byte the same as the same JPEG on a unix box.)\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "There could also be a difference in character encoding for national characters. There is no \"unix-encoding\" but many linux-variants use UTF-8 as the default encoding. Mac OS (which is also a unix) uses its own encoding (macroman). I am not sure, what windows default encoding is.\nBut this could be another source of trouble (apart from the different linebreaks).\nWhat are your problems? The linebreak-related problems can be easily corrected with the programs dos2unix or unix2dos on the unix-machine\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If you are just interested in the content of text files, then yes the line endings are different.  Take a look at something like dos2unix, it may be of help here.\n(Of course there are many other things that make unix and windows files different, but I don't think you're interested in those other differences right now.)\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In addition to the new-line differences, the byte-order mark can cause problems if files are treated as Unicode on Windows.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "As pauldoo suggests, tools like dos2unix can be very useful. Note that these may be on your linux/unix system as fromdos or tofrodos, or perhaps even as the general purpose toolbox recode.\nHowever, another set of problems that you may come across can be related to single/multi-byte character encodings. If you see strange unexpected chars (not at end-of-line) then this could be the reason. Especially if you see square boxes, question marks, upside-down question marks, extra characters or unexpected accented characters.\nRunning the command locale on your *nix box will tell you what the system locale is. If this is different to the encoding used in the text files that have been transferred over from the windows machine, then this can sometimes cause issues, depending on the usage of those files. You can use the very powerful recode command to try and convert between the different charsets as well as any line ending issues. recode -l will show you all of the formats and encodings that the tool can convert between. It is likely to be a VERY long list.\nWhen writing to files or reading from files (that you are in control of), it is often worth specifying the encoding to use, as most Java methods allow this. However, also ensuring that the system locale matches can save a lot of pain.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In addition to the answers given, you may find issues with the different file systems:\n\nOn unix, files that start with a . are hidden. On windows, it's a filesystem flag that you probably don't have easy access to. This may result in files that are supposed to be hidden now becoming visible on the client machines.\nFile permissions vary between the two. You will probably find, when you copy files onto a unix system, that the files now belong to the user that did the copying and have limited rights. You'll need to use chown/chmod to make sure the correct users have access to them.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm thinking in particular of how to display pagination controls, when using a language such as C# or Java.\nIf I have x items which I want to display in chunks of y per page, how many pages will be needed?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You'll want to do floating point division, and then use the ceiling function, to round up the value to the next integer.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Another alternative is to use the mod() function (or '%'). If there is a non-zero remainder then increment the integer result of the division.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This should give you what you want.  You will definitely want x items divided by y items per page, the problem is when uneven numbers come up, so if there is a partial page we also want to add one page.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For C# the solution is to cast the values to a double (as Math.Ceiling takes a double):\n\nIn java you should do the same with Math.ceil().\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Found an elegant solution:\n\nSource: Number Conversion, Roland Backhouse, 2001\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The integer math solution that Ian provided is nice, but suffers from an integer overflow bug. Assuming the variables are all int, the solution could be rewritten to use long math and avoid the bug:\n\nint pageCount = (-1L + records + recordsPerPage) / recordsPerPage;\n\nIf records is a long, the bug remains. The modulus solution does not have the bug.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have a list of integers, List<Integer> and I'd like to convert all the integer objects into Strings, thus finishing up with a new List<String>.\nNaturally, I could create a new List<String> and loop through the list calling String.valueOf() for each integer, but I was wondering if there was a better (read: more automatic) way of doing it?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "As far as I know, iterate and instantiate is the only way to do this.  Something like (for others potential help, since I'm sure you know how to do this):\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "@Jonathan: I could be mistaken, but I believe that String.valueOf() in this case will call the String.valueOf(Object) function rather than getting boxed to String.valueOf(int).  String.valueOf(Object) just returns \"null\" if it is null or calls Object.toString() if non-null, which shouldn't involve boxing (although obviously instantiating new string objects is involved).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Instead of using String.valueOf I'd use .toString(); it avoids some of the auto boxing described by @johnathan.holland\nThe javadoc says that valueOf returns the same thing as Integer.toString().\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I think using Object.toString() for any purpose other than debugging is probably a really bad idea, even though in this case the two are functionally equivalent (assuming the list has no nulls).  Developers are free to change the behavior of any toString() method without any warning, including the toString() methods of any classes in the standard library.\nDon't even worry about the performance problems caused by the boxing/unboxing process.  If performance is critical, just use an array.  If it's really critical, don't use Java.  Trying to outsmart the JVM will only lead to heartache.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The source for String.valueOf shows this:\n\nNot that it matters much, but I would use toString.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You can't avoid the \"boxing overhead\"; Java's faux generic containers can only store Objects, so your ints must be boxed into Integers.  In principle it could avoid the downcast from Object to Integer (since it's pointless, because Object is good enough for both String.valueOf and Object.toString) but I don't know if the compiler is smart enough to do that.  The conversion from String to Object should be more or less a no-op, so I would be disinclined to worry about that one.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Not core Java, and not generic-ified, but the popular Jakarta commons collections library has some useful abstractions for this sort of task.  Specifically, have a look at the collect methods on\nCollectionUtils\nSomething to consider if you are already using commons collections in your project.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What you're doing is fine, but if you feel the need to 'Java-it-up' you could use a Transformer and the collect method from Apache Commons, e.g.:\n\n..and then..\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "To the people concerned about \"boxing\" in jsight's answer: there is none. String.valueOf(Object) is used here, and no unboxing to int is ever performed.\nWhether you use Integer.toString() or String.valueOf(Object) depends on how you want to handle possible nulls. Do you want to throw an exception (probably), or have \"null\" Strings in your list (maybe). If the former, do you want to throw a NullPointerException or some other type?\nAlso, one small flaw in jsight's response: List is an interface, you can't use the new operator on it. I would probably use a java.util.ArrayList in this case, especially since we know up front how long the list is likely to be.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "An answer for experts only:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Just for fun, a solution using the jsr166y fork-join framework that should in JDK7.\n\n(Disclaimer: Not compiled. Spec is not finalised. Etc.)\nUnlikely to be in JDK7 is a bit of type inference and syntactical sugar to make that withMapping call less verbose:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This is such a basic thing to do I wouldn't use an external library (it will cause a dependency in your project that you probably don't need).\nWe have a class of static methods specifically crafted to do these sort of jobs. Because the code for this is so simple we let Hotspot do the optimization for us. This seems to be a theme in my code recently: write very simple (straightforward) code and let Hotspot do its magic. We rarely have performance issues around code like this - when a new VM version comes along you get all the extra speed benefits etc.\nAs much as I love Jakarta collections, they don't support Generics and use 1.4 as the LCD. I am wary of Google Collections because they are listed as Alpha support level!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'd like some sorthand for this:\n\ngiven the way the GDK stuff is, I'd expect to be able to do something like:\n\nbut I haven't seen anything in the docs... am I missing something? or am I just way too lazy?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I can't find anything built in... but using the ExpandoMetaClass I can do this: \n\nthis adds the collectMap method to all ArrayLists... I'm not sure why adding it to List or Collection didn't work.. I guess that's for another question... but now I can do this...\n\nfrom List to calculated Map with one closure... exactly what I was looking for. \nEdit: the reason I couldn't add the method to the interfaces List and Collection was because I did not do this:\n\nafter that method call, you can add methods to interfaces.. which in this case means my collectMap method will work on ranges like this:\n\nwhich yields the map: [0:0, 1:2, 2:4]\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Also, if you're use google collections (http://code.google.com/p/google-collections/), you can do something like this:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "ok... I've played with this a little more and I think this is a pretty cool method...\n\nnow any subclass of Map or Collection have this method...\nhere I use it to reverse the key/value in a Map\n\nand here I use it to create a map from a list\n\nnow I just pop this into a class that gets called as my app is starting and this method is available throughout my code.\nEDIT:\nto add the method to all arrays...\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What about something like this?\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Check out \"inject\".  Real functional programming wonks call it \"fold\".\n\nAnd, while you're at it, you probably want to define methods as Categories instead of right on the metaClass.  That way, you can define it once for all Collections:\n\nExample usage: \n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I am developing a J2ME application that has a large amount of data to store on the device (in the region of 1MB but variable). I can't rely on the file system so I'm stuck the Record Management System (RMS), which allows multiple record stores but each have a limited size. My initial target platform, Blackberry, limits each to 64KB.\nI'm wondering if anyone else has had to tackle the problem of storing a large amount of data in the RMS and how they managed it? I'm thinking of having to calculate record sizes and split one data set accross multiple stores if its too large, but that adds a lot of complexity to keep it intact.\nThere is lots of different types of data being stored but only one set in particular will exceed the 64KB limit.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I think the most flexible approach would be to implement your own file system on top of the RMS. You can handle the RMS records in a similar way as blocks on a hard drive and use a inode structure or similar to spread logical files over multiple blocks. I would recommend implementing a byte or stream-oriented interface on top of the blocks, and then possibly making another API layer on top of that for writing special data structures (or simply make your objects serializable to the data stream).\nTanenbaum's classical book on operating systems covers how to implement a simple file system, but I am sure you can find other resources online if you don't like paper.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "RMS performance and implementation varies wildly between devices, so if platform portability is a problem, you may find that your code works well on some devices and not others. RMS is designed to store small amounts of data (High score tables, or whatever) not large amounts.\nYou might find that some platforms are faster with files stored in multiple record stores. Some are faster with multiple records within one store. Many are ok for storage, but become unusably slow when deleting large amounts of data from the store.\nYour best bet is to use JSR-75 instead where available, and create your own file store interface that falls back to RMS if nothing better is supported.\nUnfortunately when it comes to JavaME, you are often drawn into writing device-specific variants of your code.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For anything past a few kilobytes you need to use either JSR 75 or a remote server. RMS records are extremely limited in size and speed, even in some higher end handsets. If you need to juggle 1MB of data in J2ME the only reliable, portable way is to store it on the network. The HttpConnection class and the GET and POST methods are always supported.\nOn the handsets that support JSR 75 FileConnection it may be valid alternative but without code signing it is an user experience nightmare. Almost every single API call will invoke a security prompt with no blanket permission choice. Companies that deploy apps with JSR 75 usually need half a dozen binaries for every port just to cover a small part of the possible certificates. And this is just for the manufacturer certificates; some handsets only have carrier-locked certificates.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm just starting to code for JavaME, but have experience with old versions of PalmOS, where all data chunks are limited in size, requiring the design of data structures using record indexes and offsets.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Under Blackberry OS 4.6 the RMS store size limit has been increased to 512Kb but this isn't much help as many devices will likely not have support for 4.6. The other option on Blackberry is the Persistent Store which has a record size limit of 64kb but no limit on the size of the store (other than the physical limits of the device). \nI think Carlos and izb are right.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It is quite simple, use JSR75 (FileConnection) and remember to sign your midlet with a valid (trusted) certificate.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Thanks everyone for useful commments. In the end the simplest solution was to limit the amount of data being stored, implementing code that adjusts the data according to how large the store is, and fetching data from the server on demand if its not stored locally. Thats interesting that the limit is increased in OS 4.6, with any luck my code will simply adjust on its own and store more data :)\nDeveloping a J2ME application for Blackberry without using the .cod compiler limits the use of JSR 75 some what since we can't sign the archive. As pointed out by Carlos this is a problem on any platform and I've had similar issues using the PIM part of it. The RMS seems to be incredibly slow on the Blackberry platform so I'm not sure how useful a inode/b-tree file system on top would be, unless data was cached in memory and written to RMS in a low priority background thread.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'd like to use a database to store i18n key/value pairs so we can modify / reload the i18n data at runtime. Has anyone done this? Or does anyone have an idea of how to implement this? I've read several threads on this, but I haven't seen a workable solution.\nI'm specifically refering to something that would work with the jstl tags such as\n\nI think this will involve extending ResourceBundle, but when I tried this I ran into problems that had to do with the way the jstl tags get the resource bundle.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Are you just asking how to store UTF-8/16 characters in a DB? in mysql it's just a matter of making sure you build with UTF8 support and setting that as the default, or specifying it at the column or table level. I've done this in oracle and mysql before. Create a table and cut and paste some i18n data into it and see what happens... you might be set already..\nor am I completely missing your point? \nedit: \nto be more explicit... I usually implement a three column table... language, key, value... where \"value\" contains potentially foreign language words or phrases... \"language\" contains some language key and \"key\" is an english key (i.e. login.error.password.dup)... language and key are indexed...  \nI've then built interfaces on a structure like this that shows each key with all its translations (values)... it can get fancy and include audit trails and \"dirty\" markers and all the other stuff you need to enable translators and data entry folk to make use of it..\nEdit 2:\nNow that you added the info about the JSTL tags, I understand a bit more... I've never done that myself.. but I found this old info on theserverside...\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "We have a database table with key/language/term where key is a n integer and is a combined primary key together with language.\nWe are using Struts, so we ended up writing our own PropertyMessageResources implementation which allows us to do something like <bean:message key=\"impressum.text\" />.\nIt works very well and gives us the flexibility to do dynamically switch languages in the front-end as well as updating the translations on the fly.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I finally got this working with danb's help above.\nThis is my resource bundle class and resource bundle control class.\nI used this code from @[danb]'s.\n\nand wrote this class.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "At my university most of my classes have been in Java.  I have also recently learned C# (and the Visual Studio environment) at a summer internship.  Now I'm taking an Intro to Computer Graphics class and the grad student teaching the class prefers us to use C++ to access the OpenGL bindings via GLUT.\nDoes anyone have any good resources on how to make a good transition from Java/C# to C++?  Obviously pointers are going to be a big issue, but any other things I should be looking out for?  Any tutorials, guides, etc. would be very helpful!\nThanks!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    }
+]

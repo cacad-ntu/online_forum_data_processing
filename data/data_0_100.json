@@ -1,0 +1,602 @@
+[
+    {
+        "pos": "Is there an existing application or library in Java which will allow me to convert a CSV data file to XML file?  \nThe XML tags would be provided through possibly the first row containing column headings.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This may be too basic or limited of a solution, but couldn't you do a String.split() on each line of the file, remembering the result array of the first line to generate the XML, and just spit each line's array data out with the proper XML elements padding each iteration of a loop?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Maybe this might help: JSefa\nYou can read CSV file with this tool and serialize it to XML.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I don't understand why you would want to do this. It sounds almost like cargo cult coding.\nConverting a CSV file to XML doesn't add any value. Your program is already reading the CSV file, so arguing that you need XML doesn't work.\nOn the other hand, reading the CSV file, doing something with the values, and then serializing to XML does make sense (well, as much as using XML can make sense... ;)) but you would supposedly already have a means of serializing to XML.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "As far as I know, there's no ready-made library to do this for you, but producing a tool capable of translating from CSV to XML should only require you to write a crude CSV parser and hook up JDOM (or your XML Java library of choice) with some glue code.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "There is nothing I know of that can do this without you at least writing a little bit of code... You will need 2 separate library:\n\nA CSV Parser Framework \nAn XML Serialization Framework\n\nThe CSV parser I would recommend (unless you want to have a little bit of fun to write your own CSV Parser) is OpenCSV (A SourceForge Project for parsing CSV Data)\nThe XML Serialization Framework should be something that can scale in case you want to transform large (or huge) CSV file to XML: My recommendation is the Sun Java Streaming XML Parser Framework (See here) which allows pull-parsing AND serialization.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I know you asked for Java, but this strikes me as a task well suited to a scripting language. Here is a quick (very simple) solution written in Groovy.\ntest.csv\n\ncsvtoxml.groovy\n\nWrites the following XML to stdout:\n\nHowever, the code does very simple parsing (not taking into account quoted or escaped commas) and it does not account for possible absent data.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This solution does not need any CSV or XML libraries and, I know, it does not handle any illegal characters and encoding issues, but you might be interested in it as well, provided your CSV input does not break the above mentioned rules.\nAttention: You should not use this code unless you know what you do or don't have the chance to use a further library (possible in some bureaucratic projects)... Use a StringBuffer for older Runtime Environments...\nSo here we go:\n\nThe input test.csv (stolen from another answer on this page):\n\nThe resulting output:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "As the others above, I don't know any one-step way to do that, but if you are ready to use very simple external libraries, I would suggest:\nOpenCsv for parsing CSV (small, simple, reliable and easy to use)\nXstream to parse/serialize XML (very very easy to use, and creating fully human readable xml)\nUsing the same sample data as above, code would look like:\n\nProducing the following result:\n(Xstream allows very fine tuning of the result...)\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For the CSV Part, you may use my little open source library\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have an opensource framework for working with CSV and flat files in general. Maybe it's worth looking: JFileHelpers.\nWith that toolkit you can write code using beans, like:\n\nand then just parse your text files using:\n\nAnd you'll have a collection of parsed objects.\nHope that helps!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "There is also good library ServingXML by Daniel Parker, which is able to convert almost any plain text format to XML and back.\nThe example for your case can be found here: It uses heading of field in CSV file as the XML element name.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You can do this exceptionally easily using Groovy, and the code is very readable. \nBasically, the text variable will be written to contacts.xml for each line in the contactData.csv, and the fields array contains each column.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You could use XSLT.  Google it and you will find a few examples e.g. CSV to XML\nIf you use XSLT you can then convert the XML to whatever format you want.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What is the \"purist\" or \"correct\" way to access an object's properties from within an object method that is not a getter/setter method?\nI know that from outside of the object you should use a getter/setter, but from within would you just do:\nJava:\n\nPHP:\n\nor would you do:\nJava:\n\nPHP:\n\nForgive me if my Java is a little off, it's been a year since I programmed in Java...\nEDIT:\nIt seems people are assuming I am talking about private or protected variables/properties only. When I learned OO I was taught to use getters/setters for every single property even if it was public (and actually I was told never to make any variable/property public). So, I may be starting off from a false assumption from the get go. It appears that people answering this question are maybe saying that you should have public properties and that those don't need getters and setters, which goes against what I was taught, and what I was talking about, although maybe that needs to be discussed as well. That's probably a good topic for a different question though...\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This has religious war potential, but it seems to me that if you're using a getter/setter, you should use it internally as well - using both will lead to maintenance problems down the road (e.g. somebody adds code to a setter that needs to run every time that property is set, and the property is being set internally w/o that setter being called).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It depends on how the property is used. For example, say you have a student object that has a name property. You could use your Get method to pull the name from the database, if it hasn't been retrieved already. This way you are reducing unnecessary calls to the database.\nNow let's say you have a private integer counter in your object that counts the number of times the name has been called. You may want to not use the Get method from inside the object because it would produce an invalid count.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "\nAm I just going overboard here?\n\nPerhaps ;)\nAnother approach would be to utilize a private/protected method to actually do the getting (caching/db/etc), and a public wrapper for it that increments the count:\nPHP:\n\nand then from within the object itself:\nPHP:\n\nThis way you can still use that first argument for something else (like sending a flag for whether or not to used cached data here perhaps).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Well, it seems with C# 3.0 properties' default implementation, the decision is taken for you; you HAVE to set the property using the (possibly private) property setter.\nI personally only use the private member-behind when not doing so would cause the object to fall in an less than desirable state, such as when initializing or when caching/lazy loading is involved.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "As stated in some of the comments: Sometimes you should, sometimes you shouldn't. The great part about private variables is that you are able to see all the places they are used when you change something. If your getter/setter does something you need, use it. If it doesn't matter you decide.\nThe opposite case could be made that if you use the getter/setter and somebody changes the getter/setter they have to analyze all the places the getter and setter is used internally to see if it messes something up.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Personally, I feel like it's important to remain consistent.  If you have getters and setters, use them.  The only time I would access a field directly is when the accessor has a lot of overhead.  It may feel like you're bloating your code unnecessarily, but it can certainly save a whole lot of headache in the future.  The classic example:\nLater on, you may desire to change the way that field works.  Maybe it should be calculated on-the-fly or maybe you would like to use a different type for the backing store.  If you are accessing properties directly, a change like that can break an awful lot of code in one swell foop.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "i can be wrong because i'm autodidact, but i NEVER user public properties in my Java clases, they are allways private or protected, so that outside code must access by getters/setters. it's better for mainteance / modification purposes. And for inside class code... if getter method is trivial i use the property directly, but i allways use the setter methods because i could easily add code to fire events if i wish\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "i've found using setters/getters made my code easier to read. I also like the control it gives when other classes use the methods and if i change the data the property will store.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Private fields with public or protected properties.  Access to the values should go through the properties, and be copied to a local variable if they will be used more than once in a method.  If and ONLY if you have the rest of your application so totally tweaked, rocked out, and otherwise optimized to where accessing values by going through their assosciated properties has become a bottleneck (And that will never EVER happen, I guarantee) should you even begin to consider letting anything other than the properties touch their backing variables directly.\n.NET developers can use automatic properties to enforce this since you can't even see the backing variables at design time.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If by \"purist\" you mean \"most encapsulation\", then I typically declare all my fields as private and then use this.field from within the class itself, but all other classes, including subclasses, access instance state using the getters.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If I won't edit the property I'll use a get_property() public method unless it's a special occasion such as a MySQLi object inside another object in which case I'll just public the property and refer to it as $obj->object_property.\nInside the object it's always $this->property for me.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I like the answer by cmcculloh, but it seems like the most correct is the answer by Greg Hurlman. Use getter/setters all the time if you started using them from the getgo and/or are used to working with them.\nAs an aside, I personally find that using getter/setters makes the code easier to read and to debug later on.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm fairly surprised at how unanimous the sentiment is that getters and setters are fine and good. I suggest the incendiary article by Allen Holub \"Getters And Setters Are Evil\". Granted, the title is for shock value, but the author makes valid points.\nEssentially, if you have getters and setters for each and every private field, you are making those fields as good as public. You'd be very hard-pressed to change the type of a private field without ripple effects to every class that calls that getter.\nMoreover, from a strictly OO point of view, objects should be responding to messages (methods) that correspond to their (hopefully) single responsibility. The vast majority of getters and setters don't make sense for their constituent objects;Pen.dispenseInkOnto(Surface) makes more sense to me than Pen.getColor().\nGetters and setters also encourage users of the class to ask the object for some data, perform a calculation, and then set some other value in the object, better known as procedural programming. You'd be better served to simply tell the object to do what you were going to in the first place; also known as the Information Expert idiom.\nGetters and setters, however, are necessary evils at the boundary of layers -- UI, persistence, and so forth. Restricted access to a class's internals, such as C++'s friend keyword, Java's package protected access, .NET's internal access, and the Friend Class Pattern can help you reduce the visibility of getters and setters to only those who need them.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The purist OO way is to avoid both and follow the Law of Demeter by using the Tell Don't Ask approach.\nInstead of getting the value of the object's property, which tightly couples the two class, use the object as a parameter e.g.\n\nWhere the property was a native type, e.g. int, use an access method,  name it for problem domain not the programming domain.\n\nThese will allow you to maintain encapsulation and any post-conditions or dependent invariants. You can also use the setter method to maintain any pre-conditions or dependent invariants, however don't fall into the trap of naming them setters, go back to the Hollywood Principle for naming when using the idiom.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "PHP offers a myriad of ways to handle this, including magic methods __get and __set, but I prefer explicit getters and setters. Here's why:\n\nValidation can be placed in setters (and getters for that matter)\nIntellisense works with explicit methods\nNo question whether a property is read only, write only or read-write\nRetrieving virtual properties (ie, calculated values) looks the same as regular properties \nYou can easily set an object property that is never actually defined anywhere, which then goes undocumented \n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It depends. It's more a style issue than anything else, and there is no hard rule.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What is the meaning of the Java warning?\n\nType safety: The cast from Object to List is actually checking against the erased type List\n\nI get this warning when I try to cast an Object to a type with generic information, such as in the following code:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This warning is there because Java is not actually storing type information at run-time in an object that uses generics.  Thus, if object is actually a List<String>, there will be no ClassCastException at run-time except until an item is accessed from the list that doesn't match the generic type defined in the variable.  \nThis can cause further complications if items are added to the list, with this incorrect generic type information.  Any code still holding a reference to the list but with the correct generic type information will now have an inconsistent list.  \nTo remove the warning, try:\n\nHowever, note that you will not be able to use certain methods such as add because the compiler doesn't know if you are trying to add an object of incorrect type.  The above will work in a lot of situations, but if you have to use add, or some similarly restricted method, you will just have to suffer the yellow underline in Eclipse (or a SuppressWarning annotation).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I was reading More Joel on Software when I came across Joel Spolsky saying something about a particular type of programmer knowing the difference between an int and an Integer in Java/C# (Object Oriented Programming Languages).\nSo, what is the difference?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In Java, the 'int' type is a primitive , whereas the 'Integer' type is an object.\nIn C#, the 'int' type is the same as System.Int32 and is a value type (ie more like the java 'int'). An integer (just like any other value types) can be boxed (\"wrapped\") into an object. \n\nThe differences between objects and primitives are somewhat beyond the scope of this question, but to summarize: \nObjects provide facilities for polymorphism, are passed by reference (or more accurately have references passed by value), and are allocated from the heap. Conversely, primitives are immutable types that are passed by value and are often allocated from the stack.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Well, in Java an int is a primitive while an Integer is an Object. Meaning, if you made a new Integer:\n\nYou could call some method on i:\n\nWhereas with an int:\n\nYou cannot call any methods on it, because it is simply a primitive. So:\n\nwould produce an error, because int is not an object.\nint is one of the few primitives in Java (along with char and some others). I'm not 100% sure, but I'm thinking that the Integer object more or less just has an int property and a whole bunch of methods to interact with that property (like the toString() method for example). So Integer is a fancy way to work with an int (Just as perhaps String is a fancy way to work with a group of chars).\nI know that Java isn't C, but since I've never programmed in C this is the closest I could come to the answer. Hope this helps!\nInteger object javadoc\nInteger Ojbect vs. int primitive comparison\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In C#, int is just an alias for System.Int32, string for System.String, double for System.Double etc...\nPersonally I prefer int, string, double, etc. because they don't require a using System; statement :) A silly reason, I know...\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'll add to the excellent answers given above, and talk about boxing and unboxing, and how this applies to Java (although C# has it too). I'll use just Java terminology, because I am more au fait with that.\nAs the answers mentioned, int is just a number (called the unboxed type), whereas Integer is an object (which contains the number, hence a boxed type). In Java terms, that means (apart from not being able to call methods on int), you cannot store int or other non-object types in collections (List, Map, etc.). In order to store them, you must first box them up in its corresponding boxed type.\nJava 5 onwards have something called auto-boxing and auto-unboxing which allow the boxing/unboxing to be done behind the scenes. Compare and contrast: Java 5 version:\n\nJava 1.4 or earlier (no generics either):\n\nIt must be noted that despite the brevity in the Java 5 version, both versions generate identical bytecode. Thus, although auto-boxing and auto-unboxing is very convenient because you write less code, these operations do happen behind the scenes, with the same runtime costs, so you still have to be aware of their existence.\nHope this helps!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'll just post here since some of the other posts are slightly inaccurate in relation to C#.\nCorrect: int is an alias for System.Int32.\nWrong: float is not an alias for System.Float, but for System.Single\nBasically, int is a reserved keyword in the C# programming language, and is an alias for the System.Int32 value type.\nfloat and Float is not the same however, as the right system type for ''float'' is System.Single. There are some types like this that has reserved keywords that doesn't seem to match the type names directly.\nIn C# there is no difference between ''int'' and ''System.Int32'', or any of the other pairs or keywords/system types, except for when defining enums. With enums you can specify the storage size to use and in this case you can only use the reserved keyword, and not the system runtime type name.\nWether the value in the int will be stored on the stack, in memory, or as a referenced heap object depends on the context and how you use it.\nThis declaration in a method:\n\ndefines a variable i of type System.Int32, living in a register or on the stack, depending on optimizations. The same declaration in a type (struct or class) defines a member field. The same declaration in a method argument list defines a parameter, with the same storage options as for a local variable. (note that this paragraph is not valid if you start pulling iterator methods into the mix, these are different beasts altogether)\nTo get a heap object, you can use boxing:\n\nthis will create a boxed copy of the contents of i on the heap. In IL you can access methods on the heap object directly, but in C# you need to cast it back to an int, which will create another copy. Thus, the object on the heap cannot easily be changed in C# without creating a new boxed copy of a new int value. (Ugh, this paragraph doesn't read all that easily.)\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This has already been answered for Java, here's the C# answer:\n\"Integer\" is not a valid type name in C# and \"int\" is just an alias for System.Int32. Also, unlike in Java (or C++) there aren't any special primitive types in C#, every instance of a type in C# (including int) is an object. Here's some demonstrative code:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Regarding Java 1.5 and autoboxing there is an important \"quirk\" that comes to play when comparing Integer objects.\nIn Java, Integer objects with the values -128 to 127 are immutable (that is, for one particular integer value, say 23, all Integer objects instantiated through your program with the value 23 points to the exact same object).\nExample, this returns true:\n\nWhile this returns false:\n\nThe == compares by reference (does the variables point to the same object).\nThis result may or may not differ depending on what JVM you are using. The specification autoboxing for Java 1.5 requires that integers (-128 to 127) always box to the same wrapper object. \nA solution? =) One should always use the Integer.equals() method when comparing Integer objects.\n\nMore info at java.net Example at bexhuff.com\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In Java there are two basic types in the JVM. 1) Primitive types and 2) Reference Types. int is a primitive type and Integer is a class type (which is kind of reference type).\nPrimitive values do not share state with other primitive values. A variable whose type is a primitive type always holds a primitive value of that type.\n\nAn object is a dynamically created class instance or an array. The reference values (often just references) are pointers to these objects and a special null reference, which refers to no object. There may be many references to the same object.\n\nAlso in Java everything is passed by value. With objects the value that is passed is the reference to the object. So another difference between int and Integer in java is how they are passed in method calls. For example in\n\nThe variable two is passed as the primitive integer type 2. Whereas in\n\nThe variable two is passed as a reference to an object that holds the integer value 2.\n\n@WolfmanDragon:\nPass by reference would work like so:\n\nWhen increment is called it passes a reference (pointer) to variable a. And the increment function directly modifies variable a.\nAnd for object types it would work as follows:\n\nDo you see the difference now?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "One more thing that I don't see in previous answers:\nIn Java the primitive wrappers classes like Integer, Double, Float, Boolean... and String are suposed to be invariant, so that when you pass an instance of those classes the invoked method couldn't alter your data in any way, in opositi\u00f3n with most of other classes, which internal data could be altered by its public methods. So that this classes only has 'getter' methods, no 'setters', besides the constructor.\nIn a java program String literals are stored in a separate portion of heap memory, only a instance for literal, to save memory reusing those instances\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Is there a way to create a JButton with your own button graphic and not just with an image inside the button? \nIf not, is there another way to create a custom button in java?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I haven't done SWING development since my early CS classes but if it wasn't built in you could just inherit javax.swing.AbstractButton and create your own. Should be pretty simple to wire something together with their existing framework.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You could always try the Synth look & feel. You provide an xml file that acts as a sort of stylesheet, along with any images you want to use. The code might look like this:\n\nFrom there, go on and add your JButton like you normally would. The only change is that you use the setName(string) method to identify what the button should map to in the xml file.\nThe xml file might look like this:\n\nThe bind element there specifies what to map to (in this example, it will apply that styling to any buttons whose name property has been set to \"dirt\").\nAnd a couple of useful links:\nhttp://javadesktop.org/articles/synth/\nhttp://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/synth.html\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Yes, this is possible. One of the main pros for using Swing is the ease with which the abstract controls can be created and manipulates.\nHere is a quick and dirty way to extend the existing JButton class to draw a circle to the right of the text.\n\nNote that by overriding paintComponent that the contents of the button can be changed, but that the border is painted by the paintBorder method. The getPreferredSize method also needs to be managed in order to dynamically support changes to the content. Care needs to be taken when measuring font metrics and image dimensions.\nFor creating a control that you can rely on, the above code is not the correct approach. Dimensions and colours are dynamic in Swing and are dependent on the look and feel being used. Even the default Metal look has changed across JRE versions. It would be better to implement AbstractButton and conform to the guidelines set out by the Swing API. A good starting point is to look at the javax.swing.LookAndFeel and javax.swing.UIManager classes.\nhttp://docs.oracle.com/javase/8/docs/api/javax/swing/LookAndFeel.html\nhttp://docs.oracle.com/javase/8/docs/api/javax/swing/UIManager.html\nUnderstanding the anatomy of LookAndFeel is useful for writing controls:\nCreating a Custom Look and Feel\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "When I was first learning Java we had to make Yahtzee and I thought it would be cool to create custom Swing components and containers instead of just drawing everything on one JPanel.  The benefit of extending Swing components, of course, is to have the ability to add support for keyboard shortcuts and other accessibility features that you can't do just by having a paint() method print a pretty picture.  It may not be done the best way however, but it may be a good starting point for you.\nEdit 8/6 - If it wasn't apparent from the images, each Die is a button you can click. This will move it to the DiceContainer below.  Looking at the source code you can see that each Die button is drawn dynamically, based on its value.\n\n\n\nHere are the basic steps:\n\nCreate a class that extends JComponent\nCall parent constructor super() in your constructors\nMake sure you class implements MouseListener\nPut this in the constructor:\n\nOverride these methods:\n\nOverride this method:\n\n\nThe amount of space you have to work with when drawing your button is defined by getPreferredSize(), assuming getMinimumSize() and getMaximumSize() return the same value.  I haven't experimented too much with this but, depending on the layout you use for your GUI your button could look completely different.\nAnd finally, the source code.  In case I missed anything.  \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm probably going a million miles in the wrong direct (but i'm only young :P ). but couldn't you add the graphic to a panel and then a mouselistener to the graphic object so that when the user on the graphic your action is preformed.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For parsing player commands, I've most often used the split method to split a string by delimiters and then to then just figure out the rest by a series of ifs or switches. What are some different ways of parsing strings in Java?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I really like regular expressions. As long as the command strings are fairly simple, you can write a few regexes that could take a few pages of code to manually parse.\nI would suggest you check out http://www.regular-expressions.info for a good intro to regexes, as well as specific examples for Java.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "A simple string tokenizer on spaces should work, but there are really many ways you could do this.\nHere is an example using a tokenizer:\n\nThen tokens can be further used for the arguments.  This all assumes no spaces are used in the arguments... so you might want to roll your own simple parsing mechanism (like getting the first whitespace and using text before as the action, or using a regular expression if you don't mind the speed hit), just abstract it out so it can be used anywhere.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I would look at Java migrations of Zork, and lean towards a simple Natural Language Processor (driven either by tokenizing or regex) such as the following (from this link):\n\n...\nAnything which gives a programmer a reason to look at Zork again is good in my book, just watch out for Grues.\n...\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I assume you're trying to make the command interface as forgiving as possible. If this is the case, I suggest you use an algorithm similar to this:\n\nRead in the string\n\n\nSplit the string into tokens\nUse a dictionary to convert synonyms to a common form \nFor example, convert \"hit\", \"punch\", \"strike\", and \"kick\" all to \"hit\"\nPerform actions on an unordered, inclusive base\nUnordered - \"punch the monkey in the face\" is the same thing as \"the face in the monkey punch\"\nInclusive - If the command is supposed to be \"punch the monkey in the face\" and they supply \"punch monkey\", you should check how many commands this matches. If only one command, do this action. It might even be a good idea to have command priorities, and even if there were even matches, it would perform the top action.\n\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "@CodingTheWheel Heres your code, a bit clean up and through eclipse (ctrl+shift+f) and the inserted back here :)\nIncluding the four spaces in front each line.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "When the separator String for the command is allways the same String or char (like the \";\") y recomend you use the StrinkTokenizer class:\nStringTokenizer\nbut when the separator varies or is complex y recomend you to use the regular expresions, wich can be used by the String class itself, method split, since 1.4. It uses the Pattern class from the java.util.regex package\nPattern\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Sun itself recommends staying away from StringTokenizer and using the String.spilt method instead. \nYou'll also want to look at the Pattern class.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Parsing manually is a lot of fun... at the beginning:) \nIn practice if commands aren't very sophisticated you can treat them the same way as those used in command line interpreters. There's a list of libraries that you can use: http://java-source.net/open-source/command-line. I think you can start with apache commons CLI or args4j (uses annotations). They are well documented and really simple in use. They handle parsing automatically and the only thing you need to do is to read particular fields in an object.\nIf you have more sophisticated commands, then maybe creating a formal grammar would be a better idea. There is a very good library with graphical editor, debugger and interpreter for grammars. It's called ANTLR (and the editor ANTLRWorks) and it's free:) There are also some example grammars and tutorials.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If this is to parse command lines I would suggest using Commons Cli.\n\nThe Apache Commons CLI library provides an API for processing command line interfaces. \n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Another vote for ANTLR/ANTLRWorks.  If you create two versions of the file, one with the Java code for actually executing the commands, and one without (with just the grammar), then you have an executable specification of the language, which is great for testing, a boon for documentation, and a big timesaver if you ever decide to port it.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Try JavaCC a parser generator for Java.\nIt has a lot of features for interpreting languages, and it's well supported on Eclipse.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If the language is dead simple like just \nVERB NOUN\nthen splitting by hand works well.\nIf it's more complex, you should really look into a tool like ANTLR or JavaCC.\nI've got a tutorial on ANTLR (v2) at http://javadude.com/articles/antlrtut which will give you an idea of how it works.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I need to send and receive data over serial connections (RS-232 and RS-422).\nHow do I set up and communicate with such a connection?  How do I figure out what the configuration settings (e.g. baud rate) should be and how do I set them?\nIn particular I am looking to do this in Java, C/C++, or one of the major Unix shells but I also have some interest in serial programming using Windows/Hyperterminal.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Build a time machine and go back to 1987? Ho ho.\nOk, no more snarky comments.\n\nHow do I figure out what the configuration settings (e.g. baud rate) should be...\n\nRead the datasheet? Ok, ok. Seriously, last one. If you don't know the baud rate of the device you are trying to communicate with, you have two choices. Start guessing, or possibly bust out an o-scope. If you need a good starting point, let me suggest 9600-8-N-1. My suspicion is you can get there with brute force relatively quickly. There's a third option of having an old-school ninja who can tell just by the LOOK of the garbled characters at some standard baud rate what actual baud rate is. An impressive party trick to be sure.\nHopefully though you have access to this information. In unix/linux, you can get ahold of minicom to play with the serial port directly. This should make it fairly quick to get the configuration figured out.\n\none of the major Unix shells\n\nIn Unix the serial port(s) is/are file-mapped into the /dev/ subdir. ttyS0, for example. If you setup the correct baud rate and whatnot using minicom, you can even cat stuff to that file to send stuff out there.\nOn to the meat of the question, you can access it programmatically through the POSIX headers. termios.h is the big one. \nSee: http://www.easysw.com/~mike/serial/serial.html#3_1\n(NOT AVAILABLE ANYMORE)\n\nbut I also have some interest in serial programming using Windows/Hyperterminal.\n\nHyperterminal and minicom are basically the same program. As for how Windows let's you get access to the serial port, I'll leave that question for someone else. I haven't done that in Windows since the Win95 days.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "From the other side, if you want to do it using C#, which will run on both Windows and Linux--with some limitations (EDIT: which may be out of date. I have no way to test it.). Just create a SerialPort object, set its baudrate, port and any other odd settings, call open on it, and write out your byte[]s. After all the setup, the SerialPort object acts very similar to any networked stream, so it should be easy enough to figure out.\nAnd as ibrandy states, you need to know all these settings, like baud rate, before you even start attempting to communicate to any serial device. \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "At work we use teraterm and realterm for checking serial data is correctly formatted. Also we have a hardware splitter with a switch so we can monitor traffic to our application via a cable back to another port.\nWindows allows you access to the serial port via CreateFile. That gives you a handle and from there you can configure access.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "From Java the rxtx (NOT AVAILABLE ANYMORE)library is quite good. It picks up where Sun's serial IO framework left off. \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For C/C++ on Windows you have (at least) two choices:\n\nUse the SerialPort class provided by .NET.\nUse the Win32 API. There is an extensive MSDN article dating back to 1995, and many free libraries and examples on the web to get you started.\n\nThe .NET option will be much easier.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If you want to code in Java I really recommend SerialIOs SerialPort. It is very easy to use and saves you days of work. I've never found an open source library as good as SerialIO, REALLY!\nMy advice: do not use Sun's serial IO framework! It is from 1998 and full of bugs. You can use rxtx but serialio is better!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If it needs to be cross platfrom, I would suggest looking at Boost Asio.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Awhile back I wrote a decent sized application to route connections from a farm of modems through to a TCP/IP network address.\nInitially I looked for an unencumbered (free) Serial IO library.  I tried Sun's, IBM's and RxTx.  They were fine for developing the application, and in initial testing, but in production they each proved unstable.\nFinally I paid for SerialIO's SerialPort.  Converting over was literally an exercise in changing imports, and the library has been absolutely rock solid - I cannot recommend it enough.  My application has been running in the field 24/7 for a couple of years now, with not a single problem encountered by multiple customers.\nIf you start development using SerialPort, they have a better API and I would use it.\nIf you need cross platform support, Java with SerialPort was the best choice I could find.\nLastly, their licensing is pretty darn reasonable as long as you are not preinstalling software on the equipment for your customer(s).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Depending on the device You are trying to communicate with, there may be more parameters than the baud rate, number of data bits, type of parity checking and number of stop bits to consider. If I recall correctly, modems use nine lines of the RS-232C interface. Some devices like, for example cash registers, may use hardware handshaking on RTS/CTS lines or on DTR/STR lines.  \nIn general it's good to know how the interface works. You can't communicate if the baud rate doesn't match, but wrong setting of other parameters might kind of work. For example You can easily send data to the device expecting 1 stop bit with 2 stop bits set. Problems start when You try to receive data in such case. You can also use appropriately set parity bit as one of stop bits, etc.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have a simple setter method for a property and null is not appropriate for this particular property. I have always been torn in this situation: should I throw an IllegalArgumentException, or a NullPointerException? From the javadocs, both seem appropriate. Is there some kind of an understood standard?  Or is this just one of those things that you should do whatever you prefer and both are really correct?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It seems like an IllegalArgumentException is called for if you don't want null to be an allowed value, and the NullPointerException would be thrown if you were trying to use a variable that turns out to be null.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If it's a setter method and null is being passed to it, I think it would make more sense to throw an IllegalArgumentException. A NullPointerException seems to make more sense in the case where you're attempting to actually use the null.\nSo, if you're using it and it's null, NullPointer. If it's being passed in and it's null, IllegalArgument.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I tend to follow the design of JDK libraries, especially Collections and Concurrency (Joshua Bloch, Doug Lea, those guys know how to design solid APIs). Anyway, many APIs in the JDK pro-actively throws NullPointerException. \nFor example, the Javadoc for Map.containsKey states:\n\n@throws NullPointerException if the key is null and this map\n    does not permit null keys (optional).\n\nIt's perfectly valid to throw your own NPE. The convention is to include the parameter name which was null in the message of the exception. \nThe pattern goes:\n\nWhatever you do, don't allow a bad value to get set and throw an exception later when other code attempts to use it. That makes debugging a nightmare. You should always the follow the \"fail-fast\" principle.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If you choose to throw a NPE and you are using the argument in your method, it might be redundant and expensive to explicitly check for a null. I think the VM already does that for you.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The accepted practice if to use the IllegalArgumentException( String message ) to declare a parameter to be invalid and give as much detail as possible... So to say that a parameters was found to be null while exception non-null, you would do something like this:\n\nYou have virtually no reason to implicitly use the \"NullPointerException\". The NullPointerException is an exception thrown by the Java Virtual Machine when you try to execute code on null reference (Like toString()).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The standard is to throw the NullPointerException. The generally infallible \"Effective Java\" discusses this briefly in Item 42 (in the first edition) or Item 60 (in the second edition) \"Favor the use of standard exceptions\":\n\n\"Arguably, all erroneous method\n  invocations boil down to an illegal\n  argument or illegal state, but other\n  exceptions are standardly used for\n  certain kinds of illegal arguments and\n  states. If a caller passes null in\n  some parameter for which null values\n  are prohibited, convention dictates\n  that NullPointerException be thrown\n  rather than IllegalArgumentException.\"\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The definitions from the links to the two exceptions above are\nIllegalArgumentException: Thrown to indicate that a method has been passed an illegal or inappropriate argument. \nNullPointerException: Thrown when an application attempts to use null in a case where an object is required.\nThe big difference here is the IllegalArgumentException is supposed to be used when checking that an argument to a method is valid. NullPointerException is supposed to be used whenever an object being \"used\" when it is null.\nI hope that helps put the two in perspective.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Couldn't agree more with what's being said.  Fail early, fail fast.  Pretty good Exception mantra. \nThe question about which Exception to throw is mostly a matter of personal taste.  In my mind IllegalArgumentException seems more specific than using a NPE since it's telling me that the problem was with an argument I passed to the method and not with a value that may have been generated while performing the method.\nMy 2 Cents\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If it's a \"setter\", or somewhere I'm getting a member to use later, I tend to use IllegalArgumentException.\nIf it's something I'm going to use (dereference) right now in the method, I throw a NullPointerException proactively. I like this better than letting the runtime do it, because I can provide a helpful message (seems like the runtime could do this too, but that's a rant for another day).\nIf I'm overriding a method, I use whatever the overridden method uses.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In general, a developer should never throw a NullPointerException. This exception is thrown by the runtime when code attempts to dereference a variable who's value is null. Therefore, if your method wants to explicitly disallow null, as opposed to just happening to have a null value raise a NullPointerException, you should throw an IllegalArgumentException.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You should be using IllegalArgumentException (IAE), not NullPointerException (NPE) for the following reasons:\nFirst, the NPE JavaDoc explicitly lists the cases where NPE is appropriate.  Notice that all of them are thrown by the runtime when null is used inappropriately.  In contrast, the IAE JavaDoc couldn't be more clear: \"Thrown to indicate that a method has been passed an illegal or inappropriate argument.\"  Yup, that's you!\nSecond, when you see an NPE in a stack trace, what do you assume?  Probably that someone dereferenced a null.  When you see IAE, you assume the caller of the method at the top of the stack passed in an illegal value.  Again, the latter assumption is true, the former is misleading.\nThird, since IAE is clearly designed for validating parameters, you have to assume it as the default choice of exception, so why would you choose NPE instead?  Certainly not for different behavior -- do you really expect calling code to catch NPE's separately from IAE and do something different as a result?  Are you trying to communicate a more specific error message?  But you can do that in the exception message text anyway, as you should for all other incorrect parameters.\nFourth, all other incorrect parameter data will be IAE, so why not be consistent?  Why is it that an illegal null is so special that it deserves a separate exception from all other types of illegal arguments?\nFinally, I accept the argument given by other answers that parts of the Java API use NPE in this manner.  However, the Java API is inconsistent with everything from exception types to naming conventions, so I think just blindly copying (your favorite part of) the Java API isn't a good enough argument to trump these other considerations.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You should throw an IllegalArgumentException, as it will make it obvious to the programmer that he has done something invalid.  Developers are so used to seeing NPE thrown by the VM, that any programmer would not immediately realize his error, and would start looking around randomly, or worse, blame your code for being 'buggy'.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It's a \"Holy War\" style question. In others words, both alternatives are good, but people will have their preferences which they will defend to the death.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In this case, IllegalArgumentException conveys clear information to the user using your API that the \" should not be null\". As other forum users pointed out you could use NPE if you want to as long as you convey the right information to the user using your API. \nGaryF and tweakt dropped \"Effective Java\" (which I swear by) references which recommends using NPE. And looking at how other good APIs are constructed is the best way to see how to construct your API.\nAnother good example is to look at the Spring APIs. For example, org.springframework.beans.BeanUtils.instantiateClass(Constructor ctor, Object[] args) has a Assert.notNull(ctor, \"Constructor must not be null\") line. org.springframework.util.Assert.notNull(Object object, String message) method checks to see if the argument (object) passed in is null and if it is it throws a new IllegalArgumentException(message) which is then caught in the org.springframework.beans.BeanUtils.instantiateClass(...) method.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What code analysis tools do you use on your Java projects?\nI am interested in all kinds\n\nstatic code analysis tools (FindBugs, PMD, and any others)\ncode coverage tools (Cobertura, Emma, and any others)\nany other instrumentation-based tools \nanything else, if I'm missing something\n\nIf applicable, also state what build tools you use and how well these tools integrate with both your IDEs and build tools. \nIf a tool is only available a specific way (as an IDE plugin, or, say, a build tool plugin) that information is also worth noting.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "We use FindBugs and JDepend integrated with Ant. We use JUnit but we're not using any coverage tool. \nI'm not using it integrated to Rational Application Developer (the IDE I'm using to develop J2EE applications) because I like how neat it looks when you run javac in the Windows console. :P\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Checkstyle is another one I've used at a previous company... it's mainly for style checking, but it can do some static analysis too.  Also, Clover for code coverage, though be aware it is not a free tool.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "We are using FindBugs and Checkstyle as well as Clover for Code Coverage. \nI think it's important to have some kind of static analysis, supporting your development. Unfortunately it's still not widely spread that these tools are important.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I am looking for many answers to learn about new tools and consolidate this knowledge in a one question/thread, so I doubt there will be 1 true answer to this question.\nMy answer to my own question is that we use:\n\nFindbugs to look for common errors bad/coding - run from maven, and also integrates easily into Eclipse\nCobertura for our coverage reports - run from maven\n\nHudson also has a task-scanner plugin that will display a count of your TODO and FIXMEs, as well as show where they are in the source files.\nAll are integrated with Maven 1.x in our case and tied into Hudson, which runs our builds on check-in as well as extra things nightly and weekly. Hudson trend graphs our JUnit tests, coverage, findbugs, as well as open tasks. There is also a Hudson plugin that reports and graphs our compile warnings. We also have several performance tests with their own graphs of performance and memory use over time using the Hudson plots plugin as well.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "All of the following we use and integrate easiy in both our Maven 2.x builds and Eclipse/RAD 7:\n\nTesting - JUnit/TestNG\nCode analysis - FindBugs, PMD\nCode coverage - Clover\n\nIn addition, in our Maven builds we have:\n\nJDepend\nTag checker (TODO, FIXME, etc)\n\nFurthermore, if you're using Maven 2.x, CodeHaus has a collection of handy Maven plugins in their Mojo project.\nNote: Clover has out-of-the-box integration with the Bamboo CI server (since they're both Atlassian products). There are also Bamboo plugins for FindBugs, PMD, and CheckStyle but, as noted, the free Hudson CI server has those too.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For static analysis tools I often use CPD, PMD, FindBugs, and Checkstyle.\nCPD is the PMD \"Copy/Paste Detector\" tool. I was using PMD for a little while before I noticed the \"Finding Duplicated Code\" link on the PMD web page.\nI'd like to point out that these tools can sometimes be extended beyond their \"out-of-the-box\" set of rules. And not just because they're open source so that you can rewrite them. Some of these tools come with applications or \"hooks\" that allow them to be extended. For example, PMD comes with the \"designer\" tool that allows you to create new rules. Also, Checkstyle has the DescendantToken check that has properties that allow for substantial customization.\nI integrate these tools with an Ant-based build. You can follow the link to see my commented configuration.\nIn addition to the simple integration into the build, I find it helpful to configure the tools to be somewhat \"integrated\" in a couple of other ways. Namely, report generation and warning suppression uniformity. I'd like to add these aspects to this discussion (which should probably have the \"static-analysis\" tag also): how are folks configuring these tools to create a \"unified\" solution? (I've asked this question separately here)\nFirst, for warning reports, I transform the output so that each warning has the simple format:\n\nThis is often called the \"Emacs format,\" but even if you aren't using Emacs, it's a reasonable format for homogenizing reports. For example:\n\nMy warning format transformations are done by my Ant script with Ant filterchains.\nThe second \"integration\" that I do is for warning suppression. By default, each tool supports comments or an annotation (or both) that you can place in your code to silence a warning that you want to ignore. But these various warning suppression requests do not have a consistent look which seems somewhat silly. When you're suppressing a warning, you're suppressing a warning, so why not always write \"SuppressWarning?\"\nFor example, PMD's default configuration suppresses warning generation on lines of code with the string \"NOPMD\" in a comment. Also, PMD supports Java's @SuppressWarnings annotation. I configure PMD to use comments containing \"SuppressWarning(PMD.\" instead of NOPMD so that PMD suppressions look alike. I fill in the particular rule that is violated when using the comment style suppression:\n\nOnly the \"SuppressWarnings(PMD.\" part is significant for a comment, but it is consistent with PMD's support for the @SuppressWarning annotation which does recognize individual rule violations by name:\n\nSimilarly, Checkstyle suppresses warning generation between pairs of comments (no annotation support is provided). By default, comments to turn Checkstyle off and on contain the strings CHECKSTYLE:OFF and CHECKSTYLE:ON, respectively. Changing this configuration (with Checkstyle's \"SuppressionCommentFilter\") to use the strings \"BEGIN\u00a0SuppressWarnings(CheckStyle.\" and \"END\u00a0SuppressWarnings(CheckStyle.\" makes the controls look more like PMD:\n\nWith Checkstyle comments, the particular check violation (HiddenField) is significant because each check has its own \"BEGIN/END\" comment pair.\nFindBugs also supports warning generation suppression with a @SuppressWarnings annotation, so no further configuration is required to achieve some level of uniformity with other tools. Unfortunately, Findbugs has to support a custom @SuppressWarnings annotation because the built-in Java @SuppressWarnings annotation has a SOURCE retention policy which is not strong enough to retain the annotation in the class file where FindBugs needs it. I fully qualify FindBugs warnings suppressions to avoid clashing with Java's @SuppressWarnings annotation:\n\nThese techniques makes things look reasonably consistent across tools. Note that having each warning suppression contain the string \"SuppressWarnings\" makes it easy to run a simple search to find all instances for all tools over an entire code base.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I've had good luck with Cobertura.  It's a code coverage tool which can be executed via your ant script as part of your normal build and can be integrated into Hudson.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I use the static analysis built into IntelliJ IDEA. Perfect integration.\nI use the code coverage built into Intellij IDEA (based on EMMA). Again, perfect integration.\nThis integrated solution is reliable, powerful, and easy-to-use compared to piecing together tools from various vendors.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Our team use PMD and Cobertura, actually our projects are maven projects and there is very simple to include plug ins for code analysis. The real question would be for specific project which analysis you need to use, my opinion is that it's you couldn't use the same plugins for each project.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I use a combination of Cobertura, Checkstyle, (Ecl)Emma and Findbugs.\nEclEmma is an awesome Eclipse plugin that shows the code coverage by coloring the java source in the editor (screenshot) - the coverage is generated by running a JUnit test. This is really useful when you are trying to figure out which lines are covered in a particular class, or if you want to see just which lines are covered by a single test. This is much more user friendly and useful than generating a report and then looking through the report to see which classes have low coverage.\nThe Checkstyle and Findbugs Eclipse plugins are also useful, they generate warnings in the editor as you type.\nMaven2 has report plugins that work with the above tools to generate reports at build time. We use this to get overall project reports, which are more useful when you want aggregate numbers. These are generated by our CI builds, which run using Continuum.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have an application that writes information to file. This information is used post-execution to determine pass/failure/correctness of the application. I'd like to be able to read the file as it is being written so that I can do these pass/failure/correctness checks in realtime.\nI assume it is possible to do this, but what are the gotchas involved when using Java? If the reading catches up to the writing, will it just wait for more writes up until the file is closed, or will the read throw an exception at this point? If the latter, what do I do then? \nMy intuition is currently pushing me towards BufferedStreams. Is this the way to go?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Not Java per-se, but you may run into issues where you have written something to a file, but it hasn't been actually written yet - it might be in a cache somewhere, and reading from the same file may not actually give you the new information.\nShort version - use flush() or whatever the relevant system call is to ensure that your data is actually written to the file.\nNote I am not talking about the OS level disk cache - if your data gets into here, it should appear in a read() after this point.  It may be that the language itself caches writes, waiting until a buffer fills up or file is flushed/closed.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    }
+]
