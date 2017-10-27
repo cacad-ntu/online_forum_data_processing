@@ -19,11 +19,11 @@ class RNN:
         self.model = Sequential()
         self.model.add(Embedding(max_features, 128))
         self.model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
-        self.model.add(Dense(1, activation='sigmoid'))
+        self.model.add(Dense(len(y_test[0]), activation='softmax'))
 
     def start_train(self, batch_size, epochs):
 
-        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         print('Train...')
         self.model.fit(self.x_train, self.y_train, batch_size=batch_size, epochs=epochs,
                        validation_data=(self.x_test, self.y_test))
