@@ -1,0 +1,302 @@
+[
+    {
+        "pos": "Is there an existing application or library in Java which will allow me to convert a CSV data file to XML file?  \nThe XML tags would be provided through possibly the first row containing column headings.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This may be too basic or limited of a solution, but couldn't you do a String.split() on each line of the file, remembering the result array of the first line to generate the XML, and just spit each line's array data out with the proper XML elements padding each iteration of a loop?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Maybe this might help: JSefa\nYou can read CSV file with this tool and serialize it to XML.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I don't understand why you would want to do this. It sounds almost like cargo cult coding.\nConverting a CSV file to XML doesn't add any value. Your program is already reading the CSV file, so arguing that you need XML doesn't work.\nOn the other hand, reading the CSV file, doing something with the values, and then serializing to XML does make sense (well, as much as using XML can make sense... ;)) but you would supposedly already have a means of serializing to XML.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "As far as I know, there's no ready-made library to do this for you, but producing a tool capable of translating from CSV to XML should only require you to write a crude CSV parser and hook up JDOM (or your XML Java library of choice) with some glue code.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "There is nothing I know of that can do this without you at least writing a little bit of code... You will need 2 separate library:\n\nA CSV Parser Framework \nAn XML Serialization Framework\n\nThe CSV parser I would recommend (unless you want to have a little bit of fun to write your own CSV Parser) is OpenCSV (A SourceForge Project for parsing CSV Data)\nThe XML Serialization Framework should be something that can scale in case you want to transform large (or huge) CSV file to XML: My recommendation is the Sun Java Streaming XML Parser Framework (See here) which allows pull-parsing AND serialization.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I know you asked for Java, but this strikes me as a task well suited to a scripting language. Here is a quick (very simple) solution written in Groovy.\ntest.csv\n\ncsvtoxml.groovy\n\nWrites the following XML to stdout:\n\nHowever, the code does very simple parsing (not taking into account quoted or escaped commas) and it does not account for possible absent data.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This solution does not need any CSV or XML libraries and, I know, it does not handle any illegal characters and encoding issues, but you might be interested in it as well, provided your CSV input does not break the above mentioned rules.\nAttention: You should not use this code unless you know what you do or don't have the chance to use a further library (possible in some bureaucratic projects)... Use a StringBuffer for older Runtime Environments...\nSo here we go:\n\nThe input test.csv (stolen from another answer on this page):\n\nThe resulting output:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "As the others above, I don't know any one-step way to do that, but if you are ready to use very simple external libraries, I would suggest:\nOpenCsv for parsing CSV (small, simple, reliable and easy to use)\nXstream to parse/serialize XML (very very easy to use, and creating fully human readable xml)\nUsing the same sample data as above, code would look like:\n\nProducing the following result:\n(Xstream allows very fine tuning of the result...)\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For the CSV Part, you may use my little open source library\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have an opensource framework for working with CSV and flat files in general. Maybe it's worth looking: JFileHelpers.\nWith that toolkit you can write code using beans, like:\n\nand then just parse your text files using:\n\nAnd you'll have a collection of parsed objects.\nHope that helps!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "There is also good library ServingXML by Daniel Parker, which is able to convert almost any plain text format to XML and back.\nThe example for your case can be found here: It uses heading of field in CSV file as the XML element name.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You can do this exceptionally easily using Groovy, and the code is very readable. \nBasically, the text variable will be written to contacts.xml for each line in the contactData.csv, and the fields array contains each column.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You could use XSLT.  Google it and you will find a few examples e.g. CSV to XML\nIf you use XSLT you can then convert the XML to whatever format you want.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What is the \"purist\" or \"correct\" way to access an object's properties from within an object method that is not a getter/setter method?\nI know that from outside of the object you should use a getter/setter, but from within would you just do:\nJava:\n\nPHP:\n\nor would you do:\nJava:\n\nPHP:\n\nForgive me if my Java is a little off, it's been a year since I programmed in Java...\nEDIT:\nIt seems people are assuming I am talking about private or protected variables/properties only. When I learned OO I was taught to use getters/setters for every single property even if it was public (and actually I was told never to make any variable/property public). So, I may be starting off from a false assumption from the get go. It appears that people answering this question are maybe saying that you should have public properties and that those don't need getters and setters, which goes against what I was taught, and what I was talking about, although maybe that needs to be discussed as well. That's probably a good topic for a different question though...\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This has religious war potential, but it seems to me that if you're using a getter/setter, you should use it internally as well - using both will lead to maintenance problems down the road (e.g. somebody adds code to a setter that needs to run every time that property is set, and the property is being set internally w/o that setter being called).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It depends on how the property is used. For example, say you have a student object that has a name property. You could use your Get method to pull the name from the database, if it hasn't been retrieved already. This way you are reducing unnecessary calls to the database.\nNow let's say you have a private integer counter in your object that counts the number of times the name has been called. You may want to not use the Get method from inside the object because it would produce an invalid count.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "\nAm I just going overboard here?\n\nPerhaps ;)\nAnother approach would be to utilize a private/protected method to actually do the getting (caching/db/etc), and a public wrapper for it that increments the count:\nPHP:\n\nand then from within the object itself:\nPHP:\n\nThis way you can still use that first argument for something else (like sending a flag for whether or not to used cached data here perhaps).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Well, it seems with C# 3.0 properties' default implementation, the decision is taken for you; you HAVE to set the property using the (possibly private) property setter.\nI personally only use the private member-behind when not doing so would cause the object to fall in an less than desirable state, such as when initializing or when caching/lazy loading is involved.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "As stated in some of the comments: Sometimes you should, sometimes you shouldn't. The great part about private variables is that you are able to see all the places they are used when you change something. If your getter/setter does something you need, use it. If it doesn't matter you decide.\nThe opposite case could be made that if you use the getter/setter and somebody changes the getter/setter they have to analyze all the places the getter and setter is used internally to see if it messes something up.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Personally, I feel like it's important to remain consistent.  If you have getters and setters, use them.  The only time I would access a field directly is when the accessor has a lot of overhead.  It may feel like you're bloating your code unnecessarily, but it can certainly save a whole lot of headache in the future.  The classic example:\nLater on, you may desire to change the way that field works.  Maybe it should be calculated on-the-fly or maybe you would like to use a different type for the backing store.  If you are accessing properties directly, a change like that can break an awful lot of code in one swell foop.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "i can be wrong because i'm autodidact, but i NEVER user public properties in my Java clases, they are allways private or protected, so that outside code must access by getters/setters. it's better for mainteance / modification purposes. And for inside class code... if getter method is trivial i use the property directly, but i allways use the setter methods because i could easily add code to fire events if i wish\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "i've found using setters/getters made my code easier to read. I also like the control it gives when other classes use the methods and if i change the data the property will store.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Private fields with public or protected properties.  Access to the values should go through the properties, and be copied to a local variable if they will be used more than once in a method.  If and ONLY if you have the rest of your application so totally tweaked, rocked out, and otherwise optimized to where accessing values by going through their assosciated properties has become a bottleneck (And that will never EVER happen, I guarantee) should you even begin to consider letting anything other than the properties touch their backing variables directly.\n.NET developers can use automatic properties to enforce this since you can't even see the backing variables at design time.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If by \"purist\" you mean \"most encapsulation\", then I typically declare all my fields as private and then use this.field from within the class itself, but all other classes, including subclasses, access instance state using the getters.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If I won't edit the property I'll use a get_property() public method unless it's a special occasion such as a MySQLi object inside another object in which case I'll just public the property and refer to it as $obj->object_property.\nInside the object it's always $this->property for me.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I like the answer by cmcculloh, but it seems like the most correct is the answer by Greg Hurlman. Use getter/setters all the time if you started using them from the getgo and/or are used to working with them.\nAs an aside, I personally find that using getter/setters makes the code easier to read and to debug later on.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm fairly surprised at how unanimous the sentiment is that getters and setters are fine and good. I suggest the incendiary article by Allen Holub \"Getters And Setters Are Evil\". Granted, the title is for shock value, but the author makes valid points.\nEssentially, if you have getters and setters for each and every private field, you are making those fields as good as public. You'd be very hard-pressed to change the type of a private field without ripple effects to every class that calls that getter.\nMoreover, from a strictly OO point of view, objects should be responding to messages (methods) that correspond to their (hopefully) single responsibility. The vast majority of getters and setters don't make sense for their constituent objects;Pen.dispenseInkOnto(Surface) makes more sense to me than Pen.getColor().\nGetters and setters also encourage users of the class to ask the object for some data, perform a calculation, and then set some other value in the object, better known as procedural programming. You'd be better served to simply tell the object to do what you were going to in the first place; also known as the Information Expert idiom.\nGetters and setters, however, are necessary evils at the boundary of layers -- UI, persistence, and so forth. Restricted access to a class's internals, such as C++'s friend keyword, Java's package protected access, .NET's internal access, and the Friend Class Pattern can help you reduce the visibility of getters and setters to only those who need them.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The purist OO way is to avoid both and follow the Law of Demeter by using the Tell Don't Ask approach.\nInstead of getting the value of the object's property, which tightly couples the two class, use the object as a parameter e.g.\n\nWhere the property was a native type, e.g. int, use an access method,  name it for problem domain not the programming domain.\n\nThese will allow you to maintain encapsulation and any post-conditions or dependent invariants. You can also use the setter method to maintain any pre-conditions or dependent invariants, however don't fall into the trap of naming them setters, go back to the Hollywood Principle for naming when using the idiom.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "PHP offers a myriad of ways to handle this, including magic methods __get and __set, but I prefer explicit getters and setters. Here's why:\n\nValidation can be placed in setters (and getters for that matter)\nIntellisense works with explicit methods\nNo question whether a property is read only, write only or read-write\nRetrieving virtual properties (ie, calculated values) looks the same as regular properties \nYou can easily set an object property that is never actually defined anywhere, which then goes undocumented \n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It depends. It's more a style issue than anything else, and there is no hard rule.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What is the meaning of the Java warning?\n\nType safety: The cast from Object to List is actually checking against the erased type List\n\nI get this warning when I try to cast an Object to a type with generic information, such as in the following code:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This warning is there because Java is not actually storing type information at run-time in an object that uses generics.  Thus, if object is actually a List<String>, there will be no ClassCastException at run-time except until an item is accessed from the list that doesn't match the generic type defined in the variable.  \nThis can cause further complications if items are added to the list, with this incorrect generic type information.  Any code still holding a reference to the list but with the correct generic type information will now have an inconsistent list.  \nTo remove the warning, try:\n\nHowever, note that you will not be able to use certain methods such as add because the compiler doesn't know if you are trying to add an object of incorrect type.  The above will work in a lot of situations, but if you have to use add, or some similarly restricted method, you will just have to suffer the yellow underline in Eclipse (or a SuppressWarning annotation).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I was reading More Joel on Software when I came across Joel Spolsky saying something about a particular type of programmer knowing the difference between an int and an Integer in Java/C# (Object Oriented Programming Languages).\nSo, what is the difference?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In Java, the 'int' type is a primitive , whereas the 'Integer' type is an object.\nIn C#, the 'int' type is the same as System.Int32 and is a value type (ie more like the java 'int'). An integer (just like any other value types) can be boxed (\"wrapped\") into an object. \n\nThe differences between objects and primitives are somewhat beyond the scope of this question, but to summarize: \nObjects provide facilities for polymorphism, are passed by reference (or more accurately have references passed by value), and are allocated from the heap. Conversely, primitives are immutable types that are passed by value and are often allocated from the stack.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Well, in Java an int is a primitive while an Integer is an Object. Meaning, if you made a new Integer:\n\nYou could call some method on i:\n\nWhereas with an int:\n\nYou cannot call any methods on it, because it is simply a primitive. So:\n\nwould produce an error, because int is not an object.\nint is one of the few primitives in Java (along with char and some others). I'm not 100% sure, but I'm thinking that the Integer object more or less just has an int property and a whole bunch of methods to interact with that property (like the toString() method for example). So Integer is a fancy way to work with an int (Just as perhaps String is a fancy way to work with a group of chars).\nI know that Java isn't C, but since I've never programmed in C this is the closest I could come to the answer. Hope this helps!\nInteger object javadoc\nInteger Ojbect vs. int primitive comparison\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In C#, int is just an alias for System.Int32, string for System.String, double for System.Double etc...\nPersonally I prefer int, string, double, etc. because they don't require a using System; statement :) A silly reason, I know...\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'll add to the excellent answers given above, and talk about boxing and unboxing, and how this applies to Java (although C# has it too). I'll use just Java terminology, because I am more au fait with that.\nAs the answers mentioned, int is just a number (called the unboxed type), whereas Integer is an object (which contains the number, hence a boxed type). In Java terms, that means (apart from not being able to call methods on int), you cannot store int or other non-object types in collections (List, Map, etc.). In order to store them, you must first box them up in its corresponding boxed type.\nJava 5 onwards have something called auto-boxing and auto-unboxing which allow the boxing/unboxing to be done behind the scenes. Compare and contrast: Java 5 version:\n\nJava 1.4 or earlier (no generics either):\n\nIt must be noted that despite the brevity in the Java 5 version, both versions generate identical bytecode. Thus, although auto-boxing and auto-unboxing is very convenient because you write less code, these operations do happen behind the scenes, with the same runtime costs, so you still have to be aware of their existence.\nHope this helps!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'll just post here since some of the other posts are slightly inaccurate in relation to C#.\nCorrect: int is an alias for System.Int32.\nWrong: float is not an alias for System.Float, but for System.Single\nBasically, int is a reserved keyword in the C# programming language, and is an alias for the System.Int32 value type.\nfloat and Float is not the same however, as the right system type for ''float'' is System.Single. There are some types like this that has reserved keywords that doesn't seem to match the type names directly.\nIn C# there is no difference between ''int'' and ''System.Int32'', or any of the other pairs or keywords/system types, except for when defining enums. With enums you can specify the storage size to use and in this case you can only use the reserved keyword, and not the system runtime type name.\nWether the value in the int will be stored on the stack, in memory, or as a referenced heap object depends on the context and how you use it.\nThis declaration in a method:\n\ndefines a variable i of type System.Int32, living in a register or on the stack, depending on optimizations. The same declaration in a type (struct or class) defines a member field. The same declaration in a method argument list defines a parameter, with the same storage options as for a local variable. (note that this paragraph is not valid if you start pulling iterator methods into the mix, these are different beasts altogether)\nTo get a heap object, you can use boxing:\n\nthis will create a boxed copy of the contents of i on the heap. In IL you can access methods on the heap object directly, but in C# you need to cast it back to an int, which will create another copy. Thus, the object on the heap cannot easily be changed in C# without creating a new boxed copy of a new int value. (Ugh, this paragraph doesn't read all that easily.)\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This has already been answered for Java, here's the C# answer:\n\"Integer\" is not a valid type name in C# and \"int\" is just an alias for System.Int32. Also, unlike in Java (or C++) there aren't any special primitive types in C#, every instance of a type in C# (including int) is an object. Here's some demonstrative code:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Regarding Java 1.5 and autoboxing there is an important \"quirk\" that comes to play when comparing Integer objects.\nIn Java, Integer objects with the values -128 to 127 are immutable (that is, for one particular integer value, say 23, all Integer objects instantiated through your program with the value 23 points to the exact same object).\nExample, this returns true:\n\nWhile this returns false:\n\nThe == compares by reference (does the variables point to the same object).\nThis result may or may not differ depending on what JVM you are using. The specification autoboxing for Java 1.5 requires that integers (-128 to 127) always box to the same wrapper object. \nA solution? =) One should always use the Integer.equals() method when comparing Integer objects.\n\nMore info at java.net Example at bexhuff.com\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "In Java there are two basic types in the JVM. 1) Primitive types and 2) Reference Types. int is a primitive type and Integer is a class type (which is kind of reference type).\nPrimitive values do not share state with other primitive values. A variable whose type is a primitive type always holds a primitive value of that type.\n\nAn object is a dynamically created class instance or an array. The reference values (often just references) are pointers to these objects and a special null reference, which refers to no object. There may be many references to the same object.\n\nAlso in Java everything is passed by value. With objects the value that is passed is the reference to the object. So another difference between int and Integer in java is how they are passed in method calls. For example in\n\nThe variable two is passed as the primitive integer type 2. Whereas in\n\nThe variable two is passed as a reference to an object that holds the integer value 2.\n\n@WolfmanDragon:\nPass by reference would work like so:\n\nWhen increment is called it passes a reference (pointer) to variable a. And the increment function directly modifies variable a.\nAnd for object types it would work as follows:\n\nDo you see the difference now?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "One more thing that I don't see in previous answers:\nIn Java the primitive wrappers classes like Integer, Double, Float, Boolean... and String are suposed to be invariant, so that when you pass an instance of those classes the invoked method couldn't alter your data in any way, in opositi\u00f3n with most of other classes, which internal data could be altered by its public methods. So that this classes only has 'getter' methods, no 'setters', besides the constructor.\nIn a java program String literals are stored in a separate portion of heap memory, only a instance for literal, to save memory reusing those instances\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Is there a way to create a JButton with your own button graphic and not just with an image inside the button? \nIf not, is there another way to create a custom button in java?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I haven't done SWING development since my early CS classes but if it wasn't built in you could just inherit javax.swing.AbstractButton and create your own. Should be pretty simple to wire something together with their existing framework.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You could always try the Synth look & feel. You provide an xml file that acts as a sort of stylesheet, along with any images you want to use. The code might look like this:\n\nFrom there, go on and add your JButton like you normally would. The only change is that you use the setName(string) method to identify what the button should map to in the xml file.\nThe xml file might look like this:\n\nThe bind element there specifies what to map to (in this example, it will apply that styling to any buttons whose name property has been set to \"dirt\").\nAnd a couple of useful links:\nhttp://javadesktop.org/articles/synth/\nhttp://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/synth.html\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Yes, this is possible. One of the main pros for using Swing is the ease with which the abstract controls can be created and manipulates.\nHere is a quick and dirty way to extend the existing JButton class to draw a circle to the right of the text.\n\nNote that by overriding paintComponent that the contents of the button can be changed, but that the border is painted by the paintBorder method. The getPreferredSize method also needs to be managed in order to dynamically support changes to the content. Care needs to be taken when measuring font metrics and image dimensions.\nFor creating a control that you can rely on, the above code is not the correct approach. Dimensions and colours are dynamic in Swing and are dependent on the look and feel being used. Even the default Metal look has changed across JRE versions. It would be better to implement AbstractButton and conform to the guidelines set out by the Swing API. A good starting point is to look at the javax.swing.LookAndFeel and javax.swing.UIManager classes.\nhttp://docs.oracle.com/javase/8/docs/api/javax/swing/LookAndFeel.html\nhttp://docs.oracle.com/javase/8/docs/api/javax/swing/UIManager.html\nUnderstanding the anatomy of LookAndFeel is useful for writing controls:\nCreating a Custom Look and Feel\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "When I was first learning Java we had to make Yahtzee and I thought it would be cool to create custom Swing components and containers instead of just drawing everything on one JPanel.  The benefit of extending Swing components, of course, is to have the ability to add support for keyboard shortcuts and other accessibility features that you can't do just by having a paint() method print a pretty picture.  It may not be done the best way however, but it may be a good starting point for you.\nEdit 8/6 - If it wasn't apparent from the images, each Die is a button you can click. This will move it to the DiceContainer below.  Looking at the source code you can see that each Die button is drawn dynamically, based on its value.\n\n\n\nHere are the basic steps:\n\nCreate a class that extends JComponent\nCall parent constructor super() in your constructors\nMake sure you class implements MouseListener\nPut this in the constructor:\n\nOverride these methods:\n\nOverride this method:\n\n\nThe amount of space you have to work with when drawing your button is defined by getPreferredSize(), assuming getMinimumSize() and getMaximumSize() return the same value.  I haven't experimented too much with this but, depending on the layout you use for your GUI your button could look completely different.\nAnd finally, the source code.  In case I missed anything.  \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm probably going a million miles in the wrong direct (but i'm only young :P ). but couldn't you add the graphic to a panel and then a mouselistener to the graphic object so that when the user on the graphic your action is preformed.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "For parsing player commands, I've most often used the split method to split a string by delimiters and then to then just figure out the rest by a series of ifs or switches. What are some different ways of parsing strings in Java?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    }
+]

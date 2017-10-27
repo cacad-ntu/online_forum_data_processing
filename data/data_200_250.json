@@ -1,0 +1,302 @@
+[
+    {
+        "pos": "Another vote for Launch4J, just wrote an ant task this morning to integrate with one of my projects.  Seems to work really well\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Consider converting your application to Eclipse RCP.  It is written in SWT, and the Eclipse IDE contains packaging tools that generate executables for all major platforms.  For windows, it can generate a zip or a folder containing your code.  For a common installation experience, I'd using NSIS.  There is actually a packages generator project at eclipse to create common installers for all platforms eclipse supports.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "To follow up on pauxu's answer, I'm using launch4j and NSIS on a project of mine and thought it would be helpful to show just how I'm using them.  Here's what I'm doing for Windows.  BTW, I'm creating .app and .dmg for Mac, but haven't figured out what to do for Linux yet.\nProject Copies of launch4j and NSIS\nIn my project I have a \"vendor\" directory and underneath it I have a directory for \"launch4j\" and \"nsis\".  Within each is a copy of the install for each application.  I find it easier to have a copy local to the project rather than forcing others to install both products and set up some kind of environment variable to point to each.\nScript Files\nI also have a \"scripts\" directory in my project that holds various configuration/script files for my project.  First there is the launch4j.xml file:\n\nAnd then there's the NSIS script rpgam-setup.nsis.  It can take a VERSION argument to help name the file.\n\nAnt Integration\nI have some targets in my Ant buildfile (build.xml) to handle the above.  First I tel Ant to import launch4j's Ant tasks:\n\nI then have a simple target for creating the wrapper executable:\n\nAnd another target for making the installer:\n\nThe top portion of that just copies the necessary files for the installer to a temporary location and the second half executes the script that uses all of it to make the installer.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have used JSmooth in the past, and still have luck with it.  The UI is pretty buggy, but I only use that for building the config file once, and then I build from Ant after that.\nWhat issues are you having with JSmooth?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have read through several reviews on Amazon and some books seem outdated.  I am currently using MyEclipse 6.5 which is using Eclipse 3.3.  I'm interested in hearing from people that have experience learning RCP and what reference material they used to get started.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Although I don't have personal experience, a few friends of mine did Eclipse RCP development, and they used the book \"Eclipse Rich Client Platform: Designing, Coding, and Packaging Java(TM) Applications\". They seemed to like it a lot, and I looked it at myself, and it seemed useful. If I was going to do RCP development on Eclipse, I would probably get this book.\nTo clarify - this book is geared toward Eclipse 3.1, and since I haven't done any RCP development of my own, I'm not sure how much things have changed.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I read the book suggested by Thomas and it's really worth reading, although not very up-to-date.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I've been doing Eclipse RCP development for almost 2 years now.  When I first started, I wanted a book for help and many people told me, with Eclipse you're better off using the Eclipsepedia and Google.\nHowever, I started with \"The Java Developer's Guide to Eclipse\" by D'Anjou et al, and I still reference it when I need a better starting point or a good reference.  It's probably a little outdated now, but is very thorough and really explains how the Eclipse framework works.  Like just about anything, RCP isn't too hard to pick up if you've figured out how the framework supporting it works and you'll get a lot more mileage out of your code.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I agree with Thomas Owens on \"Eclipse Rich Client Platform: Designing, Coding, and Packaging Java(TM) Applications\" and would also add \"Eclipse: Building Commercial-Quality Plug-ins\" to the list of rather outdated but still somewhat useful books on Eclipse RCP. Even though the latter does not go much into the Rich Client Platform, it explains quite a lot about the Eclipse plug-in architecture that is useful knowledge for developers of RCP applications.\nThere has been a lot of improvements in the Eclipse RCP platform since the release of both of these books, so I really hope that there are new versions of these books coming out soon.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "At my work we are running a group of tests that consist of about 3,000 separate test cases. Previously we were running this entire test suite on one machine, which took about 24-72 hours to complete the entire test run. We now have created our own system for grouping and distributing the tests among about three separate machines and the tests are prioritized so that the core tests get run first for more immediate results and the extra tests run when there is an available machine.\nI am curious if anyone has found a good way to distribute their tests among several machines to reduce total test time for a complete run and what tools were used to achieve that. I've done some research and it looks like TestNG is moving in this direction, but it looks like it is still under quite a bit of development. \nWe don't plan on rewriting any of our tests, but as we add new tests and test new products or add-ons I'd like to be able to deal with the fact that we are working with very large numbers of tests. On the other hand, if we can find a tool that would help distribute our Junit 3.x tests even in a very basic fashion, that would be helpful since we wouldn't have to maintain our own tooling to do that.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I've seen some people having a play with distributed JUnit. I can't particularly vouch for how effective it is, but the other teams I've seen seemed to think it was straight forward enough. Hope that helps.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Our build people use Mozilla Tinderbox.  It seems to have some hooks for distributed testing.  I'm sorry not to know the details but I thought I would at least pass on the pointer to you.\nIt's also nice coz you can find out immediately when a build breaks, and what checkin might have been the culprit.\nhttp://www.mozilla.org/tinderbox.html\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "There's also parallel-junit. Depending on how you currently execute your tests its convenience may vary - the idea is just to multithread on a single system that has multiple cores. I've played with it briefly, but it's a change from how we currently run our tests. \nHudson, the continuous integration engine I use, also has some ways to distribute test running (separate jobs aggregated results in one).\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I need to prevent Session Fixation, a particular type of session hijacking, in a Java web application running in JBoss. However, it appears that the standard idiom doesn't work in JBoss. Can this be worked around?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "This defect (found here) points the way to the solution. The Tomcat instance that runs in JBoss is configured with emptySessionPath=\"true\", rather than \"false\", which is the default. This can be modified in .../deploy/jboss-web.deployer/server.xml; both the HTTP and AJP connectors have this option.\nThe feature itself is used to eliminate the context path (eg. \"foo\" in http://example.com/foo) from being included in the JSESSIONID cookie. Setting it to false will break applications that rely on cross-application authentication, which includes stuff built using some portal frameworks. It didn't negatively affect the application in question, however.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm currently trying to get into the Java EE development with the Spring framework. As I'm new to Spring, it is hard to imaging how a good running project should start off.\nDo you have any best practices, tipps or major DO NOTs for a starter? How did you start with Spring - big project or small tutorial-like applications? Which technology did you use right away: AOP, complex Hibernate...\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Whilst its been years since I have used spring, and I can't say I am a fan of it, I know that the App Fuse tool (https://java.net/projects/appfuse/) has been helpful to help people bootstrap in terms of generating all the artifacts you need to get going.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Focus first on the heart of Spring: Dependency Injection. Once you see all the ways that DI can be used, then start thinking about the more interesting pieces like AOP, Remoting, JDBC Templates etc. So my best bit of advice is let your use of Spring grow out from the core.\nBest practice? If you're using the standard XML config, manage the size of individual files and comment them judiciously. You may think that you and others will perfectly understand your bean definitions, but in practice they're somewhat harder to come back to than plain old java code.\nGood luck!\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I actually quite liked Spring.. It was a fresh breeze of air in your average J2EE Java Beans..\nI recommend implementing the example Spring provides: \nhttp://static.springframework.org/docs/Spring-MVC-step-by-step/\nAlso, I decided to go full monty and added Hibernate to my Spring application ;), because Spring provides excellent support for Hibernate... :)\nI do have a DON'T however, which I learned the hard way (product in production)... If you only implement the Controller interface, and return a ModelAndView object with some data as provided with the interface, Spring does garbadge collect those resources, for tries to cache those data. So be careful to put large data in those ModelAndView objects, because they will hog up your server memory for as long as the server is in the air as soon as that page has been viewed...\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "A good way to get started is to concentrate on the \"Springframework\". The Spring portfolio has grown to a big pile of projects around various aspects of Enterprise Software. Stick to the core at the beginning and try to grasp the concepts. Download the latest binaries and check out Spring's petclinic example once you are familiar with the core. It gives quite a good overview of the various projects SpringSource has to offer.\nAlthough the documentation is very good, I'd recommend a book after you grasp the concepts of the core. What I've found problematic with the documentation, is that it's not in depth and can't give you all the details you need.  \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Spring is also very much about unit testing and therefore testability of your classes. That basically means thinking about modularization, separation of concerns, referencing a class through interfaces etc.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If you're just looking to dabble in it a bit and see if you like it, I recommend starting with the DAO layer, using Spring's JDBC and/or Hibernate support. This will expose you to a lot of the core concepts, but do so in a way that is easy to isolate from the rest of your app. This is the route I followed, and it was good warm-up before getting into building a full application with Spring.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Start here - I actually think it's among the best Software Dev books that I've read.\nExpert Spring MVC And Web Flow\nLearn the new Annotation-based configuration for MVC classes. This is part of Spring 2.5. Using Annotation-based classes is going to make writing Unit tests a heck of a lot easier. Also being able to cut down on the amount of XML is a good thing.\nOh yeah Unit Tests - if you're using Spring, you BETTER be Unit Testing. :) Write Unit tests for all of your Web and Service Layer classes. \nRead up on Domain Driven Design. The fact that you can use Domain Object classes at all levels of a Spring Application means you're going to have a VERY powerful Domain Model. Leverage it.\nHowever, when using your Domain Object classes for form population, you will want to take heed of the recent security concerns around the Spring Framework. A discussion on the Server Side reveals the way to close the hole in the comments.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Small tip - I've found it helpful to modularize and clearly label my Spring xml context files based on application concern. Here's an example for a web app I worked on:\n\nMyProject / src / main / resources / spring /\n\ndatasource.xml  -  My single data source bean.\npersistence.xml  -  My DAOs/Repositories. Depends on datasource.xml beans.\nservices.xml  -  Service layer implementations. These are usually the beans to which I apply transactionality using AOP. Depends on persistence.xml beans.\ncontrollers.xml  - My Spring MVC controllers. Depends on services.xml beans.\nviews.xml - My view implementations.\n\n\nThis list is neither perfect nor exhaustive, but I hope it illustrates the point. Choose whatever naming strategy and granularity works best for you.\nIn my (limited) experience, I've seen this approach yeild the following benefits:\nClearer architecture\nClearly named context files gives those unfamiliar with your project structure a reasonable \nplace to start looking for bean definitions. Can make detecting circular/unwanted dependencies a little easier.\nHelps domain design\nIf you want to add a bean definition, but it doesn't fit well in any of your context files, perhaps there's a new concept or concern emerging? Examples:\n\nSuppose you want to make your Service layer transactional with AOP. Do you add those bean definitions to services.xml, or put them in their own transactionPolicy.xml? Talk it over with your team. Should your transaction policy be pluggable?\nAdd Acegi/Spring Security beans to your controllers.xml file, or create a security.xml context file? Do you have different security requirements for different deployments/environments?\n\nIntegration testing\nYou can wire up a subset of your application for integration testing (ex: given the above files, to test the database you need to create only datasource.xml and persistence.xml beans).\nSpecifically, you can annotate an integration test class as such:\n\nWorks well with Spring IDE's Beans Graph\nHaving lots of focused and well-named context files makes it easy to create custom BeansConfigSets to visualize the layers of your app using Spring IDE's Beans Graph. I've used this before to give new team members a high-level overview of our application's organization.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Can anyone recommend a good binary XML format? It's for a JavaME application, so it needs to be a) Easy to implement on the server, and b) Easy to write a low-footprint parser for on a low-end JavaME client device.\nAnd it goes without saying that it needs to be smaller than XML, and faster to parse.\n\nThe data would be something akin to SVG.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What kind of data are you planning to use? I would say, that if the server is also done in Java, easiest way for small footprint is to send/receive binary data in predefined format. Just write everything in known order into DataOutputStream.\nBut it would really depend, what what kind of data are you working on and can you define the format.\nActually you should evaluate, if this kind of optimization is even needed. Maybe you target devices are not so limited.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You might want to take a look at wbxml (Wireless Binary XML) it is optimized for size, and often used on mobile phones, but it is not optimized for parsing speed.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It very much depends on the target device. If you have JSR172 available, then you are done with the parsing, the runtime does it for you. And XML is mainly about making your own format. As was alredy stated if your goal is performance, than XML is probably not the best way to go and you will end up doing some binary stuff.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Hessian might be an alternative worth looking at. It is a small protocol, well-suited for Java ME applications. \n\"Hessian is a binary web service protocol that makes web services usable without requiring a large framework, and without learning a new set of protocols. Because it is a binary protocol, it is well-suited to sending binary data without any need to extend the protocol with attachments.\"\nMore links:\nhttp://hessian.caucho.com/\nhttp://www.nubius.be/info-software/hessian4j.html\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "We need to add WorkFlow to our Spring managed application. Does anyone have any useful experience in using any of the myriad of OSS Work Flow solutions? Which one is best? Which one integrates with Spring best? Which ones should we avoid?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "If you only need some simple process orchestration, Spring's own Web Flow, despite its name can serve as a orchestration task manager.   If you need to preserve state for several days then you will need to become an 'early adopter' of one of the open-source projects.  You may want to look at Eclipse's BPEL project.  \nMy hunch is that once a clearer picture of the BPEL/BPM/Workflow space emerges you will see Spring provide an abstraction layer the same way they have for JDBC, Transactions, ORM frameworks etc... \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "We're looking at Drools/Guvnor, possibly integrated with jBPM (as in this presentation), to add a workflow engine to our Spring/Java EE app, but we're still in the very early phases of trying it out.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I second Spring Web Flow. Depending on how complex the process is, Web Flow is great for managing various states and I've found that it's pretty easy to pick up and there's a good amount of documentation out there for it.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Like Brian said if you're doing anything of great complexity you might look at using BPEL. \nThere are a number of open source BPEL engines, one that comes to mind is Apache Orchestration Director Engine \n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I have a base class that represents a database test in TestNG, and I want to specify that all classes extending from this class are of a group \"db-test\", however I have found that this doesn't seem possible.  I have tried the @Test annotation:\n\nHowever, this doesn't work because the @Test annotation will try to make a bunch of methods into tests, and warnings/errors pop up in eclipse when the tests are run.\nSo I tried disabling the test, so at least the groups are assigned:\n\nbut then any @BeforeTest (and other similar annotations) ALSO get disabled... which is of course not what I want.\nI would like some way to annotate a class as being of a particular type of group, but it doesn't quite seem possible in TestNG.  Does anyone have any other ideas?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm not sure how the annotation inheritance works for TestNG but this article may be of some use. http://beust.com/weblog/archives/000170.html. \nActually, this may help better http://testng.org/doc/documentation-main.html#annotations, look at inheritGroups.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "TestNG will run all the public methods from a class with a @Test annotation. Maybe you could change the methods you don't want TestNG to run to be non-public\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "You can specify the @Test annotation at method level that allows for maximum flexibility.\n\nDoes this works for you or I am missing something from your question.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "It would seem to me as the following code-challenge (community wiki post):\nHow to be able to execute all test methods of Extended class from the group 'aGlobalGroup' without:\n\nspecifying the 'aGlobalGroup' group on the Extended class itself ?\ntesting non-annotated public methods of Extended class ?\n\nThe first answer is easy:\nadd a class TestNG(groups = { \"aGlobalGroup\" }) on the Base class level\nThat group will apply to all public methods of both Base class and Extended class.\nBUT: even non-testng public methods (with no TestNG annotation) will be included in that group.\nCHALLENGE: avoid including those non-TestNG methods.\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The answer is through a custom org.testng.IMethodSelector:\nIts includeMethod() can exclude any method we want, like a public not-annotated method.\nHowever, to register a custom Java MethodSelector, you must add it to the XMLTest instance managed by any TestRunner, which means you need your own custom TestRunner.\nBut, to build a custom TestRunner, you need to register a TestRunnerFactory, through the -testrunfactory option.\nBUT that -testrunfactory is NEVER taken into account by TestNG class... so you need also to define a custom TestNG class :\n\nin order to override the configure(Map) method, \nso you can actually set the TestRunnerFactory\nTestRunnerFactory which will build you a custom TestRunner,\nTestRunner which will set to the XMLTest instance a custom XMLMethodSelector\nXMLMethodSelector which will build a custom IMethodSelector\nIMethodSelector which will exclude any TestNG methods of your choosing!\n\nOk... it's a nightmare. But it is also a code-challenge, so it must be a little challenging ;)\nAll the code is available at DZone snippets.\nAs usual for a code challenge:\n\none java class (and quite a few inner classes)\ncopy-paste the class in a 'source/test' directory (since the package is 'test')\nrun it (no arguments needed)\n\n\nUpdate from Mike Stone:\nI'm going to accept this because it sounds pretty close to what I ended up doing, but I figured I would add what I did as well.\nBasically, I created a Groups annotation that behaves like the groups property of the Test (and other) annotations.\nThen, I created a GroupsAnnotationTransformer, which uses IAnnotationTransformer to look at all tests and test classes being defined, then modifies the test to add the groups, which works perfectly with group exclusion and inclusion.\nModify the build to use the new annotation transformer, and it all works perfectly!\nWell... the one caveat is that it doesn't add the groups to non-test methods... because at the time I did this, there was another annotation transformer that lets you transform ANYTHING, but it somehow wasn't included in the TestNG I was using for some reason... so it is a good idea to make your before/after annotated methods to alwaysRun=true... which is sufficient for me.\nThe end result is I can do:\n\nAnd I made the transformer work with subclassing and everything.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'd like to utilize an ICE Faces fileInput control to fill in the file path & file name for the input to an input field on a web page based on file that the user selects. How can I capture these properties without actually performing any file transfer operations?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I believe that the real answer is that you can't.  The file path won't be sent by the browser for security reasons.  The file name will be sent, however I don't believe it gets sent without an actual upload.\nThe closest you could come, afaik, would be to forcibly kill the connection just when the upload starts.  That would net you the filename with little actual transferred data, but it doesn't sound like it would be useful to you.\nAlternatively, a signed Java applet might get you closer to a solution that you'd want.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "What's the best way to make a linked list in Java?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Java has a LinkedList implementation, that you might wanna check out. You can download the JDK and it's sources at java.sun.com.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Use java.util.LinkedList. Like this:\n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "The obvious solution to developers familiar to Java is to use the LinkedList class already provided in java.util. Say, however, you wanted to make your own implementation for some reason. Here is a quick example of a linked list that inserts a new link at the beginning of the list, deletes from the beginning of the list and loops through the list to print the links contained in it. Enhancements to this implementation include making it a double-linked list, adding methods to insert and delete from the middle or end, and by adding get and sort methods as well. \nNote: In the example, the Link object doesn't actually contain another Link object -  nextLink is actually only a reference to another link. \n\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I am having a strange DB2 issue when I run DBUnit tests.  My DBUnit tests are highly customized, but I don't think it is the issue.  When I run the tests, I get a failure: \n\nSQLCODE: -1084, SQLSTATE: 57019\n\nwhich translates to \n\nSQL1084C Shared memory segments cannot be allocated.\n\nIt sounds like a weird memory issue, though here's the big strange thing.  If I ssh to the test database server, then go in to db2 and do \"connect to MY_DB\", the tests start succeeding!  This seems to have no relation to the supposed memory error that is being reported.\nI have 2 tests, and the first one actually succeeds, the second one is the one that fails.  However, it fails in the DBUnit setup code, when it is obtaining the connection to the DB server to load my xml dataset.\nAny ideas what might be going on?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "Well, I think I fixed it by doing the following:\n\nAt least, things seem to be working now.....\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "I'm currently trying to read in an XML file, make some minor changes (alter the value of some attributes), and write it back out again.\nI have intended to use a StAX parser (javax.xml.stream.XMLStreamReader) to read in each event, see if it was one I wanted to change, and then pass it straight on to the StAX writer (javax.xml.stream.XMLStreamReader) if no changes were required.\nUnfortunately, that doesn't look to be so simple - The writer has no way to take an event type and a parser object, only methods like writeAttribute and writeStartElement. Obviously I could write a big switch statement with a case for every possible type of element which can occur in an XML document, and just write it back out again, but it seems like a lot of trouble for something which seems like it should be simple.\nIs there something I'm missing that makes it easy to write out a very similar XML document to the one you read in with StAX?\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    },
+    {
+        "pos": "After a bit of mucking around, the answer seems to be to use the Event reader/writer versions rather than the Stream versions.\n(i.e. javax.xml.stream.XMLEventReader and javax.xml.stream.XMLEventWriter)\nSee also http://www.devx.com/tips/Tip/37795, which is what finally got me moving.\n",
+        "negation_label": 0,
+        "error_label": 0,
+        "semantic_label": 0
+    }
+]

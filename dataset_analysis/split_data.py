@@ -37,4 +37,4 @@ def split_data(data_dir, split_sum, split_count):
 
 if __name__ == "__main__":
     # split_POS_tag("../data/", 100, 20)
-    split_data("../data/", 500, 100)
+    split_data("../data/", 250, 50)
