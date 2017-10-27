@@ -1491,19 +1491,19 @@
         "negation_label": 1,
         "error_label": 0,
         "semantic_label": 2
-    }
+    },
     {
         "pos": "Short version - use flush() or whatever the relevant system call is to ensure that your data is actually written to the file.\n",
         "negation_label": 0,
         "error_label": 0,
         "semantic_label": 0
-    }
+    },
     {
         "pos": "Note I am not talking about the OS level disk cache - if your data gets into here, it should appear in a read() after this point.  ",
         "negation_label": 1,
         "error_label": 0,
         "semantic_label": 0
-    }
+    },
     {
         "pos": "It may be that the language itself caches writes, waiting until a buffer fills up or file is flushed/closed.\n",
         "negation_label": 0,
