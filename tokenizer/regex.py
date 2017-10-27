@@ -1,5 +1,7 @@
 import re
 import nltk
+import copy
+import json
 
 
 class Tokenizer:
@@ -7,33 +9,98 @@ class Tokenizer:
     def __init__(self):
         return
 
+    def start_tokenize_from_folder(self, data_dir):
+
+        result_after_token = []
+
+        with open(data_dir + "data.json") as test:
+            data = json.load(test)
+
+        for sentence in data['list_string']:
+            list_of_token = self.start_tokenize(sentence)
+            list_of_token = filter(lambda data: data["token"] == "JAVA" or data["token"] == "UNK", list_of_token)
+            result_after_token.append(list_of_token)
+
+        with open(data_dir + "list_string_regex_token.json", "w") as out_file:
+            json.dump(result_after_token, out_file, indent=4)
+
     def start_tokenize(self, string):
 
-        list_regex_exception_token = ["(\Exception(.||\\n)*([^:,\s]+:\s+))", "(\java\.\lang\.[a-zA-Z]*\Exception{1})",
-                                      "([Tt]hrows?[a-zA-Z||\s]*\Exception{1})",
-                                      "(\catch\s*\([a-zA-Z]*\Exception{1}\s+[a-zA-Z]*\))",
-                                      "([a-zA-Z]*\Exception{1})", "([a-zA-Z]*\exception{1})"]
-        # [a-zA-Z||\s]*\Exception{1}
+        list_java_token = [
+                            # test._this_method()
+                            r"[a-zA-Z0-9\_]{2,}\.[a-zA-Z0-9\_]{2,}[\.a-zA-Z0-9\_]*",
+                            # @supresswarning
+                            r"[a-zA-Z0-9_]*@[a-zA-Z0-9_]+",
+                            # List<Integer> | ArrayList<Test>
+                            r"(List<[a-zA-Z0-9_]+>|ArrayList<[a-zA-Z0-9_]+>)",
+                            # IlegationException() | TestException()
+                            r"[a-zA-Z0-9_]*Exception\(?[a-zA-Z0-9_]*\)?",
+                            # java.teyst.test
+                            r"[a-zA-Z0-9_]+\.[\.a-zA-Z0-9_]*[a-zA-Z0-9_]+",
+                            # JavaObject, javaObject, testParser
+                            r"[a-zA-Z]+[a-z]+[A-Z][A-Za-z0-9\_]+",
+                            # array byte[]s. test[]
+                            r"[a-zA-Z0-9\_\.]+\[.*\][a-zA-Z0-9\.\_]*"
+        ]
+        list_unk_token = [
+            # php code such as edward -> edward, $test
+            r"[A-Za-z0-9\_\$\-\>]*\$[A-Za-z0-9\_\$\-\>]+|[A-Za-z0-9\_\$\-\>]+\$[A-Za-z0-9\_\$\-\>]*",
+            # url
+            r"\https?\:\/\/[a-zA-Z0-9\S]*\.[\com|\org\|net][\/a-zA-Z0-9\S]*"
+        ]
 
-        set_string_match = set()
-        list_string_token = []
+        buffer_string = copy.deepcopy(string)
+        check_set_token_java = set()
+        check_set_token_unk = set()
 
-        for regex_pattern in list_regex_exception_token:
+        for regex_unk in list_unk_token:
 
-            m = re.search(regex_pattern, string)
+            m = re.findall(regex_unk, string)
 
-            if m is None:
-                continue
+            for str_find in m:
 
-            string_match = m.group(0)
-            set_string_match.add(string_match)
-            string = string.replace(string_match, "").strip()
-            list_string_token.append({string_match: "EXCEPTION"})
+                check_set_token_unk.add(str_find)
+                string.replace(str_find, "")
 
-        sentence_token = nltk.word_tokenize(string)
+        sentence_token = nltk.word_tokenize(buffer_string)
+        list_pure_token = []
 
-        for sen_token in sentence_token:
+        for regex_java in list_java_token:
 
-            list_string_token.append({sen_token: sen_token})
+            m = re.findall(regex_java, string)
 
-        print list_string_token
+            for str_find in m:
+                string = string.replace(str_find, "")
+                check_set_token_java.add(str_find)
+
+        cnt = 0
+
+        while cnt < len(sentence_token):
+
+            sentence_check = ""
+            has_irregular_token = False
+            skip = cnt
+
+            for j in range(cnt, len(sentence_token)):
+                sentence_check += sentence_token[j]
+
+                if sentence_check in check_set_token_java:
+                    list_pure_token.append({'origin': sentence_check, 'token': 'JAVA'})
+                    has_irregular_token = True
+                    skip = j+1
+                    break
+
+                if sentence_check in check_set_token_unk:
+                    list_pure_token.append({'origin': sentence_check, 'token': 'UNK'})
+                    has_irregular_token = True
+                    skip = j+1
+                    break
+
+            if not has_irregular_token:
+                list_pure_token.append({'origin': sentence_token[cnt], 'token': sentence_token[cnt]})
+            else:
+                cnt = skip
+
+            cnt += 1
+
+        return list_pure_token

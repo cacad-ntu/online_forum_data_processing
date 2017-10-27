@@ -12,10 +12,14 @@ from bs4 import BeautifulSoup
 
 
 class DataCollector:
+    """ DataCollector Class """
 
-    def __init__(self, file_path="/Users/edwardsujono/Python_Projectaa", limit=500):
+    def __init__(self, file_path="/Users/edwardsujono/Python_Projectaa", limit=500, stat_count=5):
+        # Init statistic
+        self.stats = {}
+        self.init_stats(stat_count)
 
-        print ("start parsing \n")
+        print("start parsing \n")
 
         parser = lxml.etree.XMLParser(recover=True)
         root = lxml.etree.parse(file_path, parser)
@@ -23,7 +27,7 @@ class DataCollector:
         self.list_question = root.xpath("row[contains(@Tags, '<java>') and @AcceptedAnswerId]")
         self.list_answer_question = []
 
-        print ("get java related xml started \n")
+        print("get java related xml started \n")
 
         cnt = 0
 
@@ -32,19 +36,34 @@ class DataCollector:
             if cnt == limit:
                 return
 
-            print ("start: cnt: %s " % cnt)
+            print("start: cnt: %s " % cnt)
 
             self.list_answer_question.append(question)
 
             list_answer_from_parent = root.xpath("row[@ParentId=\"" + question.attrib.get("Id") + "\"]")
+
+            ans_cnt = 0
             for answer in list_answer_from_parent:
                 self.list_answer_question.append(answer)
+                ans_cnt += 1
+            if ans_cnt > stat_count:
+                self.stats["more"] += 1
+            else:
+                self.stats[ans_cnt] += 1
 
             cnt += 1
 
-            print ("end: cnt: %s" % cnt)
+            print("end: cnt: %s" % cnt)
+
+    def init_stats(self, cnt):
+        """ Initialise self.stats count """
+        for i in range(cnt):
+            self.stats[i+1] = 0
+
+        self.stats["more"] = 0
 
     def start_data_collection(self):
+        """ start data collection """
 
         dict_save = {"list_string": []}
 
@@ -57,11 +76,10 @@ class DataCollector:
             json.dump(dict_save, outfile, indent=4)
 
     def cleaning_the_java_snippet_code(self, str_compare):
-
-        # code snippet always start with <pre><code> and </pre></code>
-        # we cannot get the pure BeautifulSoupObject need from string byte
-        # because BeautifulSoup object does not transform embedded html tag to the actucal ASCII
-
+        """ code snippet always start with <pre><code> and </pre></code>
+        we cannot get the pure BeautifulSoupObject need from string byte
+        because BeautifulSoup object does not transform embedded html tag to the actucal ASCII
+        """
         change_str = BeautifulSoup(str_compare)
         for tag in change_str.find_all("pre"):
             tag.replaceWith("")
