@@ -14,9 +14,7 @@ class Classifier:
 
     def tokenize(self, data):
         tfidf_transformer = TfidfTransformer()
-        my_count_vect = MyCountVectorizer()
-        X_train_counts = my_count_vect.fit_transform(data)
-        X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
+        X_train_tfidf = tfidf_transformer.fit_transform(data)
         return X_train_tfidf
 
     def start_train(self, x_train, y_train):
@@ -32,3 +30,9 @@ class Classifier:
             recall_score(predict, y_test, average='weighted'),
             precision_score(predict, y_test, average='weighted')
         )
+
+    def start_predict_one(self, x_test):
+
+        predict = self.clf.predict(x_test)
+
+        return predict
