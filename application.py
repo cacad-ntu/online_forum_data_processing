@@ -4,6 +4,7 @@ from classifier.rnn import RNN
 from classifier.bayes_classifier import Classifier
 import json
 from sklearn.preprocessing import OneHotEncoder
+from classifier.regex_checker import regex_checking
 
 """
     -   Deducing the negative sentence can be easily done by using Bayes Inference,
@@ -62,20 +63,6 @@ def prepare_negative_application(data_x, data_y_negative):
     classifier.start_prediction(x_test=x_test_negative, y_test=y_test_negative)
     return classifier
 
-    # onehot_encoder = OneHotEncoder(sparse=False)
-    # data_y_negative = onehot_encoder.fit_transform(data_y_negative)
-    #
-    # x_train_negative, x_test_negative, \
-    #     y_train_negative, y_test_negative = train_test_split(data_x, data_y_negative, test_size=0.33, random_state=42)
-    #
-    # rnn = RNN(x_train=x_train_negative, y_train=y_train_negative,
-    #           x_test=x_test_negative, y_test=y_test_negative,
-    #           max_features=len(x_train_negative[0]), num_neurons=200
-    #           )
-    #
-    # rnn.start_train(batch_size=28, epochs=2)
-    # return rnn
-
 
 def prepare_semantic_application(data_x, data_y_semantic):
 
@@ -112,7 +99,8 @@ def prepare_error_application(data_x, data_y_error):
 if __name__ == "__main__":
     apps_err, apps_neg, apps_sem = init_application()
 
-    opt = raw_input("input 1) for error application, 2) negative application, 3) semantic application, 4) exit: \n")
+    opt = raw_input("input\n 1) for error application\n 2) negative application\n "
+                    "3) semantic application\n 4) Negative application using Regex \n 5) Exit. \n")
 
     while opt != 4:
 
@@ -125,30 +113,42 @@ if __name__ == "__main__":
             prediction = apps_err.predict_one_data([sentence_trans])
 
             if prediction[0]:
-                print 'it is an error sentence'
+                print 'it is an error sentence\n'
             else:
-                print 'it is not an error sentence'
+                print 'it is not an error sentence\n'
         elif opt == '2':
 
             prediction = apps_neg.start_predict_one([sentence_trans])
             print "prediction: %s \n" % prediction
 
             if prediction[0]:
-                print 'it is a negative application'
+                print 'it is a negative application\n'
             else:
-                print 'it is not a negative application'
+                print 'it is not a negative application\n'
 
         elif opt == '3':
 
             prediction = apps_sem.predict_one_data([sentence_trans])
 
             if prediction == 0:
-                print 'it is neutral application'
+                print 'it is neutral application\n'
             elif prediction == 1:
-                print 'it is a positive application'
+                print 'it is a positive application\n'
             else:
-                print 'it is a negative application'
+                print 'it is a negative application\n'
         elif opt == '4':
+
+            prediction = regex_checking(sentence)
+            if prediction:
+                print 'it is negative expression\n'
+            else:
+                print 'it is not a negative application\n'
+
+        elif opt == '5':
             break
 
-        opt = raw_input("input 1) for error application, 2) negative application, 3) semantic application, 4) exit \n")
+        opt = raw_input("input\n 1) for error application\n 2) negative application\n "
+                        "3) semantic application\n 4) Negative application using Regex \n 5) Exit. \n")
+
+        if opt == '5':
+            break
