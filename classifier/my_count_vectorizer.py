@@ -1,17 +1,19 @@
 from tokenizer.regex import Tokenizer
 import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
 
 
-class MyCountVectorizer:
+class MyCountVectorizer(CountVectorizer):
 
     def __init__(self):
+        super(MyCountVectorizer, self).__init__()
         self.save = {}
         self.index_unk_word = 0
         self.cnt = 1
         self.list_unk_word = []
         return
 
-    def fit_transform(self, list_string):
+    def fit_transform(self, list_string, *args, **kwargs):
 
         # calculate type of token
         tokenizer = Tokenizer()
@@ -38,7 +40,7 @@ class MyCountVectorizer:
 
         for i in range(len(list_string)):
 
-            list_token = tokenizer.start_tokenize(string)
+            list_token = tokenizer.start_tokenize(list_string[i])
             for token in list_token:
 
                 if self.save.get(token["token"]) not in self.list_unk_word:

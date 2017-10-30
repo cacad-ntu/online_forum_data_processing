@@ -41,26 +41,25 @@ def init_application():
         # Naive Bayes
         data_y_negative.append([data["negation_label"]])
 
+    buffer_data_x = data_x
     data_x = data_vector.fit_transform(data_x)
 
-    apps_err = prepare_error_application(data_x, data_y_error)
-    apps_neg = prepare_negative_application(data_x, data_y_negative)
-    apps_sem = prepare_semantic_application(data_x, data_y_semantic)
+    # apps_err = prepare_error_application(data_x, data_y_error)
+    apps_err = None
+    apps_neg = prepare_negative_application(buffer_data_x, data_y_negative)
+    apps_sem = None
+    # apps_sem = prepare_semantic_application(data_x, data_y_semantic)
     return apps_err, apps_neg, apps_sem
 
 
 def prepare_negative_application(data_x, data_y_negative):
 
     classifier = Classifier()
-    data_x = classifier.tokenize(data_x)
 
     x_train_negative, x_test_negative, \
         y_train_negative, y_test_negative = train_test_split(data_x, data_y_negative, test_size=0.33, random_state=42)
 
-    print "Start Training Negative Application"
-    classifier.start_train(x_train=x_train_negative, y_train=y_train_negative)
-    print "Finish Training the Negative Application"
-    classifier.start_prediction(x_test=x_test_negative, y_test=y_test_negative)
+    classifier.start_train_pipeline(x_train_negative, y_train_negative, x_test_negative, y_test_negative)
     return classifier
 
 
@@ -118,7 +117,7 @@ if __name__ == "__main__":
                 print 'it is not an error sentence\n'
         elif opt == '2':
 
-            prediction = apps_neg.start_predict_one([sentence_trans])
+            prediction = apps_neg.start_predict_one([sentence])
             print "prediction: %s \n" % prediction
 
             if prediction[0]:
