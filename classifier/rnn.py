@@ -5,6 +5,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Embedding
 from keras.layers import LSTM
 import numpy as np
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 
 class RNN:
@@ -24,14 +25,19 @@ class RNN:
 
     def start_train(self, batch_size, epochs):
 
-        self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+        self.model.compile(loss='categorical_crossentropy', optimizer='adam',
+                           metrics=['accuracy'])
         print('Start Training RNN')
         self.model.fit(self.x_train, self.y_train, batch_size=batch_size, epochs=epochs,
                        validation_data=(self.x_test, self.y_test), shuffle=True)
 
-        score, acc = self.model.evaluate(self.x_test, self.y_test, batch_size=batch_size)
-        print('Test score:', score)
-        print('Test accuracy:', acc)
+        predicted = np.argmax(self.model.predict(self.x_test), axis=1)
+        self.y_test = np.argmax(self.y_test, axis=1)
+
+        print ("accuracy: %s \n" % accuracy_score(predicted, self.y_test))
+        print ("f1: %s \n" % f1_score(predicted, self.y_test, average="macro"))
+        print ("precision: %s \n" % precision_score(predicted, self.y_test, average="macro"))
+        print ("recall: %s \n" % recall_score(predicted, self.y_test, average="macro"))
 
     def predict_one_data(self, x_test):
 

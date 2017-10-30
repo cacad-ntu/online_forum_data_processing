@@ -43,12 +43,17 @@ def init_application():
 
     buffer_data_x = data_x
     data_x = data_vector.fit_transform(data_x)
+    use_rnn = False
 
-    # apps_err = prepare_error_application(data_x, data_y_error)
+    # apps_err = prepare_error_application(data_x if use_rnn else buffer_data_x, data_y_error, use_rnn=use_rnn)
+    print '----------------FINISH ERROR TRAINING ----------------- \n'
     apps_err = None
-    apps_neg = prepare_negative_application(buffer_data_x, data_y_negative)
-    apps_sem = None
-    # apps_sem = prepare_semantic_application(data_x, data_y_semantic)
+    # apps_neg = prepare_negative_application(buffer_data_x, data_y_negative)
+    apps_neg = None
+    # apps_sem = None
+    print '----------------FINISH NEGATIVE TRAINING ----------------- \n'
+    apps_sem = prepare_semantic_application(data_x if use_rnn else buffer_data_x, data_y_semantic, use_rnn=use_rnn)
+    print '----------------FINISH SEMANTIC TRAINING ----------------- \n'
     return apps_err, apps_neg, apps_sem
 
 
@@ -59,41 +64,60 @@ def prepare_negative_application(data_x, data_y_negative):
     x_train_negative, x_test_negative, \
         y_train_negative, y_test_negative = train_test_split(data_x, data_y_negative, test_size=0.33, random_state=42)
 
-    classifier.start_train_pipeline(x_train_negative, y_train_negative, x_test_negative, y_test_negative)
+    classifier.start_train_pipeline(x_train_negative, y_train_negative,
+                                    x_test_negative, y_test_negative, use_tune=True, use_naive_bayes=True)
     return classifier
 
 
-def prepare_semantic_application(data_x, data_y_semantic):
+def prepare_semantic_application(data_x, data_y_semantic, use_rnn=True):
 
     onehot_encoder = OneHotEncoder(sparse=False)
-    data_y_semantic = onehot_encoder.fit_transform(data_y_semantic)
+
+    if use_rnn:
+        data_y_semantic = onehot_encoder.fit_transform(data_y_semantic)
 
     x_train_semantic, x_test_semantic, \
         y_train_semantic, y_test_semantic = train_test_split(data_x, data_y_semantic, test_size=0.33, random_state=42)
 
-    rnn = RNN(x_train=x_train_semantic, y_train=y_train_semantic,
-              x_test=x_test_semantic, y_test=y_test_semantic,
-              max_features=len(x_train_semantic[0])
-              )
+    if use_rnn:
+        classifier = RNN(x_train=x_train_semantic, y_train=y_train_semantic,
+                  x_test=x_test_semantic, y_test=y_test_semantic,
+                  max_features=len(x_train_semantic[0])
+                  )
 
-    rnn.start_train(batch_size=28, epochs=1)
-    return rnn
+        classifier.start_train(batch_size=28, epochs=5)
+    else:
+        classifier = Classifier()
+        classifier.start_train_pipeline(x_train_semantic, y_train_semantic,
+                                        x_test_semantic, y_test_semantic,
+                                        use_tune=True, use_naive_bayes=False)
+
+    return classifier
 
 
-def prepare_error_application(data_x, data_y_error):
+def prepare_error_application(data_x, data_y_error, use_rnn=True):
     onehot_encoder = OneHotEncoder(sparse=False)
-    data_y_error = onehot_encoder.fit_transform(data_y_error)
+
+    if use_rnn:
+        data_y_error = onehot_encoder.fit_transform(data_y_error)
 
     x_train_error, x_test_error, \
         y_train_error, y_test_error = train_test_split(data_x, data_y_error, test_size=0.33, random_state=42)
 
-    rnn = RNN(x_train=x_train_error, y_train=y_train_error,
-              x_test=x_test_error, y_test=y_test_error,
-              max_features=len(x_train_error[0])
-              )
+    if use_rnn:
+        classifier = RNN(x_train=x_train_error, y_train=y_train_error,
+                  x_test=x_test_error, y_test=y_test_error,
+                  max_features=len(x_train_error[0])
+                  )
 
-    rnn.start_train(batch_size=28, epochs=1)
-    return rnn
+        classifier.start_train(batch_size=28, epochs=5)
+    else:
+        classifier = Classifier()
+        classifier.start_train_pipeline(x_train_error, y_train_error,
+                                        x_test_error, y_test_error,
+                                        use_tune=True, use_naive_bayes=False)
+
+    return classifier
 
 if __name__ == "__main__":
     apps_err, apps_neg, apps_sem = init_application()
@@ -109,7 +133,10 @@ if __name__ == "__main__":
 
         if opt == '1':
 
-            prediction = apps_err.predict_one_data([sentence_trans])
+            if hasattr(apps_err, 'predict_one_data'):
+                prediction = apps_err.predict_one_data([sentence_trans])
+            else:
+                prediction = apps_err.start_predict_one([sentence])
 
             if prediction[0]:
                 print 'it is an error sentence\n'
@@ -127,7 +154,10 @@ if __name__ == "__main__":
 
         elif opt == '3':
 
-            prediction = apps_sem.predict_one_data([sentence_trans])
+            if hasattr(apps_sem, 'predict_one_data'):
+                prediction = apps_sem.predict_one_data([sentence_trans])
+            else:
+                prediction = apps_sem.start_predict_one([sentence])
 
             if prediction == 0:
                 print 'it is neutral application\n'
