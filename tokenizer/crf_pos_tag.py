@@ -20,7 +20,6 @@ def word_features(sentence_list, index):
 
     if index > 0:
         word_previous = sentence_list[index-1][0]
-        postag_previous = sentence_list[index-1][1]
         features.extend([
             'Previous word                  = ' + word_previous.lower(),
             'Previous word is a title       = %s' % word_previous.istitle(),
@@ -31,7 +30,6 @@ def word_features(sentence_list, index):
         
     if index < len(sentence_list)-1:
         word_next = sentence_list[index+1][0]
-        postag_next = sentence_list[index+1][1]
         features.extend([
             'Next word              = ' + word_next.lower(),
             'Next word is title     = %s' % word_next.istitle(),
@@ -81,14 +79,10 @@ def train_post_tag(data_dir, k_fold, model_name):
     accuracy = 0
     model_num = None
     accuracy_list = []  
-    java_accuracy_list = []
-    java_word_count_list = []
 
     for i in range (k_fold):
         temp_accuracy = 0
-        temp_java_accuracy = 0
         word_count = 0
-        java_word_count = 0
 
         if (i == 0):
             x_train = [sentence_to_words(sentence[j]) for j in range((i+1)*len(sentence)//k_fold, len(sentence))]
@@ -115,34 +109,26 @@ def train_post_tag(data_dir, k_fold, model_name):
         trainer.set_params({
             'c1': 1.0,   # coefficient for L1 penalty
             'c2': 1e-3,  # coefficient for L2 penalty
-            'max_iterations': 100,  # stop earlier
+            'max_iterations': 50,  # stop earlier
 
             # include transitions that are possible, but not observed
             'feature.possible_transitions': True
         })
 
-        trainer.train(model_name + ' ' + str(i) + '.crfsuite')
+        trainer.train(model_name + str(i) + '.crfsuite')
 
         tagger = pycrfsuite.Tagger()
-        tagger.open(model_name + ' ' + str(i) + '.crfsuite')
+        tagger.open(model_name + str(i) + '.crfsuite')
 
         for token, label in zip(x_test, y_test):
             tagged_data = tagger.tag(token)
             for j in range (len(label)):
-                if label[j] == 'JAVA':
-                    if tagged_data[j] == label[j]:
-                        temp_java_accuracy += 1
-                        temp_accuracy += 1
-                    java_word_count += 1
-                elif tagged_data[j] == label[j]:
+                if  tagged_data[j] == label[j]:
                     temp_accuracy += 1
                 word_count += 1
 
-        java_word_count_list.append([java_word_count,temp_java_accuracy])
         temp_accuracy = temp_accuracy / word_count
-        temp_java_accuracy = temp_java_accuracy / java_word_count
         accuracy_list.append(temp_accuracy)
-        java_accuracy_list.append(temp_java_accuracy)
         
 
         if (temp_accuracy > accuracy):
@@ -150,16 +136,16 @@ def train_post_tag(data_dir, k_fold, model_name):
             model_num = i
 
     print(accuracy_list)
-    print(java_accuracy_list)
-    print(java_word_count_list)
     print(model_num)
-    return (model_name + ' ' + str(model_num) + '.crfsuite')
+    return (model_name + str(model_num) + '.crfsuite')
 
 if __name__ == '__main__':
     tagger = pycrfsuite.Tagger()
     tagger.open(train_post_tag(sys.argv[1], int(sys.argv[2]), sys.argv[3]))
-    example_sent = [['string.upper()','java'],['(','EX'], [")", "EX"]]
+    #tagger.open('test1.crfsuite')
 
-    print("Predicted:", ' '.join(tagger.tag(sentence_to_words(example_sent))))
-    print("Correct:  ", ' '.join(sentence_labels(example_sent)))
+    data = ['you', 'are', 'my', 'friend', '.']
 
+    print("Word     : " +  str(data))
+    print("POS tag  : " +  str(tagger.tag(sentence_to_words(data))))
+    print("POS tag  : " +  str(tagger.tag(data)))
