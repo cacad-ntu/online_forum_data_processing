@@ -1,36 +1,68 @@
 from tokenizer.regex import Tokenizer
 import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
 
 
-class MyCountVectorizer:
+class MyCountVectorizer(CountVectorizer):
 
     def __init__(self):
+        super(MyCountVectorizer, self).__init__()
+        self.save = {}
+        self.index_unk_word = 0
+        self.cnt = 1
+        self.list_unk_word = []
         return
 
-    def fit_transform(self, list_string):
+    def fit_transform(self, list_string, *args, **kwargs):
 
         # calculate type of token
         tokenizer = Tokenizer()
-        cnt = 0
-
-        save = {}
+        counter_token = {}
 
         for string in list_string:
 
             list_token = tokenizer.start_tokenize(string)
 
             for token in list_token:
-                if save.get(token["token"]) is None:
-                    save[token["token"]] = cnt
-                    cnt += 1
+                if self.save.get(token["token"]) is None:
+                    counter_token[token["token"]] = 0
+                    self.save[token["token"]] = self.cnt
+                    self.cnt += 1
+                else:
+                    counter_token[token["token"]] += 1
 
-        data_transform = np.zeros(shape=(len(list_string), cnt))
+        self.list_unk_word = sorted(counter_token)
+
+        # unk word is the top 10 words
+        self.list_unk_word = self.list_unk_word[:10]
+
+        data_transform = np.zeros(shape=(len(list_string), self.cnt))
 
         for i in range(len(list_string)):
 
-            list_token = tokenizer.start_tokenize(string)
+            list_token = tokenizer.start_tokenize(list_string[i])
             for token in list_token:
 
-                data_transform[i][save.get(token["token"])] += 1
+                if self.save.get(token["token"]) not in self.list_unk_word:
+                    data_transform[i][self.save.get(token["token"])] += 1
+                else:
+                    data_transform[i][self.index_unk_word] += 1
+
+        return data_transform
+
+    def transform_individual_sentence(self, string):
+
+        data_transform = np.zeros(shape=self.cnt)
+
+        tokenizer = Tokenizer()
+        list_token = tokenizer.start_tokenize(string)
+
+        for token in list_token:
+            ind = self.save.get(token["token"])
+
+            if ind is None or self.save.get(token["token"]) in self.list_unk_word:
+                ind = self.index_unk_word
+
+            data_transform[ind] += 1
 
         return data_transform
