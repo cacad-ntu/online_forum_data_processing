@@ -43,3 +43,6 @@ def stem_data(data_dir):
 
     with open(data_dir + 'result_word_count.json', 'w') as result:
         json.dump(word_count, result, indent=4)
+
+if __name__ == "__main__":
+    stem_data("../data/")

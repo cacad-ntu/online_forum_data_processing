@@ -114,5 +114,5 @@ def count_token_crf(data_dir):
         json.dump(word_count, result, indent=4)
 
 if __name__ == "__main__":
-    # count_token_regex("../data/")
+    count_token_regex("../data/")
     count_token_crf("../data/")

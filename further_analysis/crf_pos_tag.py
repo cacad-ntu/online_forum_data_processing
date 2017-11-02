@@ -141,7 +141,7 @@ def train_post_tag(data_dir, k_fold, model_name):
 
 if __name__ == '__main__':
     tagger = pycrfsuite.Tagger()
-    #tagger.open(train_post_tag(sys.argv[1], int(sys.argv[2]), sys.argv[3]))
+    tagger.open(train_post_tag(sys.argv[1], int(sys.argv[2]), sys.argv[3]))
     tagger.open('test1.crfsuite')
 
     data = [
@@ -180,16 +180,3 @@ if __name__ == '__main__':
     for item in data:
         print("Word     : " +  str(item))
         print("POS tag  : " +  str(tagger.tag(sentence_to_words(item))))
-    
-    
-    
-    
-    
-   
-    
-
-
-    # feat = [sentence_to_words(data)]
-    # print(feat)
-
-    

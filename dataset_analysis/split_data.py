@@ -36,5 +36,5 @@ def split_data(data_dir, split_sum, split_count):
             json.dump(raw_data_split, out_file, indent=4)
 
 if __name__ == "__main__":
-    # split_POS_tag("../data/", 100, 20)
+    split_POS_tag("../data/", 100, 20)
     split_data("../data/", 250, 50)

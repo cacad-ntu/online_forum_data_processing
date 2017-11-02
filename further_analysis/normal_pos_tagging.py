@@ -23,5 +23,5 @@ def pos_tag(data_dir):
         json.dump(my_arr, out_file)
 
 if __name__ == "__main__":
-
     pos_tag("../data/")
+
