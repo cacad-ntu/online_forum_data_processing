@@ -31,6 +31,7 @@ To collect data from [raw_data.xml](https://drive.google.com/file/d/0B0QpPMrU8F0
 
 - Move the current directory to `dataset_collection`.
 - Execute `python collector_data.py`.
+- The result can be found at [data.json](data/data.json).
 
 ### Dataset Analysis and Annotation
 
@@ -110,11 +111,13 @@ To change the application setting can directly change [application.py](applicati
 - Enter the sentence you want to classify.
 - Choose `5. Exit` to exit from the application
 
-Additionally, you can try the application without installing the requirements 
-- Go to the following [link](http://128.199.159.74:8888/?token=117369b26b2baa3a96c5f1710c413583517d54793ee189b6/). 
+Additionally, you can try the application without installing the requirements by doing the following steps:
+
+- Go to the following [link](http://128.199.159.74:8888/?token=117369b26b2baa3a96c5f1710c413583517d54793ee189b6/).
 - Then open `Application.ipynb`.
 - Select `Run All` under tab `Cell`.
-- Move to the application and wait for the training to use the application.
+- Move to the `Application` section at the bottom.
+- Wait for the training to use the application.
 
 ## Report
 
