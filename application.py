@@ -7,15 +7,11 @@ from sklearn.preprocessing import OneHotEncoder
 from classifier.regex_checker import regex_checking
 
 """
-    -   Deducing the negative sentence can be easily done by using Bayes Inference,
-    -   Deducing whether the sentence talks about error is quite hard problem, since
-        each token is not independent
-    -   Deducing the semantic of sentence has the same complexity
-        with the above application
-        
-        "negation_label": 1,
-        "error_label": 0,
-        "semantic_label": 0
+    Best Algorithm in this context: 
+    
+    - Negative application analyzer -> Tuned SVM
+    - Semantic -> Tuned Naive Bayes
+    - Error -> Tuned Naive bayes
 """
 
 data_vector = MyCountVectorizer()
@@ -45,12 +41,9 @@ def init_application():
     data_x = data_vector.fit_transform(data_x)
     use_rnn = False
 
-    # apps_err = prepare_error_application(data_x if use_rnn else buffer_data_x, data_y_error, use_rnn=use_rnn)
+    apps_err = prepare_error_application(data_x if use_rnn else buffer_data_x, data_y_error, use_rnn=use_rnn)
     print '----------------FINISH ERROR TRAINING ----------------- \n'
-    apps_err = None
-    # apps_neg = prepare_negative_application(buffer_data_x, data_y_negative)
-    apps_neg = None
-    # apps_sem = None
+    apps_neg = prepare_negative_application(buffer_data_x, data_y_negative)
     print '----------------FINISH NEGATIVE TRAINING ----------------- \n'
     apps_sem = prepare_semantic_application(data_x if use_rnn else buffer_data_x, data_y_semantic, use_rnn=use_rnn)
     print '----------------FINISH SEMANTIC TRAINING ----------------- \n'
@@ -65,7 +58,7 @@ def prepare_negative_application(data_x, data_y_negative):
         y_train_negative, y_test_negative = train_test_split(data_x, data_y_negative, test_size=0.33, random_state=42)
 
     classifier.start_train_pipeline(x_train_negative, y_train_negative,
-                                    x_test_negative, y_test_negative, use_tune=True, use_naive_bayes=True)
+                                    x_test_negative, y_test_negative, use_tune=True, use_naive_bayes=False)
     return classifier
 
 
@@ -90,7 +83,7 @@ def prepare_semantic_application(data_x, data_y_semantic, use_rnn=True):
         classifier = Classifier()
         classifier.start_train_pipeline(x_train_semantic, y_train_semantic,
                                         x_test_semantic, y_test_semantic,
-                                        use_tune=True, use_naive_bayes=False)
+                                        use_tune=True, use_naive_bayes=True)
 
     return classifier
 
@@ -115,7 +108,7 @@ def prepare_error_application(data_x, data_y_error, use_rnn=True):
         classifier = Classifier()
         classifier.start_train_pipeline(x_train_error, y_train_error,
                                         x_test_error, y_test_error,
-                                        use_tune=True, use_naive_bayes=False)
+                                        use_tune=True, use_naive_bayes=True)
 
     return classifier
 
@@ -145,7 +138,6 @@ if __name__ == "__main__":
         elif opt == '2':
 
             prediction = apps_neg.start_predict_one([sentence])
-            print "prediction: %s \n" % prediction
 
             if prediction[0]:
                 print 'it is a negative application\n'

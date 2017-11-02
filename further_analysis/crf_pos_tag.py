@@ -77,7 +77,7 @@ def train_post_tag(data_dir, k_fold, model_name):
         return (model_name + '.crfsuite')
 
     accuracy = 0
-    model_num = None
+    model_num = 0
     accuracy_list = []  
 
     for i in range (k_fold):
@@ -139,10 +139,10 @@ def train_post_tag(data_dir, k_fold, model_name):
     print(model_num)
     return (model_name + str(model_num) + '.crfsuite')
 
-if __name__ == '__main__':
+
+def start_crf_pos_tag(data_dir):
     tagger = pycrfsuite.Tagger()
-    tagger.open(train_post_tag(sys.argv[1], int(sys.argv[2]), sys.argv[3]))
-    tagger.open('test1.crfsuite')
+    tagger.open(train_post_tag(data_dir=data_dir, k_fold=4, model_name='crf_pos_tag'))
 
     data = [
             [
@@ -178,5 +178,9 @@ if __name__ == '__main__':
             ]
 
     for item in data:
-        print("Word     : " +  str(item))
-        print("POS tag  : " +  str(tagger.tag(sentence_to_words(item))))
+        print("Word     : " + str(item))
+        print("POS tag  : " + str(tagger.tag(sentence_to_words(item))))
+
+
+if __name__ == '__main__':
+    start_crf_pos_tag('../data/train_data.json')

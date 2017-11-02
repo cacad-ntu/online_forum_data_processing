@@ -91,6 +91,6 @@ class DataCollector:
 
         return change_str.text
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     data_collector = DataCollector()
     data_collector.start_data_collection()
