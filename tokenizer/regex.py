@@ -7,6 +7,9 @@ import json
 class Tokenizer:
 
     def __init__(self):
+        self.list_java_token = []
+        self.list_unk_token = []
+
         return
 
     def start_tokenize_from_folder(self, data_dir):
@@ -24,9 +27,11 @@ class Tokenizer:
         with open(data_dir + "list_string_regex_token.json", "w") as out_file:
             json.dump(result_after_token, out_file, indent=4)
 
-    def start_tokenize(self, string):
+    def start_tokenize(self, string, just_return_list=False):
 
-        list_java_token = [
+        list_return = []
+
+        self.list_java_token = [
                             # test._this_method()
                             r"[a-zA-Z0-9\_]{2,}\.[a-zA-Z0-9\_]{2,}[\.a-zA-Z0-9\_]*",
                             # @supresswarning
@@ -42,7 +47,7 @@ class Tokenizer:
                             # array byte[]s. test[]
                             r"[a-zA-Z0-9\_\.]+\[.*\][a-zA-Z0-9\.\_]*"
         ]
-        list_unk_token = [
+        self.list_unk_token = [
             # php code such as edward -> edward, $test
             r"[A-Za-z0-9\_\$\-\>]*\$[A-Za-z0-9\_\$\-\>]+|[A-Za-z0-9\_\$\-\>]+\$[A-Za-z0-9\_\$\-\>]*",
             # url
@@ -53,7 +58,7 @@ class Tokenizer:
         check_set_token_java = set()
         check_set_token_unk = set()
 
-        for regex_unk in list_unk_token:
+        for regex_unk in self.list_unk_token:
 
             m = re.findall(regex_unk, string)
 
@@ -65,7 +70,7 @@ class Tokenizer:
         sentence_token = nltk.word_tokenize(buffer_string)
         list_pure_token = []
 
-        for regex_java in list_java_token:
+        for regex_java in self.list_java_token:
 
             m = re.findall(regex_java, string)
 
@@ -85,22 +90,32 @@ class Tokenizer:
                 sentence_check += sentence_token[j]
 
                 if sentence_check in check_set_token_java:
+                    list_return.append(sentence_check)
                     list_pure_token.append({'origin': sentence_check, 'token': 'JAVA'})
                     has_irregular_token = True
                     skip = j+1
                     break
 
                 if sentence_check in check_set_token_unk:
+                    list_return.append(sentence_check)
                     list_pure_token.append({'origin': sentence_check, 'token': 'UNK'})
                     has_irregular_token = True
                     skip = j+1
                     break
 
             if not has_irregular_token:
+                list_return.append(sentence_token[cnt])
                 list_pure_token.append({'origin': sentence_token[cnt], 'token': sentence_token[cnt]})
             else:
                 cnt = skip
 
             cnt += 1
 
+        if just_return_list:
+            return list_return
+
         return list_pure_token
+
+    def get_single_regex(self):
+        combine_list = self.list_java_token + self.list_unk_token
+        return '|'.join(combine_list)
