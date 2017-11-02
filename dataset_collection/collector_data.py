@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 class DataCollector:
     """ DataCollector Class """
 
-    def __init__(self, file_path="/Users/edwardsujono/Python_Projectaa", limit=500, stat_count=5):
+    def __init__(self, file_path="data/raw_data.xml", limit=500, stat_count=5):
         # Init statistic
         self.stats = {}
         self.init_stats(stat_count)
@@ -46,8 +46,13 @@ class DataCollector:
             for answer in list_answer_from_parent:
                 self.list_answer_question.append(answer)
                 ans_cnt += 1
-            if ans_cnt > stat_count:
-                self.stats["more"] += 1
+            if ans_cnt == 0:
+                continue
+            elif ans_cnt > stat_count:
+                if 0 in self.stats:
+                    self.stats[0] += 1
+                else:
+                    self.stats[0] = 1
             else:
                 self.stats[ans_cnt] += 1
 
@@ -60,7 +65,7 @@ class DataCollector:
         for i in range(cnt):
             self.stats[i+1] = 0
 
-        self.stats["more"] = 0
+        self.stats[0] = 0
 
     def start_data_collection(self):
         """ start data collection """
