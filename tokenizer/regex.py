@@ -21,7 +21,7 @@ class Tokenizer:
 
         for sentence in data['list_string']:
             list_of_token = self.start_tokenize(sentence)
-            list_of_token = filter(lambda data: data["token"] == "JAVA" or data["token"] == "UNK", list_of_token)
+            # list_of_token = filter(lambda data: data["token"] == "JAVA" or data["token"] == "UNK", list_of_token)
             result_after_token.append(list_of_token)
 
         with open(data_dir + "list_string_regex_token.json", "w") as out_file:
@@ -33,7 +33,7 @@ class Tokenizer:
 
         self.list_java_token = [
                             # test._this_method()
-                            r"[a-zA-Z0-9\_]{2,}\.[a-zA-Z0-9\_]{2,}[\.a-zA-Z0-9\_]*",
+                            r"[a-zA-Z0-9_\.]+\([a-zA-Z0-9_]*\)",
                             # @supresswarning
                             r"[a-zA-Z0-9_]*@[a-zA-Z0-9_]+",
                             # List<Integer> | ArrayList<Test>
@@ -41,7 +41,7 @@ class Tokenizer:
                             # IlegationException() | TestException()
                             r"[a-zA-Z0-9_]*Exception\(?[a-zA-Z0-9_]*\)?",
                             # java.teyst.test
-                            r"[a-zA-Z0-9_]+\.[\.a-zA-Z0-9_]*[a-zA-Z0-9_]+",
+                            r"[a-zA-Z_]{2,}\.[\.a-zA-Z_]*[a-zA-Z_]+",
                             # JavaObject, javaObject, testParser
                             r"[a-zA-Z]+[a-z]+[A-Z][A-Za-z0-9\_]+",
                             # array byte[]s. test[]
@@ -93,14 +93,14 @@ class Tokenizer:
                     list_return.append(sentence_check)
                     list_pure_token.append({'origin': sentence_check, 'token': 'JAVA'})
                     has_irregular_token = True
-                    skip = j+1
+                    skip = j
                     break
 
                 if sentence_check in check_set_token_unk:
                     list_return.append(sentence_check)
                     list_pure_token.append({'origin': sentence_check, 'token': 'UNK'})
                     has_irregular_token = True
-                    skip = j+1
+                    skip = j
                     break
 
             if not has_irregular_token:

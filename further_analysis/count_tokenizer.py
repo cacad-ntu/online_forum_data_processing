@@ -5,13 +5,13 @@ Count and sort result of the new tokenizer
 import json
 import operator
 
-# from tokenizer.Regex import Tokenizer
+from tokenizer.regex import Tokenizer
 
 def count_token(data_dir):
     """ get token count using new tokenizer """
 
-    # re_tokenizer = Tokenizer()
-    # re_tokenizer.start_tokenize_from_folder(data_dir)
+    re_tokenizer = Tokenizer()
+    re_tokenizer.start_tokenize_from_folder(data_dir)
 
     with open(data_dir + 'list_string_regex_token.json') as data_file:
         data = json.load(data_file)
@@ -23,17 +23,19 @@ def count_token(data_dir):
 
     for item in data:
         for element in item:
-            for token, tag in element.items():
-                if tag.upper() != "JAVA":
-                    continue
+            token = element['origin']
+            tag = element['token']
 
-                if token.lower() in stop_words:
-                    continue
+            if tag.upper() != "JAVA":
+                continue
 
-                if token in word_count:
-                    word_count[token] += 1
-                else:
-                    word_count[token] = 1
+            if token.lower() in stop_words:
+                continue
+
+            if token in word_count:
+                word_count[token] += 1
+            else:
+                word_count[token] = 1
 
     word_count = sorted(word_count.items(), key=operator.itemgetter(1), reverse=True)
 

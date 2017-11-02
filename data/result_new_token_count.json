@@ -8,18 +8,6 @@
         196
     ], 
     [
-        "e.g", 
-        65
-    ], 
-    [
-        "i.e", 
-        53
-    ], 
-    [
-        "1.5", 
-        37
-    ], 
-    [
         "ArrayList", 
         31
     ], 
@@ -34,14 +22,6 @@
     [
         "Exception", 
         27
-    ], 
-    [
-        "1.6", 
-        25
-    ], 
-    [
-        "1.4", 
-        22
     ], 
     [
         "NullPointerException", 
@@ -81,10 +61,6 @@
     ], 
     [
         "hashCode", 
-        14
-    ], 
-    [
-        "2.0", 
         14
     ], 
     [
@@ -180,10 +156,6 @@
         7
     ], 
     [
-        "E.g", 
-        7
-    ], 
-    [
         "StAX", 
         7
     ], 
@@ -224,10 +196,6 @@
         7
     ], 
     [
-        "6.1", 
-        6
-    ], 
-    [
         "exp()", 
         6
     ], 
@@ -260,31 +228,11 @@
         6
     ], 
     [
-        "5.0", 
-        6
-    ], 
-    [
         "MathContext", 
         6
     ], 
     [
-        "3.4", 
-        6
-    ], 
-    [
-        "System.Int32", 
-        6
-    ], 
-    [
         "JavaME", 
-        6
-    ], 
-    [
-        "1.1", 
-        6
-    ], 
-    [
-        "1.3", 
         6
     ], 
     [
@@ -372,10 +320,6 @@
         5
     ], 
     [
-        "JBossMQ", 
-        5
-    ], 
-    [
         "TestRunner", 
         5
     ], 
@@ -385,6 +329,10 @@
     ], 
     [
         "ScheduledThreadPoolExecutor", 
+        5
+    ], 
+    [
+        "JBossMQ", 
         5
     ], 
     [
@@ -401,10 +349,6 @@
     ], 
     [
         "System.exit()", 
-        5
-    ], 
-    [
-        "2.x", 
         5
     ], 
     [
@@ -520,10 +464,6 @@
         4
     ], 
     [
-        "2.5", 
-        4
-    ], 
-    [
         "java.net", 
         4
     ], 
@@ -576,10 +516,6 @@
         4
     ], 
     [
-        "1.0", 
-        4
-    ], 
-    [
         "JavaMail", 
         4
     ], 
@@ -624,11 +560,7 @@
         3
     ], 
     [
-        "6.5", 
-        3
-    ], 
-    [
-        "6.0", 
+        "@jodonnell", 
         3
     ], 
     [
@@ -644,7 +576,7 @@
         3
     ], 
     [
-        "ASN.1", 
+        "JavaDB", 
         3
     ], 
     [
@@ -680,10 +612,6 @@
         3
     ], 
     [
-        "3.5", 
-        3
-    ], 
-    [
         "DuplicateUsernameException", 
         3
     ], 
@@ -709,14 +637,6 @@
     ], 
     [
         "String.valueOf", 
-        3
-    ], 
-    [
-        "FooRepository", 
-        3
-    ], 
-    [
-        "0.0.0.0", 
         3
     ], 
     [
@@ -748,6 +668,10 @@
         3
     ], 
     [
+        "parseDate", 
+        3
+    ], 
+    [
         "skipBytes()", 
         3
     ], 
@@ -757,18 +681,6 @@
     ], 
     [
         "GeoTools", 
-        3
-    ], 
-    [
-        "parseDate", 
-        3
-    ], 
-    [
-        "@jodonnell", 
-        3
-    ], 
-    [
-        "4.6", 
         3
     ], 
     [
@@ -824,10 +736,6 @@
         3
     ], 
     [
-        "1.4.2", 
-        3
-    ], 
-    [
         "destroy()", 
         3
     ], 
@@ -844,10 +752,6 @@
         3
     ], 
     [
-        "2.1.0", 
-        3
-    ], 
-    [
         "XmlDocument", 
         3
     ], 
@@ -856,19 +760,11 @@
         3
     ], 
     [
-        "3.0", 
-        3
-    ], 
-    [
         "EntityManagerFactory", 
         3
     ], 
     [
         "StackOverflow", 
-        3
-    ], 
-    [
-        "3.x", 
         3
     ], 
     [
@@ -889,10 +785,6 @@
     ], 
     [
         "ImageIcon", 
-        3
-    ], 
-    [
-        "JavaDB", 
         3
     ], 
     [
@@ -929,6 +821,10 @@
     ], 
     [
         "FileChannel", 
+        3
+    ], 
+    [
+        "FooRepository", 
         3
     ], 
     [
@@ -985,10 +881,6 @@
     ], 
     [
         "ScheduledExecutorService", 
-        2
-    ], 
-    [
-        "x.jsp", 
         2
     ], 
     [
@@ -1056,15 +948,7 @@
         2
     ], 
     [
-        "SetFile", 
-        2
-    ], 
-    [
         "FetchType.EAGER", 
-        2
-    ], 
-    [
-        "MyEclipse", 
         2
     ], 
     [
@@ -1104,10 +988,6 @@
         2
     ], 
     [
-        "8.04", 
-        2
-    ], 
-    [
         "Integer.parseInt", 
         2
     ], 
@@ -1125,10 +1005,6 @@
     ], 
     [
         "InputSource", 
-        2
-    ], 
-    [
-        "staticInit", 
         2
     ], 
     [
@@ -1156,11 +1032,7 @@
         2
     ], 
     [
-        "Java5.0", 
-        2
-    ], 
-    [
-        "ops4j.org", 
+        "java.beans.XMLEncoder", 
         2
     ], 
     [
@@ -1176,11 +1048,11 @@
         2
     ], 
     [
-        "SQLException", 
+        "staticInit", 
         2
     ], 
     [
-        "java.beans.XMLEncoder", 
+        "SQLException", 
         2
     ], 
     [
@@ -1232,10 +1104,6 @@
         2
     ], 
     [
-        "7.0.4", 
-        2
-    ], 
-    [
         "ReportMill", 
         2
     ], 
@@ -1245,10 +1113,6 @@
     ], 
     [
         "explorer.exe", 
-        2
-    ], 
-    [
-        "20.08", 
         2
     ], 
     [
@@ -1325,10 +1189,6 @@
     ], 
     [
         "ClassWithStaticInitTest", 
-        2
-    ], 
-    [
-        "101.5294", 
         2
     ], 
     [
@@ -1432,6 +1292,10 @@
         2
     ], 
     [
+        "SetFile", 
+        2
+    ], 
+    [
         "AutoHotKey", 
         2
     ], 
@@ -1472,6 +1336,10 @@
         2
     ], 
     [
+        "MyEclipse", 
+        2
+    ], 
+    [
         "@OneToMany", 
         2
     ], 
@@ -1485,10 +1353,6 @@
     ], 
     [
         "openConnection()", 
-        2
-    ], 
-    [
-        "5.5", 
         2
     ], 
     [
@@ -1580,10 +1444,6 @@
         2
     ], 
     [
-        "2.1", 
-        2
-    ], 
-    [
         "MethodInvokingFactoryBean", 
         2
     ], 
@@ -1601,10 +1461,6 @@
     ], 
     [
         "MyInterfaceImpl1", 
-        2
-    ], 
-    [
-        "Java.Utils.Zip", 
         2
     ], 
     [
@@ -1649,10 +1505,6 @@
     ], 
     [
         "JBossWS", 
-        2
-    ], 
-    [
-        "3.3", 
         2
     ], 
     [
@@ -1780,19 +1632,11 @@
         2
     ], 
     [
-        "p.s", 
-        2
-    ], 
-    [
         "DefaultCodableEnum", 
         2
     ], 
     [
         "List<Integer>", 
-        2
-    ], 
-    [
-        "1.x", 
         2
     ], 
     [
@@ -1824,15 +1668,7 @@
         2
     ], 
     [
-        "192.168.2.254", 
-        2
-    ], 
-    [
         "JPasswordField", 
-        2
-    ], 
-    [
-        "2.3.0", 
         2
     ], 
     [
@@ -1852,7 +1688,7 @@
         2
     ], 
     [
-        "2.2445", 
+        "Java.Utils.Zip", 
         2
     ], 
     [
@@ -1877,10 +1713,6 @@
     ], 
     [
         "CPU(s)", 
-        2
-    ], 
-    [
-        "4.x", 
         2
     ], 
     [
@@ -1916,6 +1748,10 @@
         1
     ], 
     [
+        "Matcher.quoteReplacement", 
+        1
+    ], 
+    [
         "Exceptional", 
         1
     ], 
@@ -1928,15 +1764,7 @@
         1
     ], 
     [
-        "I.e", 
-        1
-    ], 
-    [
         "SuppressionCommentFilter", 
-        1
-    ], 
-    [
-        "ISC.0064.9010", 
         1
     ], 
     [
@@ -2013,10 +1841,6 @@
     ], 
     [
         "DataInput.skipBytes", 
-        1
-    ], 
-    [
-        "Matcher.quoteReplacement", 
         1
     ], 
     [
@@ -2104,10 +1928,6 @@
         1
     ], 
     [
-        "2.2.x", 
-        1
-    ], 
-    [
         "org.springframework.util.Assert.notNull", 
         1
     ], 
@@ -2128,15 +1948,7 @@
         1
     ], 
     [
-        "T.I.A", 
-        1
-    ], 
-    [
         "WireShark", 
-        1
-    ], 
-    [
-        "6.0.2", 
         1
     ], 
     [
@@ -2216,7 +2028,15 @@
         1
     ], 
     [
-        "6.4", 
+        "catch()", 
+        1
+    ], 
+    [
+        "addAWTEventListener", 
+        1
+    ], 
+    [
+        "MyString", 
         1
     ], 
     [
@@ -2276,7 +2096,7 @@
         1
     ], 
     [
-        "javax.sound.sampled", 
+        "getChildAt()", 
         1
     ], 
     [
@@ -2308,10 +2128,6 @@
         1
     ], 
     [
-        "org.nanocontainer.nanowar.webwork2.PicoObjectFactoryFilter.doFilter", 
-        1
-    ], 
-    [
         "WrappedOracleConnection", 
         1
     ], 
@@ -2324,11 +2140,15 @@
         1
     ], 
     [
-        "Db4O.GetByID", 
+        "Integer[1]", 
         1
     ], 
     [
         "FetchType", 
+        1
+    ], 
+    [
+        "@daniel6651", 
         1
     ], 
     [
@@ -2356,7 +2176,7 @@
         1
     ], 
     [
-        "@pek", 
+        "java.lang.Runtime.exec()", 
         1
     ], 
     [
@@ -2396,11 +2216,7 @@
         1
     ], 
     [
-        "ServletFilter", 
-        1
-    ], 
-    [
-        "1.5294", 
+        "Well....Java", 
         1
     ], 
     [
@@ -2417,10 +2233,6 @@
     ], 
     [
         "org.xml.sax.XMLReader", 
-        1
-    ], 
-    [
-        "1.4.2_17", 
         1
     ], 
     [
@@ -2472,15 +2284,7 @@
         1
     ], 
     [
-        "172.16.0.0", 
-        1
-    ], 
-    [
         "HttpServletResponse", 
-        1
-    ], 
-    [
-        "v6.1", 
         1
     ], 
     [
@@ -2489,10 +2293,6 @@
     ], 
     [
         "higherEntry", 
-        1
-    ], 
-    [
-        "0.5294", 
         1
     ], 
     [
@@ -2600,15 +2400,7 @@
         1
     ], 
     [
-        "7.4", 
-        1
-    ], 
-    [
-        "7.5", 
-        1
-    ], 
-    [
-        "ListIterator", 
+        "TabAcceptor", 
         1
     ], 
     [
@@ -2652,6 +2444,10 @@
         1
     ], 
     [
+        "StackOverflow.com", 
+        1
+    ], 
+    [
         "PBEWithSHA1AndDESede", 
         1
     ], 
@@ -2661,10 +2457,6 @@
     ], 
     [
         "jcp.org", 
-        1
-    ], 
-    [
-        "7.X", 
         1
     ], 
     [
@@ -2740,14 +2532,6 @@
         1
     ], 
     [
-        "1.6.0_06", 
-        1
-    ], 
-    [
-        "1.6.0_05", 
-        1
-    ], 
-    [
         "Collections.synchronizedList()", 
         1
     ], 
@@ -2764,15 +2548,7 @@
         1
     ], 
     [
-        "GraphicsConfigurations", 
-        1
-    ], 
-    [
         "ActiveState", 
-        1
-    ], 
-    [
-        "3.81", 
         1
     ], 
     [
@@ -2781,10 +2557,6 @@
     ], 
     [
         "ServletOutputStream", 
-        1
-    ], 
-    [
-        "Integer[1]", 
         1
     ], 
     [
@@ -2800,15 +2572,7 @@
         1
     ], 
     [
-        "join()", 
-        1
-    ], 
-    [
         "@Override", 
-        1
-    ], 
-    [
-        "Field.Index.UN_TOKENIZED", 
         1
     ], 
     [
@@ -2845,10 +2609,6 @@
     ], 
     [
         "AbstractRepository", 
-        1
-    ], 
-    [
-        "jre6.0_7", 
         1
     ], 
     [
@@ -2904,10 +2664,6 @@
         1
     ], 
     [
-        "5.3.2", 
-        1
-    ], 
-    [
         "CustomData", 
         1
     ], 
@@ -2921,10 +2677,6 @@
     ], 
     [
         "getBytes()", 
-        1
-    ], 
-    [
-        "StackOverflow.com", 
         1
     ], 
     [
@@ -2948,7 +2700,7 @@
         1
     ], 
     [
-        "1.3.4", 
+        "join()", 
         1
     ], 
     [
@@ -2993,10 +2745,6 @@
     ], 
     [
         "dwr.xml", 
-        1
-    ], 
-    [
-        "4.10", 
         1
     ], 
     [
@@ -3088,19 +2836,7 @@
         1
     ], 
     [
-        "1.6.0_11", 
-        1
-    ], 
-    [
-        "8.5", 
-        1
-    ], 
-    [
         "ZipEntry.getName()", 
-        1
-    ], 
-    [
-        "org.w3c", 
         1
     ], 
     [
@@ -3136,15 +2872,7 @@
         1
     ], 
     [
-        "mTabs.getTabWidget()", 
-        1
-    ], 
-    [
         "java.lang.String.equals", 
-        1
-    ], 
-    [
-        "Thread.getStackTrace()", 
         1
     ], 
     [
@@ -3173,10 +2901,6 @@
     ], 
     [
         "Class.isAssignableFrom", 
-        1
-    ], 
-    [
-        "3.8", 
         1
     ], 
     [
@@ -3252,10 +2976,6 @@
         1
     ], 
     [
-        "LiquiBase", 
-        1
-    ], 
-    [
         "SchemaUpdate", 
         1
     ], 
@@ -3308,10 +3028,6 @@
         1
     ], 
     [
-        "3.4M7", 
-        1
-    ], 
-    [
         "MouseMotionListener", 
         1
     ], 
@@ -3352,6 +3068,10 @@
         1
     ], 
     [
+        "java.util.concurennt", 
+        1
+    ], 
+    [
         "SiteMesh", 
         1
     ], 
@@ -3361,10 +3081,6 @@
     ], 
     [
         "@Derek", 
-        1
-    ], 
-    [
-        "32.302342342342343", 
         1
     ], 
     [
@@ -3404,19 +3120,7 @@
         1
     ], 
     [
-        "6.0.1", 
-        1
-    ], 
-    [
-        "2.4.x", 
-        1
-    ], 
-    [
         "ManagementFactory.getRuntimeMXBean()", 
-        1
-    ], 
-    [
-        "2.6.x", 
         1
     ], 
     [
@@ -3433,10 +3137,6 @@
     ], 
     [
         "java.lang.management.OperatingSystemMXBean", 
-        1
-    ], 
-    [
-        "f.ex", 
         1
     ], 
     [
@@ -3496,10 +3196,6 @@
         1
     ], 
     [
-        "4.0.something", 
-        1
-    ], 
-    [
         "java.util.Hashtable", 
         1
     ], 
@@ -3528,7 +3224,11 @@
         1
     ], 
     [
-        "0.73", 
+        "Locale.setDefault()", 
+        1
+    ], 
+    [
+        "paintBorder", 
         1
     ], 
     [
@@ -3624,10 +3324,6 @@
         1
     ], 
     [
-        "P.S", 
-        1
-    ], 
-    [
         "String(result)", 
         1
     ], 
@@ -3688,10 +3384,6 @@
         1
     ], 
     [
-        "10.0.0.0", 
-        1
-    ], 
-    [
         "List<Number>", 
         1
     ], 
@@ -3728,7 +3420,7 @@
         1
     ], 
     [
-        "getChildAt()", 
+        "javax.sound.sampled", 
         1
     ], 
     [
@@ -3744,15 +3436,15 @@
         1
     ], 
     [
-        "InterfaceName", 
-        1
-    ], 
-    [
         "windowClosing", 
         1
     ], 
     [
         "@erickson", 
+        1
+    ], 
+    [
+        "ant.project.name", 
         1
     ], 
     [
@@ -3768,7 +3460,7 @@
         1
     ], 
     [
-        "times(3)", 
+        "LiquiBase", 
         1
     ], 
     [
@@ -3796,15 +3488,7 @@
         1
     ], 
     [
-        "Well....Java", 
-        1
-    ], 
-    [
         "JFileHelpers", 
-        1
-    ], 
-    [
-        "class...which", 
         1
     ], 
     [
@@ -3829,6 +3513,10 @@
     ], 
     [
         "logger.IsDebugEnabled()", 
+        1
+    ], 
+    [
+        "Field.Index.UN_TOKENIZED", 
         1
     ], 
     [
@@ -3868,7 +3556,7 @@
         1
     ], 
     [
-        "@Tom", 
+        "System.ServiceModel", 
         1
     ], 
     [
@@ -3976,10 +3664,6 @@
         1
     ], 
     [
-        "catch()", 
-        1
-    ], 
-    [
         "myClass", 
         1
     ], 
@@ -4000,7 +3684,7 @@
         1
     ], 
     [
-        "addAWTEventListener", 
+        "InterfaceName", 
         1
     ], 
     [
@@ -4037,10 +3721,6 @@
     ], 
     [
         "waitFor()", 
-        1
-    ], 
-    [
-        "java.util.concurennt", 
         1
     ], 
     [
@@ -4081,10 +3761,6 @@
     ], 
     [
         "javax.net.ssl.trustStore", 
-        1
-    ], 
-    [
-        "MyString", 
         1
     ], 
     [
@@ -4140,11 +3816,7 @@
         1
     ], 
     [
-        "login.error.password.dup", 
-        1
-    ], 
-    [
-        "0.8.7", 
+        "JavaVM", 
         1
     ], 
     [
@@ -4312,10 +3984,6 @@
         1
     ], 
     [
-        "2.718", 
-        1
-    ], 
-    [
         "GORM(Hibernate)", 
         1
     ], 
@@ -4336,7 +4004,7 @@
         1
     ], 
     [
-        "0.53", 
+        "a.getChildNodes()", 
         1
     ], 
     [
@@ -4381,10 +4049,6 @@
     ], 
     [
         "EclipseMe", 
-        1
-    ], 
-    [
-        "1.23e2", 
         1
     ], 
     [
@@ -4464,14 +4128,6 @@
         1
     ], 
     [
-        "7.1.0.40", 
-        1
-    ], 
-    [
-        "4.2.2.GA", 
-        1
-    ], 
-    [
         "order...like", 
         1
     ], 
@@ -4497,6 +4153,10 @@
     ], 
     [
         "obj.getClass()", 
+        1
+    ], 
+    [
+        "ServletFilter", 
         1
     ], 
     [
@@ -4532,7 +4192,7 @@
         1
     ], 
     [
-        "JavaVM", 
+        "login.error.password.dup", 
         1
     ], 
     [
@@ -4600,10 +4260,6 @@
         1
     ], 
     [
-        "16.2.4", 
-        1
-    ], 
-    [
         "ContentChanged", 
         1
     ], 
@@ -4620,15 +4276,7 @@
         1
     ], 
     [
-        "v1.3", 
-        1
-    ], 
-    [
         "product...I", 
-        1
-    ], 
-    [
-        "45.15", 
         1
     ], 
     [
@@ -4704,10 +4352,6 @@
         1
     ], 
     [
-        "@daniel6651", 
-        1
-    ], 
-    [
         "SwingUtilities.getRoot", 
         1
     ], 
@@ -4768,10 +4412,6 @@
         1
     ], 
     [
-        "0.81", 
-        1
-    ], 
-    [
         "selectAll()", 
         1
     ], 
@@ -4785,10 +4425,6 @@
     ], 
     [
         "gmerc.py", 
-        1
-    ], 
-    [
-        "1.6u10", 
         1
     ], 
     [
@@ -4848,7 +4484,7 @@
         1
     ], 
     [
-        "ToString()", 
+        "GraphicsDevice", 
         1
     ], 
     [
@@ -4856,15 +4492,7 @@
         1
     ], 
     [
-        "java.lang.Runtime.exec()", 
-        1
-    ], 
-    [
-        "5.2", 
-        1
-    ], 
-    [
-        "5.6", 
+        "@pek", 
         1
     ], 
     [
@@ -4881,14 +4509,6 @@
     ], 
     [
         "phoneNumber", 
-        1
-    ], 
-    [
-        "x.DSA", 
-        1
-    ], 
-    [
-        "192.168.255.255", 
         1
     ], 
     [
@@ -4941,10 +4561,6 @@
     ], 
     [
         "JmsTemplate", 
-        1
-    ], 
-    [
-        "32.30", 
         1
     ], 
     [
@@ -5016,15 +4632,11 @@
         1
     ], 
     [
-        ".addShutdownHook()", 
+        "libwrapper.so", 
         1
     ], 
     [
         "UserService", 
-        1
-    ], 
-    [
-        "45.07", 
         1
     ], 
     [
@@ -5052,10 +4664,6 @@
         1
     ], 
     [
-        "List<something>", 
-        1
-    ], 
-    [
         "UrlEscape", 
         1
     ], 
@@ -5069,6 +4677,10 @@
     ], 
     [
         "File[SPACE][SPACE]", 
+        1
+    ], 
+    [
+        "ListIterator", 
         1
     ], 
     [
@@ -5105,10 +4717,6 @@
     ], 
     [
         "java.lang.String", 
-        1
-    ], 
-    [
-        "2.5.4", 
         1
     ], 
     [
@@ -5172,11 +4780,11 @@
         1
     ], 
     [
-        "1.4.x", 
+        "Integer()", 
         1
     ], 
     [
-        "Integer()", 
+        "port(s)", 
         1
     ], 
     [
@@ -5193,10 +4801,6 @@
     ], 
     [
         "security.xml", 
-        1
-    ], 
-    [
-        "1.4.1", 
         1
     ], 
     [
@@ -5229,10 +4833,6 @@
     ], 
     [
         ".equals()", 
-        1
-    ], 
-    [
-        "4.2.2", 
         1
     ], 
     [
@@ -5272,10 +4872,6 @@
         1
     ], 
     [
-        "172.31.255.255", 
-        1
-    ], 
-    [
         "ZipEntry", 
         1
     ], 
@@ -5289,10 +4885,6 @@
     ], 
     [
         "FooLoader", 
-        1
-    ], 
-    [
-        "1.6.0", 
         1
     ], 
     [
@@ -5324,10 +4916,6 @@
         1
     ], 
     [
-        "6.0.19", 
-        1
-    ], 
-    [
         "ThreadPool", 
         1
     ], 
@@ -5344,27 +4932,11 @@
         1
     ], 
     [
-        "2.8", 
-        1
-    ], 
-    [
         "Boost.Units", 
         1
     ], 
     [
-        "192.168.2.46", 
-        1
-    ], 
-    [
-        "2.2", 
-        1
-    ], 
-    [
         "@Cringe", 
-        1
-    ], 
-    [
-        "org.apache.coyote.http11.Http11Processor.process", 
         1
     ], 
     [
@@ -5504,18 +5076,6 @@
         1
     ], 
     [
-        "6.18", 
-        1
-    ], 
-    [
-        "A.properties", 
-        1
-    ], 
-    [
-        "6.16", 
-        1
-    ], 
-    [
         "uuid.replaceAll", 
         1
     ], 
@@ -5541,10 +5101,6 @@
     ], 
     [
         "SuiteRunner", 
-        1
-    ], 
-    [
-        "org.w3c.dom.Document", 
         1
     ], 
     [
@@ -5624,14 +5180,6 @@
         1
     ], 
     [
-        "Http11ConnectionHandler.processConnection", 
-        1
-    ], 
-    [
-        "org.apache.coyote.http11.Http11Protocol", 
-        1
-    ], 
-    [
         "processDecodes", 
         1
     ], 
@@ -5664,10 +5212,6 @@
         1
     ], 
     [
-        "a.getChildNodes()", 
-        1
-    ], 
-    [
         "StackTraceElement", 
         1
     ], 
@@ -5677,14 +5221,6 @@
     ], 
     [
         "MyClassMock", 
-        1
-    ], 
-    [
-        "com.opensymphony.module.sitemesh.filter.PageFilter.doFilter", 
-        1
-    ], 
-    [
-        "192.168.0.0", 
         1
     ], 
     [
@@ -5744,11 +5280,11 @@
         1
     ], 
     [
-        "3.2", 
+        "mTabs.getTabWidget()", 
         1
     ], 
     [
-        "3.1", 
+        "Thread.getStackTrace()", 
         1
     ], 
     [
@@ -5789,10 +5325,6 @@
     ], 
     [
         "Object.equals(Object)", 
-        1
-    ], 
-    [
-        "jre1.5.0_15", 
         1
     ], 
     [
@@ -5848,7 +5380,11 @@
         1
     ], 
     [
-        "ant.project.name", 
+        "times(3)", 
+        1
+    ], 
+    [
+        "ToString()", 
         1
     ], 
     [
@@ -5860,15 +5396,7 @@
         1
     ], 
     [
-        "1.2e2", 
-        1
-    ], 
-    [
-        "ojdb14.jar", 
-        1
-    ], 
-    [
-        "System.ServiceModel", 
+        "@Tom", 
         1
     ], 
     [
@@ -5888,7 +5416,7 @@
         1
     ], 
     [
-        "somethingThatThrewAnException()", 
+        "@jatanp", 
         1
     ], 
     [
@@ -5909,10 +5437,6 @@
     ], 
     [
         "inheritGroups", 
-        1
-    ], 
-    [
-        "1.6_07", 
         1
     ], 
     [
@@ -6092,10 +5616,6 @@
         1
     ], 
     [
-        "TabAcceptor", 
-        1
-    ], 
-    [
         "conn.close()", 
         1
     ], 
@@ -6156,11 +5676,7 @@
         1
     ], 
     [
-        "p.age", 
-        1
-    ], 
-    [
-        "Convert.ToBase64String", 
+        "com.opensymphony.module.sitemesh.filter.PageFilter.doFilter", 
         1
     ], 
     [
@@ -6173,10 +5689,6 @@
     ], 
     [
         "Spring.net", 
-        1
-    ], 
-    [
-        "axis2.xml", 
         1
     ], 
     [
@@ -6252,15 +5764,7 @@
         1
     ], 
     [
-        "0.8", 
-        1
-    ], 
-    [
         "ObjectOutputStream.reset()", 
-        1
-    ], 
-    [
-        "0.0", 
         1
     ], 
     [
@@ -6309,10 +5813,6 @@
     ], 
     [
         "NatPMP", 
-        1
-    ], 
-    [
-        "1.6_10", 
         1
     ], 
     [
@@ -6372,7 +5872,7 @@
         1
     ], 
     [
-        "10.255.255.255", 
+        "SimpleTag", 
         1
     ], 
     [
@@ -6385,10 +5885,6 @@
     ], 
     [
         "@Mike", 
-        1
-    ], 
-    [
-        "10.5.4", 
         1
     ], 
     [
@@ -6440,7 +5936,7 @@
         1
     ], 
     [
-        "port(s)", 
+        "ExpandoMetaClass", 
         1
     ], 
     [
@@ -6453,14 +5949,6 @@
     ], 
     [
         "FloatControl.Type", 
-        1
-    ], 
-    [
-        "Locale.setDefault()", 
-        1
-    ], 
-    [
-        "50.00", 
         1
     ], 
     [
@@ -6568,22 +6056,6 @@
         1
     ], 
     [
-        "paintBorder", 
-        1
-    ], 
-    [
-        "launch4j.xml", 
-        1
-    ], 
-    [
-        "99.0", 
-        1
-    ], 
-    [
-        "7.1.0.42", 
-        1
-    ], 
-    [
         "InetAddress.getByName(addr)", 
         1
     ], 
@@ -6644,11 +6116,7 @@
         1
     ], 
     [
-        "1.7", 
-        1
-    ], 
-    [
-        "1.2", 
+        "GraphicsConfigurations", 
         1
     ], 
     [
@@ -6668,10 +6136,6 @@
         1
     ], 
     [
-        "10.5294", 
-        1
-    ], 
-    [
         "org.apache.tomcat.util.threads.ThreadPool", 
         1
     ], 
@@ -6685,10 +6149,6 @@
     ], 
     [
         "node.addChildInternal()", 
-        1
-    ], 
-    [
-        "v0.7", 
         1
     ], 
     [
@@ -6720,10 +6180,6 @@
         1
     ], 
     [
-        "1.3x", 
-        1
-    ], 
-    [
         "x.equals(y)", 
         1
     ], 
@@ -6741,10 +6197,6 @@
     ], 
     [
         "List<Person>", 
-        1
-    ], 
-    [
-        "1.6.0_10ea", 
         1
     ], 
     [
@@ -6848,10 +6300,6 @@
         1
     ], 
     [
-        "SimpleTag", 
-        1
-    ], 
-    [
         "cmd.exe", 
         1
     ], 
@@ -6869,10 +6317,6 @@
     ], 
     [
         "OutOfMemoryException", 
-        1
-    ], 
-    [
-        "8.5.1", 
         1
     ], 
     [
@@ -6905,14 +6349,6 @@
     ], 
     [
         "CodeableEnumHelper", 
-        1
-    ], 
-    [
-        "8.1", 
-        1
-    ], 
-    [
-        "8.0", 
         1
     ], 
     [
@@ -6957,10 +6393,6 @@
     ], 
     [
         "RegEx", 
-        1
-    ], 
-    [
-        "98.42", 
         1
     ], 
     [
@@ -7024,7 +6456,7 @@
         1
     ], 
     [
-        "libwrapper.so", 
+        ".addShutdownHook()", 
         1
     ], 
     [
@@ -7032,7 +6464,7 @@
         1
     ], 
     [
-        "5.1.14", 
+        "List<something>", 
         1
     ], 
     [
@@ -7045,10 +6477,6 @@
     ], 
     [
         "map.get", 
-        1
-    ], 
-    [
-        "2.5.2", 
         1
     ], 
     [
@@ -7112,10 +6540,6 @@
         1
     ], 
     [
-        "2.2448", 
-        1
-    ], 
-    [
         "setMinHeight()", 
         1
     ], 
@@ -7129,10 +6553,6 @@
     ], 
     [
         "VelocityLayoutServlet", 
-        1
-    ], 
-    [
-        "GraphicsDevice", 
         1
     ], 
     [
@@ -7172,7 +6592,7 @@
         1
     ], 
     [
-        "@jatanp", 
+        "somethingThatThrewAnException()", 
         1
     ], 
     [
@@ -7220,11 +6640,7 @@
         1
     ], 
     [
-        "PROJ.4", 
-        1
-    ], 
-    [
-        "StringUtils.join", 
+        "class...which", 
         1
     ], 
     [
@@ -7253,10 +6669,6 @@
     ], 
     [
         "KeyboardFocusManager", 
-        1
-    ], 
-    [
-        "x.SF", 
         1
     ], 
     [
@@ -7300,27 +6712,7 @@
         1
     ], 
     [
-        "1.5.0", 
-        1
-    ], 
-    [
-        "1.5.3", 
-        1
-    ], 
-    [
         "MyProject", 
-        1
-    ], 
-    [
-        "1.3.1", 
-        1
-    ], 
-    [
-        "9.X", 
-        1
-    ], 
-    [
-        "1.3.5", 
         1
     ], 
     [
@@ -7376,10 +6768,6 @@
         1
     ], 
     [
-        "ExpandoMetaClass", 
-        1
-    ], 
-    [
         "paint.net", 
         1
     ], 
@@ -7396,19 +6784,11 @@
         1
     ], 
     [
-        "1.7.9", 
-        1
-    ], 
-    [
         "DefaultHandler", 
         1
     ], 
     [
         "JBossCache", 
-        1
-    ], 
-    [
-        "1.7.0", 
         1
     ], 
     [
@@ -7420,7 +6800,7 @@
         1
     ], 
     [
-        "5.5.28", 
+        "StringUtils.join", 
         1
     ], 
     [
