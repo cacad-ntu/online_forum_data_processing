@@ -109,6 +109,8 @@ To change the application setting can directly change [application.py](applicati
 - Enter the sentence you want to classify.
 - Choose `5. Exit` to exit from the application
 
+Additionally, you can try the application without installing the requirements [here](http://128.199.159.74:8888/?token=117369b26b2baa3a96c5f1710c413583517d54793ee189b6).
+
 ## Report
 
 The report of this experiment can be found [here](report.pdf).
