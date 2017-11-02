@@ -141,11 +141,55 @@ def train_post_tag(data_dir, k_fold, model_name):
 
 if __name__ == '__main__':
     tagger = pycrfsuite.Tagger()
-    tagger.open(train_post_tag(sys.argv[1], int(sys.argv[2]), sys.argv[3]))
-    #tagger.open('test1.crfsuite')
+    #tagger.open(train_post_tag(sys.argv[1], int(sys.argv[2]), sys.argv[3]))
+    tagger.open('test1.crfsuite')
 
-    data = ['you', 'are', 'my', 'friend', '.']
+    data = [
+            [
+                ["Its"], ["includeMethod()"], ["can"], ["exclude"], ["any"], ["method"], ["we"], ["want"], [","], ["like"], ["a"], ["public"], ["not-annotated"], ["method"], ["."]
+            ],
+            [
+                ["There"], ["'s"], ["nothing"], ["special"], ["about"], ["BigDecimal.round()"], ["vs"], ["."], ["any"], ["other"], ["BigDecimal"], ["method"], ["."]
+            ],
+            [
+                ["From"], ["the"], ["EDT"], [","], ["you"], ["can"], ["read"], ["the"], ["current"], ["event"], ["from"], ["the"], ["queue"], ["("], ["java.awt.EventQueue.getCurrentEvent()"], [")"], [","], ["and"], ["possibly"], ["find"], ["a"], ["component"], ["from"], ["that"], ["."]
+            ],
+            [
+                ["So"], ["with"], ["autoboxing"], [","], ["I"], ["would"], ["expect"], ["the"], ["above"], ["to"], ["convert"], ["myInt"], ["to"], ["an"], ["Integer"], ["and"], ["then"], ["call"], ["toString()"], ["on"], ["that"], ["."]
+            ],
+            [
+                ["In"], ["C#"], [","], ["integers"], ["are"], ["neither"], ["reference"], ["types"], ["nor"], ["do"], ["they"], ["have"], ["to"], ["be"], ["boxed"], ["in"], ["order"], ["for"], ["ToString()"], ["to"], ["be"], ["called"], ["."]
+            ],
+            [
+                ["POST"], ["variables"], ["should"], ["be"], ["accessible"], ["via"], ["the"], ["request"], ["object"], [":"], ["HttpRequest.getParameterMap()"], ["."]
+            ],
+            [
+                ["It"], ["would"], ["be"], ["impossible"], ["to"], ["call"], ["the"], ["toString()"], ["or"], ["equals()"], ["methods"], [","], ["for"], ["example"], [","], ["since"], ["they"], ["are"], ["inherited"], ["in"], ["most"], ["cases"], ["."]
+            ],
+            [
+                ["Java"], ["may"], ["allow"], ["a"], ["try"], ["/"], ["catch"], ["around"], ["the"], ["super()"], ["call"], ["in"], ["the"], ["constructor"], ["if"], ["1"], ["."], ["you"], ["override"], ["ALL"], ["methods"], ["from"], ["the"], ["superclasses"], [","], ["and"], ["2"], ["."], ["you"], ["do"], ["n't"], ["use"], ["the"], ["super.XXX()"], ["clause"], [","], ["but"], ["that"], ["all"], ["sounds"], ["too"], ["complicated"], ["to"], ["me"], ["."]
+            ],
+            [
+                ["The"], ["NullPointerException"], ["is"], ["an"], ["exception"], ["thrown"], ["by"], ["the"], ["Java"], ["Virtual"], ["Machine"], ["when"], ["you"], ["try"], ["to"], ["execute"], ["code"], ["on"], ["null"], ["reference"], ["("], ["Like"], ["toString()"], [")"], ["."]
+            ],
+            [
+                ["Short"], ["version"], [""], ["-"], ["use"], ["flush()"], ["or"], ["whatever"], ["the"], ["relevant"], ["system"], ["call"], ["is"], ["to"], ["ensure"], ["that"], ["your"], ["data"], ["is"], ["actually"], ["written"], ["to"], ["the"], ["file"], ["."]
+            ]
+            ]
 
-    print("Word     : " +  str(data))
-    print("POS tag  : " +  str(tagger.tag(sentence_to_words(data))))
-    print("POS tag  : " +  str(tagger.tag(data)))
+    for item in data:
+        print("Word     : " +  str(item))
+        print("POS tag  : " +  str(tagger.tag(sentence_to_words(item))))
+    
+    
+    
+    
+    
+   
+    
+
+
+    # feat = [sentence_to_words(data)]
+    # print(feat)
+
+    
